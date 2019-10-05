@@ -1,0 +1,19 @@
+procedure f0(int[int] a, int n) returns(int i1){
+   i1=0;
+   while(i1 < n) {
+      a[i1+1] = a[i1];
+      i1 = i1 + 1;
+   }
+}
+
+procedure f1(int[int] a, int n) returns(int i2){
+   i2=0;
+   while(i2 < n) {
+      a[i2+1] = a[0];
+      i2 = i2 + 1;
+   }
+}
+
+requires $L(a) == $R(a);
+requires $L(n) == $R(n);
+ensures $L(i1) == $R(i2);

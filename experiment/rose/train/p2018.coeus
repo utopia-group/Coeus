@@ -1,0 +1,87 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(bool .param_2, int .param_3, int .param_4, int .param_5) returns
+ (int .ret_1)
+{
+  int .local_6;
+  int .local_7;
+  .local_6 = 0;
+  .local_6 = (- .local_6);
+  if ((.param_4 >= 4))
+  {
+    .local_6 = bvxor((- bvand(.local_6, .param_5)), .param_4);
+    if ((5 >= (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + .param_4))))))))))
+    {
+      
+    }
+    else
+    {
+      .param_4 = .local_6;
+      .local_6 = bvand(.local_6, .param_4);
+    }
+  }
+  else
+  {
+    for (.local_7 = 0 to 33)
+    {
+      for (.param_3 = 6 to 8)
+      {
+        .local_6 = ((.local_6 / (.param_4 * .param_3)) + ((.local_6 / (.param_4 * .param_3)) + (.local_6 / (.param_4 * .param_3))));
+        .param_4 = (- bvor(.local_6, .param_3));
+      }
+    }
+    .local_6 = .param_4;
+  }
+  .ret_1 = .local_6;
+}
+
+procedure f1(bool .param_9, int .param_10, int .param_11, int .param_12)
+ returns (int .ret_8)
+{
+  int .local_13;
+  int .local_14;
+  .local_13 = 0;
+  .local_13 = (- .local_13);
+  if ((.param_11 >= 4))
+  {
+    .local_13 = bvxor((- bvand(.local_13, .param_12)), .param_11);
+    if ((5 >= (.param_11 + (.param_11 + (.param_11 + (.param_11 + (.param_11 + (.param_11 + (.param_11 + (.param_11 + .param_11))))))))))
+    {
+      
+    }
+    else
+    {
+      .param_11 = .local_13;
+      .local_13 = bvand(.local_13, .param_11);
+    }
+  }
+  else
+  {
+    for (.local_14 = 0 to 33)
+    {
+      for (.param_10 = 6 to 8 step 2)
+      {
+        .local_13 = ((.local_13 / (.param_11 * .param_10)) + ((.local_13 / (.param_11 * .param_10)) + (.local_13 / (.param_11 * .param_10))));
+        .param_11 = (- bvor(.local_13, .param_10));
+        if (((1 + .param_10) <= 7))
+        {
+          .local_13 = ((.local_13 / (.param_11 * (1 + .param_10))) + ((.local_13 / (.param_11 * (1 + .param_10))) + (.local_13 / (.param_11 * (1 + .param_10)))));
+          .param_11 = (- bvor(.local_13, (1 + .param_10)));
+        }
+      }
+    }
+    .local_13 = .param_11;
+  }
+  .ret_8 = .local_13;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_9);
+requires (.param_3 == .param_10);
+requires (.param_4 == .param_11);
+requires (.param_5 == .param_12);
+ensures (.ret_1 == .ret_8);
+

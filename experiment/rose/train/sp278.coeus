@@ -1,0 +1,94 @@
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4, bool .param_5) returns
+ (int .ret_1)
+{
+  bool .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  int .local_10;
+  .local_6 = true;
+  .local_9 = (bvor(.param_2, 16) - bvand(.param_2, .param_2));
+  .local_7 = (bvand((64 * .param_3),
+   (.param_3 + .param_3)) * (64 % (4 - .param_4)));
+  for (.local_7 = 0 to .param_3)
+  {
+    for (.local_10 = 64 to 64)
+    {
+      if (.param_5)
+      {
+        .param_4 = ((.local_7 + (.local_7 + (.local_7 + (.local_7 + (.local_7 + .local_7))))) * (.local_7 % .local_9));
+      }
+    }
+    for (.local_9 = 0 to 5)
+    {
+      .param_4 = .param_2;
+    }
+    for (.local_8 = 0 to 128)
+    {
+      .param_4 = .param_2;
+    }
+  }
+  .param_2 = bvand(.param_4, 3);
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_12, int .param_13, int .param_14, bool .param_15)
+ returns (int .ret_11)
+{
+  bool .local_16;
+  int .local_17;
+  int .local_18;
+  int .local_19;
+  int .local_20;
+  .local_16 = true;
+  .local_19 = (bvor(.param_12, 16) - bvand(.param_12, .param_12));
+  .local_17 = (bvand((64 * .param_13),
+   (.param_13 + .param_13)) * (64 % (4 - .param_14)));
+  for (.local_17 = 0 to .param_13)
+  {
+    for (.local_20 = 64 to 64 step 2)
+    {
+      if (.param_15)
+      {
+        .param_14 = ((.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + .local_17))))) * (.local_17 % .local_19));
+      }
+      if (((1 + .local_20) <= 63))
+      {
+        if (.param_15)
+        {
+          .param_14 = ((.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + .local_17))))) * (.local_17 % .local_19));
+        }
+      }
+    }
+    for (.local_19 = 0 to 5 step 2)
+    {
+      .param_14 = .param_12;
+      if (((1 + .local_19) <= 4))
+      {
+        .param_14 = .param_12;
+      }
+    }
+    for (.local_18 = 0 to 128 step 2)
+    {
+      .param_14 = .param_12;
+      if (((1 + .local_18) <= 127))
+      {
+        .param_14 = .param_12;
+      }
+    }
+  }
+  .param_12 = bvand(.param_14, 3);
+  .ret_11 = .param_12;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_12);
+requires (.param_3 == .param_13);
+requires (.param_4 == .param_14);
+requires (.param_5 == .param_15);
+ensures (.ret_1 == .ret_11);
+

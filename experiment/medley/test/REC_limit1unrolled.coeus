@@ -1,0 +1,57 @@
+procedure f0rec(int n) returns(int r)
+{
+    int rx;
+    int nx;
+
+    r = 0;
+    rx = 0;
+    nx = 0;
+
+    if (n <= 1)
+    {
+        r = n;
+    }
+    else
+    {
+        // BEGIN INLINING
+        nx = n - 1;
+        rx = 0;
+        if (nx <= 1)
+        {
+            rx = nx;
+        }
+        else
+        {
+            call rx = f0rec(nx - 1);
+            rx = nx + rx;
+        }
+        r = rx;
+        // END INLINING
+        r = n + r;
+    }
+}
+
+procedure f0(int n) returns(int r) {
+    call r = f0rec(n);
+}
+
+procedure f1rec(int n) returns(int r)
+{
+    r = 0;
+    if (n <= 1)
+    {
+        r = n;
+    }
+    else
+    {
+        call r = f1rec(n - 2);
+        r = n + (n - 1) + r;
+    }
+}
+
+procedure f1(int n) returns(int r) {
+    call r = f1rec(n);
+}
+
+requires $L(n) == $R(n);
+ensures $L(r) == $R(r);

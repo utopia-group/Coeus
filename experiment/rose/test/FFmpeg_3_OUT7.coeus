@@ -1,0 +1,116 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func10(int[int, int] .param_1, int[int, int, int] .param_2)
+ returns ()
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  .local_3 = ((.param_1[0, 0] * .param_1[0, 2]) + (.param_1[1,
+   0] * .param_1[1, 2]));
+  .local_4 = ((.param_1[0, 0] * .param_1[1, 2]) - (.param_1[1,
+   0] * .param_1[0, 2]));
+  .local_5 = 0;
+  .local_6 = 0;
+  .local_7 = 0;
+  .local_8 = 1;
+  while ((.local_8 < 38))
+  {
+    .local_7 = (.local_7 + ((.param_1[0, .local_8] * .param_1[0,
+     .local_8]) + (.param_1[1, .local_8] * .param_1[1, .local_8])));
+    .local_5 = (.local_5 + ((.param_1[0, .local_8] * .param_1[0,
+     (.local_8 + 1)]) + (.param_1[1, .local_8] * .param_1[1,
+     (.local_8 + 1)])));
+    .local_6 = (.local_6 + ((.param_1[0, .local_8] * .param_1[1,
+     (.local_8 + 1)]) - (.param_1[1, .local_8] * .param_1[0,
+     (.local_8 + 1)])));
+    .local_3 = (.local_3 + ((.param_1[0, .local_8] * .param_1[0,
+     (.local_8 + 2)]) + (.param_1[1, .local_8] * .param_1[1,
+     (.local_8 + 2)])));
+    .local_4 = (.local_4 + ((.param_1[0, .local_8] * .param_1[1,
+     (.local_8 + 2)]) - (.param_1[1, .local_8] * .param_1[0,
+     (.local_8 + 2)])));
+    .local_8 = (.local_8 + 1);
+  }
+  .param_2[0, 1, (2 - 2)] = .local_3;
+  .param_2[1, 1, (2 - 2)] = .local_4;
+  .param_2[0, 1, 2] = ((.local_7 + (.param_1[0, 0] * .param_1[0,
+   0])) + (.param_1[1, 0] * .param_1[1, 0]));
+  .param_2[0, 0, 1] = ((.local_7 + (.param_1[0, 38] * .param_1[0,
+   38])) + (.param_1[1, 38] * .param_1[1, 38]));
+  .param_2[0, 1, (2 - 1)] = ((.local_5 + (.param_1[0, 0] * .param_1[0,
+   1])) + (.param_1[1, 0] * .param_1[1, 1]));
+  .param_2[1, 1, (2 - 1)] = ((.local_6 + (.param_1[0, 0] * .param_1[1,
+   1])) - (.param_1[1, 0] * .param_1[0, 1]));
+  .param_2[0, 0, 0] = ((.local_5 + (.param_1[0, 38] * .param_1[0,
+   39])) + (.param_1[1, 38] * .param_1[1, 39]));
+  .param_2[1, 0, 0] = ((.local_6 + (.param_1[0, 38] * .param_1[1,
+   39])) - (.param_1[1, 38] * .param_1[0, 39]));
+}
+
+procedure RIGHT_func10(int[int, int] .param_1, int[int, int, int] .param_2)
+ returns ()
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  .local_3 = ((.param_1[0, 0] * .param_1[0, 2]) + (.param_1[1,
+   0] * .param_1[1, 2]));
+  .local_4 = ((.param_1[0, 0] * .param_1[1, 2]) - (.param_1[1,
+   0] * .param_1[0, 2]));
+  .local_5 = 0;
+  .local_6 = 0;
+  .local_7 = 0;
+  .local_8 = 1;
+  while ((.local_8 <= (38 - 1)))
+  {
+    .local_7 = (.local_7 + ((.param_1[0, .local_8] * .param_1[0,
+     .local_8]) + (.param_1[1, .local_8] * .param_1[1, .local_8])));
+    .local_5 = (.local_5 + ((.param_1[0, .local_8] * .param_1[0,
+     (.local_8 + 1)]) + (.param_1[1, .local_8] * .param_1[1,
+     (.local_8 + 1)])));
+    .local_6 = (.local_6 + ((.param_1[0, .local_8] * .param_1[1,
+     (.local_8 + 1)]) - (.param_1[1, .local_8] * .param_1[0,
+     (.local_8 + 1)])));
+    .local_3 = (.local_3 + ((.param_1[0, .local_8] * .param_1[0,
+     (.local_8 + 2)]) + (.param_1[1, .local_8] * .param_1[1,
+     (.local_8 + 2)])));
+    .local_4 = (.local_4 + ((.param_1[0, .local_8] * .param_1[1,
+     (.local_8 + 2)]) - (.param_1[1, .local_8] * .param_1[0,
+     (.local_8 + 2)])));
+    .local_8 = (.local_8 + 1);
+  }
+  .param_2[0, 1, (2 - 2)] = .local_3;
+  .param_2[1, 1, (2 - 2)] = .local_4;
+  .param_2[0, 1, 2] = ((.local_7 + (.param_1[0, 0] * .param_1[0,
+   0])) + (.param_1[1, 0] * .param_1[1, 0]));
+  .param_2[0, 0, 1] = ((.local_7 + (.param_1[0, 38] * .param_1[0,
+   38])) + (.param_1[1, 38] * .param_1[1, 38]));
+  .param_2[0, 1, (2 - 1)] = ((.local_5 + (.param_1[0, 0] * .param_1[0,
+   1])) + (.param_1[1, 0] * .param_1[1, 1]));
+  .param_2[1, 1, (2 - 1)] = ((.local_6 + (.param_1[0, 0] * .param_1[1,
+   1])) - (.param_1[1, 0] * .param_1[0, 1]));
+  .param_2[0, 0, 0] = ((.local_5 + (.param_1[0, 38] * .param_1[0,
+   39])) + (.param_1[1, 38] * .param_1[1, 39]));
+  .param_2[1, 0, 0] = ((.local_6 + (.param_1[0, 38] * .param_1[1,
+   39])) - (.param_1[1, 38] * .param_1[0, 39]));
+}
+
+$lentry LEFT_func10;
+$rentry RIGHT_func10;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.param_1) == $R(.param_1));
+ensures ($L(.param_2) == $R(.param_2));
+

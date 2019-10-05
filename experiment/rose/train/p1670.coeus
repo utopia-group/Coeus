@@ -1,0 +1,99 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, bool .param_3, int .param_4, int .param_5,
+             int .param_6)
+ returns (int .ret_1)
+{
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_7 = (- (.param_2 - 1));
+  while (.param_3)
+  {
+    .local_9 = (- (.param_4 + .local_7));
+    if (.param_3)
+    {
+      if (.param_3)
+      {
+        
+      }
+      else
+      {
+        .param_6 = .param_5;
+        .local_8 = bvand((.local_9 + .param_5), (9 / .param_6));
+        .param_5 = (- (.local_8 * .local_9));
+      }
+    }
+    else
+    {
+      while ((! .param_3))
+      {
+        .param_5 = ((- .param_6) - bvor((.param_5 % .local_9), bvor(8,
+         .param_5)));
+      }
+    }
+  }
+  .param_2 = (bvxor(.param_6, 4) + bvor(2, .param_6));
+  for (.param_4 = 2 to 32)
+  {
+    .param_2 = (- ((.param_4 + .param_5) * -16));
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_11, bool .param_12, int .param_13, int .param_14,
+             int .param_15)
+ returns (int .ret_10)
+{
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_16 = (- (.param_11 - 1));
+  while (.param_12)
+  {
+    .local_18 = (- (.param_13 + .local_16));
+    if (.param_12)
+    {
+      if (.param_12)
+      {
+        
+      }
+      else
+      {
+        .param_15 = .param_14;
+        .local_17 = bvand((.local_18 + .param_14), (9 / .param_15));
+        .param_14 = (- (.local_17 * .local_18));
+      }
+    }
+    else
+    {
+      while ((! .param_12))
+      {
+        .param_14 = ((- .param_15) - bvor((.param_14 % .local_18), bvor(8,
+         .param_14)));
+      }
+    }
+  }
+  .param_11 = (bvxor(.param_15, 4) + bvor(2, .param_15));
+  for (.param_13 = 2 to 32 step 2)
+  {
+    .param_11 = (- ((.param_13 + .param_14) * -16));
+    if (((1 + .param_13) <= 31))
+    {
+      .param_11 = (- (((1 + .param_13) + .param_14) * -16));
+    }
+  }
+  .ret_10 = .param_11;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+requires (.param_4 == .param_13);
+requires (.param_5 == .param_14);
+requires (.param_6 == .param_15);
+ensures (.ret_1 == .ret_10);
+

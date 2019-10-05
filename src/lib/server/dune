@@ -1,0 +1,5 @@
+(library
+  (name server)
+  (libraries core ast prover searcher logs util)
+  (preprocess (pps ppx_sexp_conv ppx_compare ppx_hash))
+)

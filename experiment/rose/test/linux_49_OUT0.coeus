@@ -1,0 +1,102 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func6(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  int .local_4;
+  if ((.param_1 > 65535))
+  {
+    .param_1 = 65535;
+  }
+  .local_4 = .param_1;
+  .local_2 = 7;
+  if ((.local_4 < 128))
+  {
+    while (((.local_2 > 0) && (.local_4 < bvshl(1, .local_2))))
+    {
+      .local_2 = (.local_2 - 1);
+    }
+  }
+  else
+  {
+    while ((.local_4 > 255))
+    {
+      .local_4 = (.local_4 / 2);
+      .local_2 = (.local_2 + 1);
+    }
+  }
+  .local_3 = (.param_1 - bvshl(1, .local_2));
+  if ((.local_3 > 0))
+  {
+    if ((.local_2 > 8))
+    {
+      .local_3 = bvshr(.local_3, (.local_2 - 8));
+    }
+    else
+    {
+      if ((.local_2 < 8))
+      {
+        .local_3 = bvshl(.local_3, (8 - .local_2));
+      }
+    }
+    .local_3 = bvand(.local_3, 255);
+  }
+  .ret_0 = bvor((.local_2 * 256), .local_3);
+}
+
+procedure RIGHT_func6(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  int .local_4;
+  if ((.param_1 > 65535))
+  {
+    .param_1 = 65535;
+  }
+  .local_4 = .param_1;
+  .local_2 = 7;
+  if ((.local_4 < 128))
+  {
+    while (((.local_2 > 0) && (.local_4 < bvshl(1, .local_2))))
+    {
+      .local_2 = (.local_2 - 1);
+    }
+  }
+  else
+  {
+    while ((.local_4 > 255))
+    {
+      .local_4 = (.local_4 / 2);
+      .local_2 = (.local_2 + 1);
+    }
+  }
+  .local_3 = (.param_1 - bvshl(1, .local_2));
+  if ((.local_3 > 0))
+  {
+    if ((.local_2 > 8))
+    {
+      .local_3 = bvshr(.local_3, (.local_2 - 8));
+    }
+    else
+    {
+      if ((.local_2 < 8))
+      {
+        .local_3 = bvshl(.local_3, (8 - .local_2));
+      }
+    }
+    .local_3 = bvand(.local_3, 255);
+  }
+  .ret_0 = bvor((.local_2 * 256), .local_3);
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func6;
+requires ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

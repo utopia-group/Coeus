@@ -1,0 +1,69 @@
+declare int bvand(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4, int .param_5) returns
+ (int .ret_1)
+{
+  bool .local_6;
+  bool .local_7;
+  int .local_8;
+  .local_6 = false;
+  .local_8 = (- .param_2);
+  for (.local_8 = 0 to .param_4)
+  {
+    while ((! (.param_2 == 8)))
+    {
+      .param_5 = ((- (.local_8 - .param_3)) - bvand(5, (.param_5 + 10)));
+    }
+    .param_2 = (.param_5 * .param_5);
+  }
+  for (.param_3 = 0 to 10)
+  {
+    
+  }
+  while (.local_6)
+  {
+    .local_7 = (1 <= .param_2);
+    .local_6 = (! (.local_7 != .local_6));
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_10, int .param_11, int .param_12, int .param_13)
+ returns (int .ret_9)
+{
+  bool .local_14;
+  bool .local_15;
+  int .local_16;
+  .local_14 = false;
+  .local_16 = (- .param_10);
+  for (.local_16 = 0 to .param_12)
+  {
+    while ((! (.param_10 == 8)))
+    {
+      .param_13 = ((- (.local_16 - .param_11)) - bvand(5, (.param_13 + 10)));
+    }
+    .param_10 = (.param_13 * .param_13);
+  }
+  for (.param_11 = 0 to 10 step 2)
+  {
+    if (((1 + .param_11) <= 9))
+    {
+      
+    }
+  }
+  while (.local_14)
+  {
+    .local_15 = (1 <= .param_10);
+    .local_14 = (! (.local_15 != .local_14));
+  }
+  .ret_9 = .param_10;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_10);
+requires (.param_3 == .param_11);
+requires (.param_4 == .param_12);
+requires (.param_5 == .param_13);
+ensures (.ret_1 == .ret_9);
+

@@ -1,0 +1,60 @@
+
+
+procedure RIGHT_func12(int[int] .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  assume((.param_2 >= 1));
+  .local_3 = 0;
+  .local_4 = 0;
+  if (((.local_4 + 1) < .param_2))
+  {
+    if ((.param_1[.local_4] == .param_1[(.local_4 + 1)]))
+    {
+      .local_3 = (.local_3 + 1);
+      .local_4 = (.local_4 + 1);
+    }
+    else
+    {
+      .local_4 = (.local_4 + 1);
+    }
+  }
+  while (((.local_4 + 1) < .param_2))
+  {
+    if ((.param_1[.local_4] == .param_1[(.local_4 + 1)]))
+    {
+      .local_3 = (.local_3 + 1);
+      .local_4 = (.local_4 + 1);
+    }
+    else
+    {
+      .local_4 = (.local_4 + 1);
+    }
+  }
+  .ret_0 = .local_3;
+}
+
+procedure LEFT_func7(int[int] .param_1.0, int .param_2.1) returns
+ (int .ret_0.2)
+{
+  int .local_3.3;
+  int .local_4.4;
+  assume((.param_2.1 >= 1));
+  .local_3.3 = 0;
+  for (.local_4.4 = 0 to (.param_2.1 - 1))
+  {
+    if ((.param_1.0[.local_4.4] == .param_1.0[(.local_4.4 + 1)]))
+    {
+      .local_3.3 = (.local_3.3 + 1);
+    }
+  }
+  .ret_0.2 = .local_3.3;
+}
+
+$lentry LEFT_func7;
+$rentry RIGHT_func12;
+requires (.param_1.0 == .param_1);
+requires (.param_2.1 == .param_2);
+ensures (.param_1.0 == .param_1);
+ensures (.ret_0.2 == .ret_0);
+

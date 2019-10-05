@@ -1,0 +1,77 @@
+
+
+procedure RIGHT_func16(int[int, int] .param_1, int .param_2) returns
+ (int .ret_0)
+{
+  int inlined_.param_1.0;
+  int inlined_.ret_0.1;
+  int .tmpret_8;
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  assume((.param_2 >= 0));
+  .local_3 = 0;
+  .local_4 = 0;
+  for (.local_6 = 0 to .param_2)
+  {
+    .local_3 = (.local_3 + .param_1[.local_6, .local_6]);
+  }
+  for (.local_7 = (.param_2 - 1) downto -1)
+  {
+    .local_4 = (.local_4 + .param_1[((.param_2 - 1) - .local_7), .local_7]);
+  }
+  inlined_.param_1.0 = (.local_4 - .local_3);
+  inlined_.ret_0.1 = (if (inlined_.param_1.0 >= 0) then inlined_.param_1.0 else (- inlined_.param_1.0));
+  .tmpret_8 = inlined_.ret_0.1;
+  .local_5 = .tmpret_8;
+  .ret_0 = .local_5;
+}
+
+procedure LEFT_func11(int[int, int] .param_1.0, int .param_2.1) returns
+ (int .ret_0.2)
+{
+  int inlined_.param_1.0.3;
+  int inlined_.ret_0.1.4;
+  int .tmpret_7;
+  int .local_3.5;
+  int .local_4.6;
+  int .local_5.7;
+  int .local_6.8;
+  assume((.param_2.1 >= 0));
+  .local_5.7 = 0;
+  .local_6.8 = 0;
+  for (.local_3.5 = 0 to .param_2.1)
+  {
+    for (.local_4.6 = 0 to .param_2.1)
+    {
+      if ((.local_4.6 == .local_3.5))
+      {
+        .local_5.7 = (.local_5.7 + .param_1.0[.local_4.6, .local_3.5]);
+      }
+    }
+  }
+  for (.local_3.5 = 0 to .param_2.1)
+  {
+    for (.local_4.6 = 0 to .param_2.1)
+    {
+      if ((.local_4.6 == ((.param_2.1 - 1) - .local_3.5)))
+      {
+        .local_6.8 = (.local_6.8 + .param_1.0[.local_4.6, .local_3.5]);
+      }
+    }
+  }
+  inlined_.param_1.0.3 = (.local_5.7 - .local_6.8);
+  inlined_.ret_0.1.4 = (if (inlined_.param_1.0.3 >= 0) then inlined_.param_1.0.3 else (- inlined_.param_1.0.3));
+  .tmpret_7 = inlined_.ret_0.1.4;
+  .ret_0.2 = .tmpret_7;
+}
+
+$lentry LEFT_func11;
+$rentry RIGHT_func16;
+requires (.param_1.0 == .param_1);
+requires (.param_2.1 == .param_2);
+ensures (.param_1.0 == .param_1);
+ensures (.ret_0.2 == .ret_0);
+

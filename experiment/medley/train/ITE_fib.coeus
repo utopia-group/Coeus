@@ -1,0 +1,37 @@
+procedure f0(int n) returns(int g)
+{
+    int f;
+    int h;
+
+    f = 0;
+    g = 1;
+    h = 0;
+    while (n > 0)
+    {
+        h = f + g;
+        f = g;
+        g = h;
+        n--;
+    }
+}
+
+procedure f1(int n) returns(int g)
+{
+    int f;
+    int h;
+
+    f = 1;
+    g = 1;
+    h = 0;
+    while (n > 0)
+    {
+        h = f + g;
+        f = g;
+        g = h;
+        n--;
+    }
+}
+
+requires $L(n) >= 1;
+requires $L(n) == $R(n) + 1;  // Jia: originally this is $L(n) == $R(n) - 1, which does not lead to a proof
+ensures $L(g) == $R(g);

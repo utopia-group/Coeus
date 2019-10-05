@@ -1,0 +1,42 @@
+procedure f0(int n, int[int] a, int[int] b) 
+returns (int[int] c){
+   int i1;
+
+   i1 = 0;
+   while(i1 < n) {
+      a[i1] = a[i1] + 1;
+      b[i1] = b[i1] + a[i1];
+      c[i1] = c[i1] + b[i1];
+      i1 = i1 + 1;
+   }
+}
+
+procedure f1(int n, int[int] a, int[int] b) 
+returns (int[int] c){
+   int i2;
+
+   a[0] = a[0] + 1;
+   b[0] = b[0] + a[0];
+   a[1] = a[1] + 1;
+
+   i2 = 0;
+   while(i2 < n-2) {
+      a[i2+2] = a[i2+2] + 1;
+      b[i2+1] = b[i2+1] + a[i2+1];
+      c[i2] = c[i2] + b[i2];
+      i2 = i2 + 1;
+   }
+
+   c[i2] = c[i2] + b[i2];
+   b[i2+1] = b[i2+1] + a[i2+1];
+   c[i2+1] = c[i2+1] + b[i2+1];
+}
+
+
+requires $L(n) == $R(n);
+requires $L(a) == $R(a);
+requires $L(b) == $R(b);
+requires $L(c) == $R(c);
+requires $L(n) > 1;  // Jia: The original condition "$L(n)>=1" cannot lead to a proof
+
+ensures $L(c) == $R(c);

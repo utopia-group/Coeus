@@ -1,0 +1,85 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func8(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_3 = 1;
+  .local_4 = 1;
+  .local_5 = 0;
+  while (((.param_2 != 0) && (.local_4 != 0)))
+  {
+    while (((.local_3 != 0) && (bvand(.param_2, .local_3) == 0)))
+    {
+      .local_3 = (.local_3 * 2);
+    }
+    if ((! (.local_3 != 0)))
+    {
+      .local_4 = 0;
+    }
+    else
+    {
+      .local_6 = (.local_3 * 15);
+      if ((bvand(.param_1, .local_6) == .local_6))
+      {
+        .local_5 = 1;
+        .local_4 = 0;
+      }
+      else
+      {
+        .param_2 = bvand(.param_2, bvnot(.local_6));
+      }
+    }
+  }
+  .ret_0 = .local_5;
+}
+
+procedure RIGHT_func8(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_3 = 1;
+  .local_4 = 1;
+  .local_5 = 0;
+  while (((.param_2 != 0) && (.local_4 != 0)))
+  {
+    while (((.local_3 != 0) && (bvand(.param_2, .local_3) == 0)))
+    {
+      .local_3 = (.local_3 * 2);
+    }
+    if ((! (.local_3 != 0)))
+    {
+      .local_4 = 0;
+    }
+    else
+    {
+      .local_6 = (.local_3 * 15);
+      if ((bvand(.param_1, .local_6) == .local_6))
+      {
+        .local_5 = 1;
+        .local_4 = 0;
+      }
+      else
+      {
+        .param_2 = bvand(.param_2, bvnot(.local_6));
+      }
+    }
+  }
+  .ret_0 = .local_5;
+}
+
+$lentry LEFT_func8;
+$rentry RIGHT_func8;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

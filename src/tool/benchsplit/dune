@@ -1,0 +1,5 @@
+(executables
+  (names benchsplit)
+  (public_names benchsplit)
+  (libraries core cmdliner logs fmt fmt.cli fmt.tty logs.fmt logs.cli ast)
+)

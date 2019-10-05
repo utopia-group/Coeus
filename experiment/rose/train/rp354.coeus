@@ -1,0 +1,139 @@
+
+
+procedure f0(bool .param_2, int .param_3) returns (int .ret_1)
+{
+  int .local_4;
+  bool .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_4 = 64;
+  .local_6 = 5;
+  while ((.param_2 && .param_2))
+  {
+    .local_5 = (.param_2 == .param_2);
+    .param_3 = (- (.local_6 + (.local_6 + (.local_6 + (.local_6 + (.local_6 + (.local_6 + (.local_6 + (.local_6 + (.local_6 + .local_6))))))))));
+    .param_2 = (! .local_5);
+  }
+  for (.local_7 = 0 to (2 + .local_6))
+  {
+    .local_8 = 2;
+    if (.param_2)
+    {
+      .local_9 = (.param_3 % .local_8);
+      if ((.local_8 > (.local_9 - .local_8)))
+      {
+        
+      }
+      else
+      {
+        .param_3 = 64;
+      }
+      .param_2 = (.param_2 || .param_2);
+    }
+    else
+    {
+      if ((! .param_2))
+      {
+        
+      }
+      else
+      {
+        .param_3 = (- .local_6);
+      }
+    }
+    .local_4 = .local_6;
+  }
+  for (.local_6 = 0 to 7)
+  {
+    for (.local_8 = 0 to 16)
+    {
+      while (.param_2)
+      {
+        .local_4 = .param_3;
+      }
+      .param_3 = 8;
+    }
+  }
+  while (.param_2)
+  {
+    .local_5 = (.param_3 == .local_4);
+    .param_2 = ((.local_4 > 0) == .local_5);
+  }
+  .ret_1 = .local_4;
+}
+
+procedure f1(bool .param_11, int .param_12) returns (int .ret_10)
+{
+  int .local_13;
+  bool .local_14;
+  int .local_15;
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_13 = 64;
+  .local_15 = 5;
+  while ((.param_11 && .param_11))
+  {
+    .local_14 = (.param_11 == .param_11);
+    .param_12 = (- (.local_15 + (.local_15 + (.local_15 + (.local_15 + (.local_15 + (.local_15 + (.local_15 + (.local_15 + (.local_15 + .local_15))))))))));
+    .param_11 = (! .local_14);
+  }
+  for (.local_16 = 0 to (.local_15 + 2))
+  {
+    .local_17 = 2;
+    if (.param_11)
+    {
+      .local_18 = (.param_12 % .local_17);
+      if ((.local_17 > (.local_18 - .local_17)))
+      {
+        
+      }
+      else
+      {
+        .param_12 = 64;
+      }
+      .param_11 = (.param_11 || .param_11);
+    }
+    else
+    {
+      if ((! .param_11))
+      {
+        
+      }
+      else
+      {
+        .param_12 = (- .local_15);
+      }
+    }
+  }
+  for (.local_16 = 0 to (.local_15 + 2))
+  {
+    .local_13 = .local_15;
+  }
+  for (.local_15 = 0 to 7)
+  {
+    for (.local_17 = 0 to 16)
+    {
+      while (.param_11)
+      {
+        .local_13 = .param_12;
+      }
+      .param_12 = 8;
+    }
+  }
+  while (.param_11)
+  {
+    .local_14 = (.param_12 == .local_13);
+    .param_11 = ((.local_13 > 0) == .local_14);
+  }
+  .ret_10 = .local_13;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+ensures (.ret_1 == .ret_10);
+

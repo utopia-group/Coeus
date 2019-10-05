@@ -1,0 +1,52 @@
+declare int bvand(int, int);
+
+procedure f0(bool .param_2) returns (int .ret_1)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_3 = 16;
+  .local_4 = .local_3;
+  .local_5 = .local_3;
+  for (.local_5 = 0 to 12)
+  {
+    .local_4 = bvand((bvand(.local_4, .local_4) * (- .local_5)), .local_5);
+    for (.local_6 = 0 to 5)
+    {
+      .local_3 = (- .local_4);
+    }
+  }
+  .ret_1 = .local_3;
+}
+
+procedure f1(bool .param_8) returns (int .ret_7)
+{
+  int .local_9;
+  int .local_10;
+  int .local_11;
+  int .local_12;
+  .local_9 = 16;
+  .local_10 = .local_9;
+  .local_11 = .local_9;
+  for (.local_11 = 0 to 12)
+  {
+    .local_10 = bvand((bvand(.local_10, .local_10) * (- .local_11)),
+     .local_11);
+    for (.local_12 = 0 to 5 step 2)
+    {
+      .local_9 = (- .local_10);
+      if (((1 + .local_12) <= 4))
+      {
+        .local_9 = (- .local_10);
+      }
+    }
+  }
+  .ret_7 = .local_9;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_8);
+ensures (.ret_1 == .ret_7);
+

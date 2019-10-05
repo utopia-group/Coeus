@@ -1,0 +1,122 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2, int .param_3) returns (int .ret_1)
+{
+  bool .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  .local_5 = 7;
+  .local_4 = false;
+  for (.param_3 = 0 to 16)
+  {
+    .local_6 = ((- (.param_3 * .param_3)) * bvxor(.local_5, (1 - .param_3)));
+    .local_5 = bvxor((.param_2 - 2), (.param_2 / 5));
+    .param_2 = 7;
+    for (.param_2 = 0 to 5)
+    {
+      .local_7 = (- .local_6);
+      if (.local_4)
+      {
+        .local_5 = .local_7;
+      }
+      else
+      {
+        .local_5 = (.param_2 - 3);
+        .local_5 = ((.local_5 + .param_2) - 4);
+      }
+    }
+  }
+  while ((.local_5 > .local_5))
+  {
+    .local_5 = ((-9 * bvxor(6, .local_5)) - 11);
+    if (((.local_4 == .local_4) != (64 < .local_5)))
+    {
+      .local_5 = (- ((.local_5 * 32) - (.local_5 + .local_5)));
+    }
+    else
+    {
+      .param_3 = .local_5;
+      while ((3 >= .local_5))
+      {
+        .param_3 = .local_5;
+      }
+      if (.local_4)
+      {
+        .local_5 = (.local_5 - .param_3);
+      }
+    }
+  }
+  .ret_1 = .local_5;
+}
+
+procedure f1(int .param_9, int .param_10) returns (int .ret_8)
+{
+  bool .local_11;
+  int .local_12;
+  int .local_13;
+  int .local_14;
+  .local_12 = 7;
+  .local_11 = false;
+  for (.param_10 = 0 to 16)
+  {
+    .local_13 = ((- (.param_10 * .param_10)) * bvxor(.local_12,
+     (1 - .param_10)));
+    .local_12 = bvxor((.param_9 - 2), (.param_9 / 5));
+    .param_9 = 7;
+    for (.param_9 = 0 to 5 step 2)
+    {
+      .local_14 = (- .local_13);
+      if (.local_11)
+      {
+        .local_12 = .local_14;
+      }
+      else
+      {
+        .local_12 = (.param_9 - 3);
+        .local_12 = ((.local_12 + .param_9) - 4);
+      }
+      if (((1 + .param_9) <= 4))
+      {
+        .local_14 = (- .local_13);
+        if (.local_11)
+        {
+          .local_12 = .local_14;
+        }
+        else
+        {
+          .local_12 = ((1 + .param_9) - 3);
+          .local_12 = ((.local_12 + (1 + .param_9)) - 4);
+        }
+      }
+    }
+  }
+  while ((.local_12 > .local_12))
+  {
+    .local_12 = ((-9 * bvxor(6, .local_12)) - 11);
+    if (((.local_11 == .local_11) != (64 < .local_12)))
+    {
+      .local_12 = (- ((.local_12 * 32) - (.local_12 + .local_12)));
+    }
+    else
+    {
+      .param_10 = .local_12;
+      while ((3 >= .local_12))
+      {
+        .param_10 = .local_12;
+      }
+      if (.local_11)
+      {
+        .local_12 = (.local_12 - .param_10);
+      }
+    }
+  }
+  .ret_8 = .local_12;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_9);
+requires (.param_3 == .param_10);
+ensures (.ret_1 == .ret_8);
+

@@ -1,0 +1,53 @@
+
+
+procedure f0(bool .param_2, int .param_3) returns (int .ret_1)
+{
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  .local_4 = 1;
+  .local_7 = 0;
+  .local_6 = .local_4;
+  .local_7 = (- .local_7);
+  .local_5 = .param_3;
+  for (.local_7 = 0 to 74)
+  {
+    .local_4 = (.local_7 + .local_6);
+    .local_6 = ((8 + (.local_6 - 4)) + (9 % .local_4));
+  }
+  .local_4 = (((.local_6 - .local_5) * (.param_3 - .local_4)) - .local_6);
+  .ret_1 = .local_4;
+}
+
+procedure f1(bool .param_9, int .param_10) returns (int .ret_8)
+{
+  int .local_11;
+  int .local_12;
+  int .local_13;
+  int .local_14;
+  .local_11 = 1;
+  .local_14 = 0;
+  .local_13 = .local_11;
+  .local_14 = (- .local_14);
+  .local_12 = .param_10;
+  for (.local_14 = 0 to 74 step 2)
+  {
+    .local_11 = (.local_14 + .local_13);
+    .local_13 = ((8 + (.local_13 - 4)) + (9 % .local_11));
+    if (((1 + .local_14) <= 73))
+    {
+      .local_11 = ((1 + .local_14) + .local_13);
+      .local_13 = ((8 + (.local_13 - 4)) + (9 % .local_11));
+    }
+  }
+  .local_11 = (((.local_13 - .local_12) * (.param_10 - .local_11)) - .local_13);
+  .ret_8 = .local_11;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_9);
+requires (.param_3 == .param_10);
+ensures (.ret_1 == .ret_8);
+

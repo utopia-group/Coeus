@@ -1,0 +1,102 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2) returns (int .ret_1)
+{
+  bool .local_3;
+  int .local_4;
+  bool .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  int .local_10;
+  int .local_11;
+  .local_4 = 3;
+  .local_3 = false;
+  .local_5 = .local_3;
+  .local_6 = 1;
+  .local_6 = 32;
+  while ((.local_6 > 3))
+  {
+    .local_7 = .param_2;
+    .local_8 = 1;
+    .local_9 = 0;
+    .local_10 = 1;
+    while ((.local_10 < 5))
+    {
+      .local_7 = (- .local_9);
+      .local_6 = (.local_8 + .local_9);
+      .local_10 = (.local_10 + 1);
+    }
+    while (.local_5)
+    {
+      .local_4 = .local_7;
+      .local_11 = 3;
+      while ((.local_11 > bvxor(.local_6, .local_6)))
+      {
+        .local_5 = ((0 >= .param_2) && .local_5);
+        .local_11 = (.local_11 - 1);
+      }
+    }
+    .local_4 = bvxor(((.local_4 - 3) * .local_8),
+     ((.local_6 * .local_4) / .local_4));
+    .local_6 = (.local_6 - 1);
+  }
+  .ret_1 = .local_4;
+}
+
+procedure f1(int .param_13) returns (int .ret_12)
+{
+  bool .local_14;
+  int .local_15;
+  bool .local_16;
+  int .local_17;
+  int .local_18;
+  int .local_19;
+  int .local_20;
+  int .local_21;
+  int .local_22;
+  .local_15 = 3;
+  .local_14 = false;
+  .local_16 = .local_14;
+  .local_17 = 1;
+  .local_17 = 32;
+  while ((.local_17 >= 4))
+  {
+    .local_18 = .param_13;
+    .local_19 = 1;
+    .local_20 = 0;
+    .local_21 = 1;
+    while ((.local_21 <= 4))
+    {
+      .local_18 = (- .local_20);
+      .local_21 = (.local_21 + 1);
+    }
+    .local_21 = 1;
+    while ((.local_21 <= 4))
+    {
+      .local_17 = (.local_19 + .local_20);
+      .local_21 = (.local_21 + 1);
+    }
+    while (.local_16)
+    {
+      .local_15 = .local_18;
+      .local_22 = 3;
+      while ((.local_22 >= (bvxor(.local_17, .local_17) + 1)))
+      {
+        .local_16 = ((0 >= .param_13) && .local_16);
+        .local_22 = (.local_22 - 1);
+      }
+    }
+    .local_15 = bvxor(((.local_15 - 3) * .local_19),
+     ((.local_17 * .local_15) / .local_15));
+    .local_17 = (.local_17 - 1);
+  }
+  .ret_12 = .local_15;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_13);
+ensures (.ret_1 == .ret_12);
+

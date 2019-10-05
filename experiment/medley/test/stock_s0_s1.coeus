@@ -1,0 +1,84 @@
+
+
+procedure RIGHT_func8(int[int] .param_1, int .param_2) returns (int .ret_0)
+{
+  int inlined_.param_1.3;
+  int inlined_.param_2.4;
+  int inlined_.ret_0.5;
+  int inlined_.param_1.0;
+  int inlined_.param_2.1;
+  int inlined_.ret_0.2;
+  int .tmpret_6;
+  int .tmpret_7;
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  assume((.param_2 >= 0));
+  .local_3 = 0;
+  .local_4 = 0;
+  if ((.param_2 <= 1))
+  {
+    .ret_0 = 0;
+  }
+  else
+  {
+    for (.local_5 = 0 to (.param_2 - 1))
+    {
+      if (((.param_1[(.local_5 + 1)] - .param_1[.local_5]) > 0))
+      {
+        inlined_.param_1.0 = ((.local_4 + .param_1[(.local_5 + 1)]) - .param_1[.local_5]);
+        inlined_.param_2.1 = .local_3;
+        inlined_.ret_0.2 = (if (inlined_.param_1.0 > inlined_.param_2.1) then inlined_.param_1.0 else inlined_.param_2.1);
+        .tmpret_6 = inlined_.ret_0.2;
+        .local_3 = .tmpret_6;
+      }
+      inlined_.param_1.3 = ((.local_4 + .param_1[(.local_5 + 1)]) - .param_1[.local_5]);
+      inlined_.param_2.4 = 0;
+      inlined_.ret_0.5 = (if (inlined_.param_1.3 > inlined_.param_2.4) then inlined_.param_1.3 else inlined_.param_2.4);
+      .tmpret_7 = inlined_.ret_0.5;
+      .local_4 = .tmpret_7;
+    }
+    .ret_0 = .local_3;
+  }
+}
+
+procedure LEFT_func8(int[int] .param_1.0, int .param_2.1) returns
+ (int .ret_0.2)
+{
+  int .local_3.3;
+  int .local_4.4;
+  int .local_5.5;
+  assume((.param_2.1 >= 0));
+  if ((.param_2.1 == 0))
+  {
+    .ret_0.2 = 0;
+  }
+  else
+  {
+    .local_3.3 = 0;
+    .local_4.4 = .param_1.0[0];
+    for (.local_5.5 = 1 to .param_2.1)
+    {
+      if (((.param_1.0[.local_5.5] - .local_4.4) > .local_3.3))
+      {
+        .local_3.3 = (.param_1.0[.local_5.5] - .local_4.4);
+      }
+      else
+      {
+        if ((.param_1.0[.local_5.5] < .local_4.4))
+        {
+          .local_4.4 = .param_1.0[.local_5.5];
+        }
+      }
+    }
+    .ret_0.2 = .local_3.3;
+  }
+}
+
+$lentry LEFT_func8;
+$rentry RIGHT_func8;
+requires (.param_1.0 == .param_1);
+requires (.param_2.1 == .param_2);
+ensures (.param_1.0 == .param_1);
+ensures (.ret_0.2 == .ret_0);
+

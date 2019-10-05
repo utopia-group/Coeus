@@ -1,0 +1,88 @@
+declare int bvxor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4) returns (int .ret_1)
+{
+  bool .local_5;
+  int .local_6;
+  .local_5 = true;
+  for (.local_6 = 0 to 5)
+  {
+    .param_2 = .param_4;
+  }
+  .param_4 = 0;
+  while ((.param_4 < 1))
+  {
+    .local_6 = bvand((.param_2 + .param_2), (.param_4 - .param_2));
+    .param_2 = (64 * .param_4);
+    .param_3 = 0;
+    while ((.param_3 < .local_6))
+    {
+      while ((32 == .param_4))
+      {
+        .param_4 = bvxor(.param_3, .param_4);
+      }
+      if ((bvand(.local_6, .param_3) == 80))
+      {
+        .param_2 = bvand(bvand(.local_6, .param_4), (- .local_6));
+      }
+      else
+      {
+        .param_2 = .local_6;
+        .param_2 = ((.param_4 % .param_2) * 32);
+      }
+      .param_3 = (.param_3 + 1);
+    }
+    .param_4 = (.param_4 + 1);
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_8, int .param_9, int .param_10) returns (int .ret_7)
+{
+  bool .local_11;
+  int .local_12;
+  .local_11 = true;
+  for (.local_12 = 0 to 5 step 2)
+  {
+    .param_8 = .param_10;
+    if (((1 + .local_12) <= 4))
+    {
+      .param_8 = .param_10;
+    }
+  }
+  .param_10 = 0;
+  while ((.param_10 <= 0))
+  {
+    .local_12 = bvand((.param_8 + .param_8), (.param_10 - .param_8));
+    .param_8 = (64 * .param_10);
+    .param_9 = 0;
+    while ((.param_9 <= (.local_12 - 1)))
+    {
+      while ((32 == .param_10))
+      {
+        .param_10 = bvxor(.param_9, .param_10);
+      }
+      if ((bvand(.local_12, .param_9) == 80))
+      {
+        .param_8 = bvand(bvand(.local_12, .param_10), (- .local_12));
+      }
+      else
+      {
+        .param_8 = .local_12;
+        .param_8 = ((.param_10 % .param_8) * 32);
+      }
+      .param_9 = (.param_9 + 1);
+    }
+    .param_10 = (.param_10 + 1);
+  }
+  .ret_7 = .param_8;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_8);
+requires (.param_3 == .param_9);
+requires (.param_4 == .param_10);
+ensures (.ret_1 == .ret_7);
+

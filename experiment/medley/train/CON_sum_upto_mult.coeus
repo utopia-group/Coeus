@@ -1,0 +1,31 @@
+procedure f0(int m) returns(int s) {
+    int i;
+    s = 0;
+    i = 0;
+    while(i <= m) {
+        s = s + i;
+        i = i + 1;
+    }
+}
+
+procedure f1(int n, int m) returns(int s) {
+    int i,k;
+    s = 0;
+    
+    i = 0;
+    while(i <= n) {
+        s = s + i;
+        i = i + 1;
+    }
+
+    k = i - 1;
+    while(i <= m) {
+        s = s + k;
+        i = i + 1;
+    }
+}
+
+requires $R(n) >= 1;
+requires $R(n) < $R(m);
+requires $L(m) == $R(m);
+ensures $L(s) > $R(s);

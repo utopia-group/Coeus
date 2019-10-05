@@ -1,0 +1,53 @@
+
+
+procedure f0(bool .param_2) returns (int .ret_1)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  .local_3 = 4;
+  .local_5 = .local_3;
+  while ((-4 == .local_3))
+  {
+    .local_4 = ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + ((.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))) + (.local_5 + (.local_5 + (.local_5 + (.local_5 + .local_5)))))))))))));
+    .local_5 = .local_4;
+    .local_3 = .local_5;
+  }
+  .local_4 = .local_3;
+  for (.local_5 = 0 to 9)
+  {
+    .local_3 = ((.local_4 / .local_3) % (.local_3 + 64));
+  }
+  .ret_1 = .local_3;
+}
+
+procedure f1(bool .param_7) returns (int .ret_6)
+{
+  int .local_8;
+  int .local_9;
+  int .local_10;
+  .local_8 = 4;
+  .local_10 = .local_8;
+  while ((-4 == .local_8))
+  {
+    .local_9 = ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + ((.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))) + (.local_10 + (.local_10 + (.local_10 + (.local_10 + .local_10)))))))))))));
+    .local_10 = .local_9;
+    .local_8 = .local_10;
+  }
+  .local_9 = .local_8;
+  for (.local_10 = 0 to 9 step 2)
+  {
+    .local_8 = ((.local_9 / .local_8) % (.local_8 + 64));
+    if (((1 + .local_10) <= 8))
+    {
+      .local_8 = ((.local_9 / .local_8) % (.local_8 + 64));
+    }
+  }
+  .ret_6 = .local_8;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

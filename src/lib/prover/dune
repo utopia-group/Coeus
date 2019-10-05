@@ -1,0 +1,15 @@
+(ocamllex ruleLexer)
+(menhir
+  (flags
+      "--strict"
+      ; "--explain"
+  )
+  (modules ruleParser)
+)
+
+(library
+  (name prover)
+  (flags -w -32)
+  (libraries core ast frontend verifier solver util)
+  (preprocess (pps ppx_sexp_conv ppx_compare ppx_hash ppx_fields_conv))
+)

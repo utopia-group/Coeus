@@ -1,0 +1,51 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2, bool .param_3, int .param_4) returns (int .ret_1)
+{
+  int .local_5;
+  int .local_6;
+  .param_4 = (38 - bvxor((- .param_2), (- .param_4)));
+  .param_2 = (- (.param_4 * .param_2));
+  for (.param_4 = 2 to 32)
+  {
+    for (.local_5 = 0 to 0)
+    {
+      .local_6 = .param_4;
+      .local_6 = ((- .local_6) - .param_2);
+      .param_2 = .local_6;
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_8, bool .param_9, int .param_10) returns (int .ret_7)
+{
+  int .local_11;
+  int .local_12;
+  .param_10 = (38 - bvxor((- .param_8), (- .param_10)));
+  .param_8 = (- (.param_10 * .param_8));
+  for (.param_10 = 2 to 32)
+  {
+    for (.local_11 = 0 to 0 step 2)
+    {
+      .local_12 = .param_10;
+      .local_12 = ((- .local_12) - .param_8);
+      .param_8 = .local_12;
+      if (((1 + .local_11) <= -1))
+      {
+        .local_12 = .param_10;
+        .local_12 = ((- .local_12) - .param_8);
+        .param_8 = .local_12;
+      }
+    }
+  }
+  .ret_7 = .param_8;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_8);
+requires (.param_3 == .param_9);
+requires (.param_4 == .param_10);
+ensures (.ret_1 == .ret_7);
+

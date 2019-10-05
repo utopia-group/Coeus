@@ -1,0 +1,22 @@
+*.annot
+*.cmo
+*.cma
+*.cmi
+*.a
+*.o
+*.cmx
+*.cmxs
+*.cmxa
+
+# Dune build artifacts
+_build/
+
+# Opam local switch
+_opam/
+
+# Misc
+.merlin
+.DS_Store
+*.cache
+*.install
+exp*_run.sh

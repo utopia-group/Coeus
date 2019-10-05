@@ -1,0 +1,27 @@
+procedure f0(int n) returns(int r)
+{
+    r = 0;
+
+    while (n > 0)
+    {
+        r += n;
+        n--;
+    }
+}
+
+procedure f1(int n) returns(int r)
+{
+    int i;
+    r = 0;
+    i = n;
+
+    while (i > 0)
+    {
+        r += n;
+        i--;
+    }
+}
+
+requires $L(n) >= 0;
+requires $L(n) == $R(n);
+ensures ($R(r) - $L(r)) >= $L(n);

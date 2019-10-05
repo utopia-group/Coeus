@@ -1,0 +1,101 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0() returns (int .ret_1)
+{
+  bool .local_2;
+  int .local_3;
+  int .local_4;
+  bool .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_3 = 5;
+  .local_2 = false;
+  .local_4 = .local_3;
+  while (((.local_4 + .local_4) != .local_3))
+  {
+    .local_6 = .local_3;
+    .local_7 = .local_3;
+    .local_8 = (- (.local_3 + (.local_3 / .local_4)));
+    if ((bvor(.local_6, .local_4) < (- .local_3)))
+    {
+      .local_9 = bvor(.local_3, (.local_7 % .local_8));
+      .local_5 = .local_2;
+      while (.local_5)
+      {
+        .local_6 = bvxor(((.local_9 - 64) % (.local_9 - 8)),
+         ((.local_3 % .local_7) - (1 - .local_3)));
+        .local_4 = .local_9;
+      }
+    }
+    else
+    {
+      .local_7 = .local_6;
+      .local_3 = ((.local_6 + 16) - bvor(.local_6, 0));
+    }
+    .local_3 = bvand(((.local_3 * .local_6) - (.local_4 % .local_7)),
+     ((3 + .local_7) / 5));
+  }
+  for (.local_4 = 0 to 32)
+  {
+    .local_3 = (-8 * (.local_3 + (.local_3 + (.local_3 + .local_3))));
+  }
+  .ret_1 = .local_3;
+}
+
+procedure f1() returns (int .ret_10)
+{
+  bool .local_11;
+  int .local_12;
+  int .local_13;
+  bool .local_14;
+  int .local_15;
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_12 = 5;
+  .local_11 = false;
+  .local_13 = .local_12;
+  while (((.local_13 + .local_13) != .local_12))
+  {
+    .local_15 = .local_12;
+    .local_16 = .local_12;
+    .local_17 = (- (.local_12 + (.local_12 / .local_13)));
+    if ((bvor(.local_15, .local_13) < (- .local_12)))
+    {
+      .local_18 = bvor(.local_12, (.local_16 % .local_17));
+      .local_14 = .local_11;
+      while (.local_14)
+      {
+        .local_15 = bvxor(((.local_18 - 64) % (.local_18 - 8)),
+         ((.local_12 % .local_16) - (1 - .local_12)));
+        .local_13 = .local_18;
+      }
+    }
+    else
+    {
+      .local_16 = .local_15;
+      .local_12 = ((.local_15 + 16) - bvor(.local_15, 0));
+    }
+    .local_12 = bvand(((.local_12 * .local_15) - (.local_13 % .local_16)),
+     ((3 + .local_16) / 5));
+  }
+  for (.local_13 = 0 to 32 step 2)
+  {
+    .local_12 = (-8 * (.local_12 + (.local_12 + (.local_12 + .local_12))));
+    if (((1 + .local_13) <= 31))
+    {
+      .local_12 = (-8 * (.local_12 + (.local_12 + (.local_12 + .local_12))));
+    }
+  }
+  .ret_10 = .local_12;
+}
+
+$lentry f0;
+$rentry f1;
+
+ensures (.ret_1 == .ret_10);
+

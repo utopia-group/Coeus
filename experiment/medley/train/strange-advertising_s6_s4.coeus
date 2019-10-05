@@ -1,0 +1,60 @@
+
+
+procedure RIGHT_func15(int .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .tmpret_4;
+  if ((.param_2 > .param_1))
+  {
+    .ret_0 = 0;
+  }
+  else
+  {
+    call .tmpret_4 = RIGHT_func15(.param_1, (.param_2 + 1),
+     ((.param_3 / 2) + ((.param_3 / 2) + (.param_3 / 2))));
+    .ret_0 = ((.param_3 / 2) + .tmpret_4);
+  }
+}
+
+procedure RIGHT_func10(int .param_1.0) returns (int .ret_0.1)
+{
+  int .tmpret_2;
+  assume(((1 <= .param_1.0) && (.param_1.0 <= 50)));
+  call .tmpret_2 = RIGHT_func15(.param_1.0, 1, 5);
+  .ret_0.1 = .tmpret_2;
+}
+
+procedure LEFT_func9(int .param_1.2, int .param_2.3, int .param_3.4) returns
+ (int .ret_0.5)
+{
+  int .tmpret_7;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  if ((.param_2.3 == 0))
+  {
+    .ret_0.5 = .param_3.4;
+  }
+  else
+  {
+    .local_4 = (.param_3.4 + (.param_1.2 / 2));
+    .local_5 = (.param_1.2 / 2);
+    .local_6 = (.local_5 + (.local_5 + .local_5));
+    call .tmpret_7 = LEFT_func9(.local_6, (.param_2.3 - 1), .local_4);
+    .ret_0.5 = .tmpret_7;
+  }
+}
+
+procedure LEFT_func10(int .param_1.6) returns (int .ret_0.7)
+{
+  int .tmpret_2.8;
+  assume(((1 <= .param_1.6) && (.param_1.6 <= 50)));
+  call .tmpret_2.8 = LEFT_func9(5, .param_1.6, 0);
+  .ret_0.7 = .tmpret_2.8;
+}
+
+$lentry LEFT_func10;
+$rentry RIGHT_func10;
+requires (.param_1.6 == .param_1.0);
+ensures (.ret_0.7 == .ret_0.1);
+

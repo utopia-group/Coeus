@@ -1,0 +1,15 @@
+procedure f(int n) returns(int r) {
+  int i;
+  r = 0;
+  i = n;
+  while (i > 0) {
+    r += n;
+    i--;
+  }
+}
+
+$lentry f;
+$rentry f;
+requires $L(n) >= 1;
+requires $L(n) != $R(n);
+ensures $L(r) != $R(r);

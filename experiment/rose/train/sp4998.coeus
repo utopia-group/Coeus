@@ -1,0 +1,65 @@
+
+
+procedure f0(int .param_2, bool .param_3) returns (int .ret_1)
+{
+  int .local_4;
+  int .local_5;
+  .local_4 = 7;
+  .local_4 = (- ((.local_4 * .param_2) * .local_4));
+  if (.param_3)
+  {
+    .param_2 = .local_4;
+    for (.local_5 = 0 to 66)
+    {
+      if ((! (.param_3 || .param_3)))
+      {
+        .param_2 = .local_4;
+      }
+    }
+  }
+  else
+  {
+    .local_5 = .param_2;
+    .param_2 = .local_5;
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_7, bool .param_8) returns (int .ret_6)
+{
+  int .local_9;
+  int .local_10;
+  .local_9 = 7;
+  .local_9 = (- ((.local_9 * .param_7) * .local_9));
+  if (.param_8)
+  {
+    .param_7 = .local_9;
+    for (.local_10 = 0 to 66 step 2)
+    {
+      if ((! (.param_8 || .param_8)))
+      {
+        .param_7 = .local_9;
+      }
+      if (((1 + .local_10) <= 65))
+      {
+        if ((! (.param_8 || .param_8)))
+        {
+          .param_7 = .local_9;
+        }
+      }
+    }
+  }
+  else
+  {
+    .local_10 = .param_7;
+    .param_7 = .local_10;
+  }
+  .ret_6 = .param_7;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+requires (.param_3 == .param_8);
+ensures (.ret_1 == .ret_6);
+

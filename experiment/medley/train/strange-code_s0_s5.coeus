@@ -1,0 +1,38 @@
+
+
+procedure RIGHT_func9(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  .local_2 = 1;
+  .local_3 = 3;
+  while ((.local_2 <= .param_1))
+  {
+    .local_2 = (.local_2 + .local_3);
+    .local_3 = (.local_3 + .local_3);
+  }
+  .local_3 = (.local_3 / 2);
+  .local_2 = (.local_2 - .local_3);
+  .ret_0 = (.local_3 - (.param_1 - .local_2));
+}
+
+procedure LEFT_func6(int .param_1.0) returns (int .ret_0.1)
+{
+  int .local_2.2;
+  int .local_3.3;
+  assume((.param_1.0 >= 1));
+  .local_3.3 = 0;
+  .local_2.2 = 3;
+  while (((.local_3.3 + .local_2.2) < .param_1.0))
+  {
+    .local_3.3 = (.local_3.3 + .local_2.2);
+    .local_2.2 = (.local_2.2 + .local_2.2);
+  }
+  .ret_0.1 = (((.local_2.2 - .param_1.0) + .local_3.3) + 1);
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func9;
+requires (.param_1.0 == .param_1);
+ensures (.ret_0.1 == .ret_0);
+

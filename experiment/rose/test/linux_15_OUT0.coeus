@@ -1,0 +1,53 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func5(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  if (((.param_2 == 0) || ((.param_1 / .param_2) >= (-1 / 10000000))))
+  {
+    .ret_0 = -1;
+  }
+  else
+  {
+    .local_3 = 10000000;
+    while ((.param_1 > (-1 / .local_3)))
+    {
+      .local_3 = (.local_3 / 2);
+      .param_2 = (.param_2 / 2);
+    }
+    .ret_0 = (if (.param_2 != 0) then ((.param_1 * .local_3) / .param_2) else 0);
+  }
+}
+
+procedure RIGHT_func5(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  if (((.param_2 == 0) || ((.param_1 / .param_2) >= (-1 / 10000000))))
+  {
+    .ret_0 = -1;
+  }
+  else
+  {
+    .local_4 = 10000000;
+    .local_3 = .param_1;
+    while ((.local_3 > (-1 / .local_4)))
+    {
+      .local_4 = (.local_4 / 2);
+      .param_2 = (.param_2 / 2);
+    }
+    .ret_0 = (if (.param_2 != 0) then ((.param_1 * .local_4) / .param_2) else 0);
+  }
+}
+
+$lentry LEFT_func5;
+$rentry RIGHT_func5;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

@@ -1,0 +1,41 @@
+procedure f0(int size_a, int size_b, int[int] a, int[int] b) returns (int s1) {
+    int n, i;
+    s1 = 0;
+
+    n = size_a;
+    if (size_a < size_b)
+        n = size_b;
+
+    i = 0;
+    while(i < n) {
+        if (i < size_a)
+            s1 = s1 + a[i];
+        if (i < size_b)
+            s1 = s1 + b[i];
+        i = i + 1;
+    }
+}
+
+procedure f1(int size_a, int size_b, int[int] a, int[int] b) returns (int s2) {
+    int i;
+    s2 = 0;
+
+    i = 0;
+    while(i < size_a) {
+        s2 = s2 + a[i];
+        i = i + 1;
+    }
+    i = 0;
+    while(i < size_b) {
+        s2 = s2 + b[i];
+        i = i + 1;
+    }
+}
+
+requires $L(size_a >= 1);
+requires $L(size_b >= 1);
+requires $L(size_a) == $R(size_a);
+requires $L(size_b) == $R(size_b);
+requires $L(a) == $R(a);
+requires $L(b) == $R(b);
+ensures $L(s1) == $R(s2);

@@ -1,0 +1,166 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func8(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_6 = 0;
+  .local_5 = 0;
+  while ((.local_5 < 4))
+  {
+    .local_2 = bvand(.param_1, bvshl(255, ((3 - .local_5) * 8)));
+    .local_2 = bvand(bvshr(.local_2, ((3 - .local_5) * 8)), bvnot(1));
+    .local_3 = bvand(.param_1, bvshl(15, (60 - (.local_5 * 8))));
+    .local_3 = bvshr(.local_3, (60 - (.local_5 * 8)));
+    .local_4 = (.local_2 / 16);
+    if ((.local_4 == 2))
+    {
+      .local_6 = bvor(.local_6,
+       bvshl((if ((.local_5 == 1) || (.local_5 == 3)) then 1 else 0),
+       .local_5));
+    }
+    else
+    {
+      if ((.local_4 == 3))
+      {
+        if ((.local_2 == 60))
+        {
+          .local_6 = bvor(.local_6, bvshl((if (.local_5 == 0) then 1 else 0),
+           .local_5));
+        }
+        else
+        {
+          if ((.local_2 == 62))
+          {
+            .local_6 = bvor(.local_6,
+             bvshl((if (.local_5 != 1) then 1 else 0), .local_5));
+          }
+          else
+          {
+            .local_6 = bvor(.local_6, bvshl(1, .local_5));
+          }
+        }
+      }
+      else
+      {
+        if (((.local_4 == 4) || (.local_4 == 5)))
+        {
+          .local_6 = bvor(.local_6,
+           bvshl((if (.local_3 == 13) then 1 else 0), .local_5));
+        }
+        else
+        {
+          if ((.local_4 == 6))
+          {
+            if ((.local_2 == 100))
+            {
+              .local_6 = bvor(.local_6,
+               bvshl((if (.local_5 >= 2) then 1 else 0), .local_5));
+            }
+          }
+          else
+          {
+            if ((.local_4 == 8))
+            {
+              .local_6 = bvor(.local_6,
+               bvshl((if (.local_3 == 13) then 1 else 0), .local_5));
+            }
+          }
+        }
+      }
+    }
+    .local_5 = (.local_5 + 1);
+  }
+  .ret_0 = .local_6;
+}
+
+procedure RIGHT_func8(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_6 = 0;
+  .local_5 = 0;
+  while ((.local_5 <= 3))
+  {
+    .local_2 = bvand(.param_1, bvshl(255, ((3 - .local_5) * 8)));
+    .local_2 = bvand(bvshr(.local_2, ((3 - .local_5) * 8)), bvnot(1));
+    .local_4 = (.local_2 / 16);
+    .local_3 = bvand(.param_1, bvshl(15, (60 - (.local_5 * 8))));
+    .local_3 = bvshr(.local_3, (60 - (.local_5 * 8)));
+    if ((.local_4 == 2))
+    {
+      .local_6 = bvor(.local_6,
+       bvshl((if ((.local_5 == 1) || (.local_5 == 3)) then 1 else 0),
+       .local_5));
+    }
+    else
+    {
+      if ((.local_4 == 3))
+      {
+        if ((.local_2 == 60))
+        {
+          .local_6 = bvor(.local_6, bvshl((if (.local_5 == 0) then 1 else 0),
+           .local_5));
+        }
+        else
+        {
+          if ((.local_2 == 62))
+          {
+            .local_6 = bvor(.local_6,
+             bvshl((if (.local_5 != 1) then 1 else 0), .local_5));
+          }
+          else
+          {
+            .local_6 = bvor(.local_6, bvshl(1, .local_5));
+          }
+        }
+      }
+      else
+      {
+        if (((.local_4 == 4) || (.local_4 == 5)))
+        {
+          .local_6 = bvor(.local_6,
+           bvshl((if (.local_3 == 13) then 1 else 0), .local_5));
+        }
+        else
+        {
+          if ((.local_4 == 6))
+          {
+            if ((.local_2 == 100))
+            {
+              .local_6 = bvor(.local_6,
+               bvshl((if (.local_5 >= 2) then 1 else 0), .local_5));
+            }
+          }
+          else
+          {
+            if ((.local_4 == 8))
+            {
+              .local_6 = bvor(.local_6,
+               bvshl((if (.local_3 == 13) then 1 else 0), .local_5));
+            }
+          }
+        }
+      }
+    }
+    .local_5 = (.local_5 + 1);
+  }
+  .ret_0 = .local_6;
+}
+
+$lentry LEFT_func8;
+$rentry RIGHT_func8;
+requires ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

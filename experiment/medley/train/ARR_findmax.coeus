@@ -1,0 +1,36 @@
+procedure f0(int[int] a, int n) returns (int r) {
+   int i1;
+   int max;
+
+   max = 0;
+   i1 = 1;
+   while(i1 < n) {
+      if(a[i1] >= a[max]) {
+         max = i1;
+      }
+      i1 = i1 + 1;
+   }
+
+   r = a[max];
+}
+
+procedure f1(int[int] a, int n) returns (int r) {
+   int i2;
+   int maxv;
+
+   maxv = a[0];
+   i2 = 1;
+   while(i2 < n) {
+      if(a[i2] >= maxv) {
+         maxv = a[i2];
+      }
+      i2 = i2 + 1;
+   }
+
+   r = maxv;
+}
+
+requires $L(a) == $R(a);
+requires $L(n) == $R(n);
+requires $L(n) >= 1;
+ensures $L(r) == $R(r);

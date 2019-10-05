@@ -1,0 +1,114 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4, int .param_5) returns
+ (int .ret_1)
+{
+  bool .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_7 = 9;
+  .local_6 = false;
+  .local_8 = (16 + .local_7);
+  .local_9 = bvand(3, bvxor(.local_7, 3));
+  .local_7 = (bvxor(.local_7, .local_7) * (.local_8 + .param_5));
+  .param_2 = 0;
+  while ((.param_2 < (6 + .param_4)))
+  {
+    .param_3 = 0;
+    while ((.param_3 < bvand(.param_5, .local_8)))
+    {
+      .param_5 = ((.param_3 * .param_5) + (-16 + .local_9));
+      while ((.local_6 == .local_6))
+      {
+        .param_2 = 64;
+      }
+      .local_9 = 0;
+      while ((.local_9 < (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + .local_8)))))))))))
+      {
+        .param_5 = .local_9;
+        .param_2 = bvor(0, (- .param_3));
+        .local_9 = (.local_9 + 1);
+      }
+      .param_3 = (.param_3 + 1);
+    }
+    .local_7 = (.param_2 + (bvor(5, .param_5) + bvand(1, .param_2)));
+    .param_2 = (.param_2 + 1);
+  }
+  for (.local_8 = 0 to 66)
+  {
+    
+  }
+  .ret_1 = .local_7;
+}
+
+procedure f1(int .param_11, int .param_12, int .param_13, int .param_14)
+ returns (int .ret_10)
+{
+  bool .local_15;
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_16 = 9;
+  .local_15 = false;
+  .local_17 = (16 + .local_16);
+  .local_18 = bvand(3, bvxor(.local_16, 3));
+  .local_16 = (bvxor(.local_16, .local_16) * (.local_17 + .param_14));
+  .param_11 = 0;
+  while ((.param_11 <= ((6 + .param_13) - 1)))
+  {
+    .param_12 = 0;
+    while ((.param_12 <= (bvand(.param_14, .local_17) - 1)))
+    {
+      .param_14 = ((.param_12 * .param_14) + (-16 + .local_18));
+      while ((.local_15 == .local_15))
+      {
+        .param_11 = 64;
+      }
+      .local_18 = 0;
+      while ((.local_18 <= (-1 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + .local_17))))))))))))
+      {
+        .param_14 = .local_18;
+        .param_11 = bvor(0, (- .param_12));
+        if (((1 + .local_18) <= (-1 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + .local_17))))))))))))
+        {
+          .param_14 = (1 + .local_18);
+          .param_11 = bvor(0, (- .param_12));
+        }
+        .local_18 = (.local_18 + 2);
+      }
+      if ((.local_18 <= (-1 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + .local_17))))))))))))
+      {
+        .param_14 = .local_18;
+        .param_11 = bvor(0, (- .param_12));
+        if (((1 + .local_18) <= (-1 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + (.local_17 + .local_17))))))))))))
+        {
+          .param_14 = (1 + .local_18);
+          .param_11 = bvor(0, (- .param_12));
+        }
+      }
+      .param_12 = (.param_12 + 1);
+    }
+    .local_16 = (.param_11 + (bvor(5, .param_14) + bvand(1, .param_11)));
+    .param_11 = (.param_11 + 1);
+  }
+  for (.local_17 = 0 to 66 step 2)
+  {
+    if (((1 + .local_17) <= 65))
+    {
+      
+    }
+  }
+  .ret_10 = .local_16;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+requires (.param_4 == .param_13);
+requires (.param_5 == .param_14);
+ensures (.ret_1 == .ret_10);
+

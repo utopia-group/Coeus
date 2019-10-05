@@ -1,0 +1,96 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func4(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  .local_2 = 0;
+  while ((bvand(.param_1, 12) != 0))
+  {
+    .param_1 = (.param_1 - 4);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 192) != 0))
+  {
+    .param_1 = (.param_1 - 64);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 3072) != 0))
+  {
+    .param_1 = (.param_1 - 1024);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 786432) != 0))
+  {
+    .param_1 = (.param_1 - 262144);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 12582912) != 0))
+  {
+    .param_1 = (.param_1 - 4194304);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 201326592) != 0))
+  {
+    .param_1 = (.param_1 - 67108864);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, -1073741824) != 0))
+  {
+    .param_1 = (.param_1 - 1073741824);
+    .local_2 = (.local_2 + 1);
+  }
+  .ret_0 = .local_2;
+}
+
+procedure RIGHT_func4(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  .local_2 = 0;
+  while ((bvand(.param_1, 12) != 0))
+  {
+    .param_1 = (.param_1 - 4);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 192) != 0))
+  {
+    .param_1 = (.param_1 - 64);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 3072) != 0))
+  {
+    .param_1 = (.param_1 - 1024);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 786432) != 0))
+  {
+    .param_1 = (.param_1 - 262144);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 12582912) != 0))
+  {
+    .param_1 = (.param_1 - 4194304);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, 201326592) != 0))
+  {
+    .param_1 = (.param_1 - 67108864);
+    .local_2 = (.local_2 + 1);
+  }
+  while ((bvand(.param_1, -1073741824) != 0))
+  {
+    .param_1 = (.param_1 - 1073741824);
+    .local_2 = (.local_2 + 1);
+  }
+  .ret_0 = .local_2;
+}
+
+$lentry LEFT_func4;
+$rentry RIGHT_func4;
+requires ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

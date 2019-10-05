@@ -1,0 +1,41 @@
+procedure f0(int x, int g) returns(int r)
+{
+    int i;
+
+    i = 0;
+    while (i < x)
+    {
+        i = i + 1;
+        g = g - 2;
+        g = g + 1;
+        while (x < i)
+        {
+            x = x + 2;
+            x = x - 1;
+            g = g + 1;
+        }
+    }
+    r = g;
+}
+
+procedure f1(int x, int g) returns(int r)
+{
+    int i;
+
+    i = 0;
+    while (i < x)
+    {
+        i = i + 1;
+        g = g - 1;
+        while (x < i)
+        {
+            x = x + 1;
+            g = g + 1;
+        }
+    }
+    r = g;
+}
+
+requires $L(x) == $R(x);
+requires $L(g) == $R(g);
+ensures $L(r) == $R(r);

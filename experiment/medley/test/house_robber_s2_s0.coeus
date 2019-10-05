@@ -1,0 +1,113 @@
+
+
+procedure RIGHT_func12(int[int] .param_12, int .param_13) returns
+ (int .ret_11)
+{
+  int inlined_.param_20.0;
+  int inlined_.param_21.1;
+  int inlined_.ret_19.2;
+  int inlined_.param_20.6;
+  int inlined_.param_21.7;
+  int inlined_.ret_19.8;
+  int inlined_.param_20.3;
+  int inlined_.param_21.4;
+  int inlined_.ret_19.5;
+  int .tmpret_16;
+  int .tmpret_17;
+  int .tmpret_18;
+  int[int] .local_14;
+  int .local_15;
+  if ((.param_13 == 0))
+  {
+    .ret_11 = 0;
+  }
+  else
+  {
+    if ((.param_13 == 1))
+    {
+      .ret_11 = .param_12[0];
+    }
+    else
+    {
+      if ((.param_13 == 2))
+      {
+        inlined_.param_20.0 = .param_12[0];
+        inlined_.param_21.1 = .param_12[1];
+        inlined_.ret_19.2 = (if (inlined_.param_20.0 > inlined_.param_21.1) then inlined_.param_20.0 else inlined_.param_21.1);
+        .tmpret_16 = inlined_.ret_19.2;
+        .ret_11 = .tmpret_16;
+      }
+      else
+      {
+        .local_14[0] = .param_12[0];
+        inlined_.param_20.3 = .param_12[0];
+        inlined_.param_21.4 = .param_12[1];
+        inlined_.ret_19.5 = (if (inlined_.param_20.3 > inlined_.param_21.4) then inlined_.param_20.3 else inlined_.param_21.4);
+        .tmpret_17 = inlined_.ret_19.5;
+        .local_14[1] = .tmpret_17;
+        for (.local_15 = 2 to .param_13)
+        {
+          inlined_.param_20.6 = (.param_12[.local_15] + .local_14[(.local_15 - 2)]);
+          inlined_.param_21.7 = .local_14[(.local_15 - 1)];
+          inlined_.ret_19.8 = (if (inlined_.param_20.6 > inlined_.param_21.7) then inlined_.param_20.6 else inlined_.param_21.7);
+          .tmpret_18 = inlined_.ret_19.8;
+          .local_14[.local_15] = .tmpret_18;
+        }
+        .ret_11 = .local_14[(.param_13 - 1)];
+      }
+    }
+  }
+}
+
+procedure LEFT_func9(int[int] .param_2, int .param_3) returns (int .ret_1)
+{
+  int inlined_.param_9.3;
+  int inlined_.param_10.4;
+  int inlined_.ret_8.5;
+  int inlined_.param_9.0;
+  int inlined_.param_10.1;
+  int inlined_.ret_8.2;
+  int .tmpret_6;
+  int .tmpret_7;
+  int[int] .local_4;
+  int .local_5;
+  if ((.param_3 == 0))
+  {
+    .ret_1 = 0;
+  }
+  else
+  {
+    if ((.param_3 == 1))
+    {
+      .ret_1 = .param_2[0];
+    }
+    else
+    {
+      .local_4[0] = .param_2[0];
+      inlined_.param_9.0 = .param_2[0];
+      inlined_.param_10.1 = .param_2[1];
+      inlined_.ret_8.2 = (if (inlined_.param_9.0 > inlined_.param_10.1) then inlined_.param_9.0 else inlined_.param_10.1);
+      .tmpret_6 = inlined_.ret_8.2;
+      .local_4[1] = .tmpret_6;
+      for (.local_5 = 2 to .param_3)
+      {
+        inlined_.param_9.3 = (.local_4[(.local_5 - 2)] + .param_2[.local_5]);
+        inlined_.param_10.4 = .local_4[(.local_5 - 1)];
+        inlined_.ret_8.5 = (if (inlined_.param_9.3 > inlined_.param_10.4) then inlined_.param_9.3 else inlined_.param_10.4);
+        .tmpret_7 = inlined_.ret_8.5;
+        .local_4[.local_5] = .tmpret_7;
+      }
+      .ret_1 = .local_4[(.param_3 - 1)];
+    }
+  }
+}
+
+$lentry LEFT_func9;
+$rentry RIGHT_func12;
+requires (.param_3 >= 0);
+requires (.param_3 <= 1000);
+requires (.param_2 == .param_12);
+requires (.param_3 == .param_13);
+ensures (.param_2 == .param_12);
+ensures (.ret_1 == .ret_11);
+

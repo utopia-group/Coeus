@@ -1,0 +1,56 @@
+
+
+procedure f0(int .param_2, int .param_3) returns (int .ret_1)
+{
+  bool .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  .local_4 = true;
+  .local_7 = (- .param_3);
+  for (.local_5 = 0 to 14)
+  {
+    for (.local_6 = 0 to (- .param_2))
+    {
+      for (.local_7 = 0 to -1)
+      {
+        .param_3 = (1 + (.local_7 + 9));
+      }
+    }
+    .param_2 = (- .param_3);
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_9, int .param_10) returns (int .ret_8)
+{
+  bool .local_11;
+  int .local_12;
+  int .local_13;
+  int .local_14;
+  .local_11 = true;
+  .local_14 = (- .param_10);
+  for (.local_12 = 0 to 14)
+  {
+    for (.local_13 = 0 to (- .param_9))
+    {
+      for (.local_14 = 0 to -1 step 2)
+      {
+        .param_10 = (1 + (.local_14 + 9));
+        if (((1 + .local_14) <= -2))
+        {
+          .param_10 = (1 + ((1 + .local_14) + 9));
+        }
+      }
+    }
+    .param_9 = (- .param_10);
+  }
+  .ret_8 = .param_9;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_9);
+requires (.param_3 == .param_10);
+ensures (.ret_1 == .ret_8);
+

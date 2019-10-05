@@ -1,0 +1,104 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func5(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  if ((bvand(.param_1, -268435456) != 0))
+  {
+    .local_2 = (1 * 32768);
+  }
+  else
+  {
+    if ((bvand(.param_1, 251658240) != 0))
+    {
+      .local_2 = (1 * 8192);
+    }
+    else
+    {
+      if ((bvand(.param_1, 15728640) != 0))
+      {
+        .local_2 = (1 * 2048);
+      }
+      else
+      {
+        if ((bvand(.param_1, 983040) != 0))
+        {
+          .local_2 = (1 * 512);
+        }
+        else
+        {
+          .local_2 = (1 * 128);
+        }
+      }
+    }
+  }
+  .local_3 = 0;
+  while ((.local_2 != 0))
+  {
+    .local_3 = (.local_3 + .local_2);
+    if (((.local_3 * .local_3) > .param_1))
+    {
+      .local_3 = (.local_3 - .local_2);
+    }
+    .local_2 = (.local_2 / 2);
+  }
+  .ret_0 = .local_3;
+}
+
+procedure RIGHT_func5(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  if ((bvand(.param_1, -268435456) != 0))
+  {
+    .local_2 = 32768;
+  }
+  else
+  {
+    if ((bvand(.param_1, 251658240) != 0))
+    {
+      .local_2 = 8192;
+    }
+    else
+    {
+      if ((bvand(.param_1, 15728640) != 0))
+      {
+        .local_2 = 2048;
+      }
+      else
+      {
+        if ((bvand(.param_1, 983040) != 0))
+        {
+          .local_2 = 512;
+        }
+        else
+        {
+          .local_2 = 128;
+        }
+      }
+    }
+  }
+  .local_3 = 0;
+  while ((.local_2 != 0))
+  {
+    .local_3 = (.local_3 + .local_2);
+    if (((.local_3 * .local_3) > .param_1))
+    {
+      .local_3 = (.local_3 - .local_2);
+    }
+    .local_2 = (.local_2 / 2);
+  }
+  .ret_0 = .local_3;
+}
+
+$lentry LEFT_func5;
+$rentry RIGHT_func5;
+requires ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

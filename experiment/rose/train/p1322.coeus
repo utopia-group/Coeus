@@ -1,0 +1,55 @@
+declare int bvand(int, int);
+
+procedure f0(int .param_2, bool .param_3, int .param_4) returns (int .ret_1)
+{
+  int .local_5;
+  int .local_6;
+  for (.local_5 = 64 downto 8)
+  {
+    .local_6 = ((.param_2 + 7) + (.param_2 + 6));
+    .param_4 = (- bvand((- .param_2), .local_6));
+  }
+  for (.param_4 = 0 to 7)
+  {
+    .local_5 = ((- .param_2) + .param_2);
+    for (.local_6 = 0 to 6)
+    {
+      .local_5 = .param_4;
+    }
+    .param_2 = ((- .local_5) * bvand(.local_5, .local_5));
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_8, bool .param_9, int .param_10) returns (int .ret_7)
+{
+  int .local_11;
+  int .local_12;
+  for (.local_11 = 64 downto 8)
+  {
+    .local_12 = ((.param_8 + 7) + (.param_8 + 6));
+    .param_10 = (- bvand((- .param_8), .local_12));
+  }
+  for (.param_10 = 0 to 7)
+  {
+    .local_11 = ((- .param_8) + .param_8);
+    for (.local_12 = 0 to 6 step 2)
+    {
+      .local_11 = .param_10;
+      if (((1 + .local_12) <= 5))
+      {
+        .local_11 = .param_10;
+      }
+    }
+    .param_8 = ((- .local_11) * bvand(.local_11, .local_11));
+  }
+  .ret_7 = .param_8;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_8);
+requires (.param_3 == .param_9);
+requires (.param_4 == .param_10);
+ensures (.ret_1 == .ret_7);
+

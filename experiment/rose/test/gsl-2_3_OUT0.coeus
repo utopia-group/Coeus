@@ -1,0 +1,58 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func6(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  int .local_4;
+  .local_3 = 0;
+  .local_4 = 1;
+  while ((.local_4 < .param_1))
+  {
+    .local_4 = (.local_4 * 2);
+    .local_3 = (.local_3 + 1);
+  }
+  .local_2 = bvshl(1, .local_3);
+  if ((.param_1 != .local_2))
+  {
+    .ret_0 = (- 1);
+  }
+  else
+  {
+    .ret_0 = .local_3;
+  }
+}
+
+procedure RIGHT_func6(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  int .local_4;
+  .local_3 = 0;
+  .local_4 = 1;
+  while ((.local_4 < .param_1))
+  {
+    .local_4 = (.local_4 * 2);
+    .local_3 = (.local_3 + 1);
+  }
+  .local_2 = bvshl(1, .local_3);
+  if ((.param_1 != .local_2))
+  {
+    .ret_0 = (- 1);
+  }
+  else
+  {
+    .ret_0 = .local_3;
+  }
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func6;
+requires ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

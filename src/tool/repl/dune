@@ -1,0 +1,5 @@
+(executables
+  (names repl)
+  (public_names coeus-repl)
+  (libraries core str fmt fmt.tty logs.fmt cmdliner lambda-term frontend prover)
+)

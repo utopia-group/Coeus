@@ -1,0 +1,142 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func14(int .param_1, int[int] .param_2, int .param_3,
+                      int .param_4)
+ returns (int .ret_0)
+{
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  int .local_10;
+  int .local_11;
+  int .local_12;
+  .local_9 = 1;
+  .local_10 = 1;
+  .local_5 = .param_1;
+  .local_5 = (if (.local_5 >= 0) then .local_5 else (- .local_5));
+  .local_6 = (2 * .param_4);
+  .local_7 = (1 / .local_6);
+  .local_8 = 1;
+  while ((.local_8 < .local_5))
+  {
+    .param_3 = (.param_3 * .local_7);
+    .local_8 = (.local_8 + 1);
+  }
+  if ((.param_3 >= .local_6))
+  {
+    .ret_0 = (- 1);
+  } else {
+    .local_8 = .local_5;
+    while (((.local_8 > 0) && (.local_10 != 0)))
+    {
+      .local_8 = (.local_8 - 1);
+      .local_11 = .param_3;
+      .local_12 = .param_2[.local_8];
+      if ((.local_12 > .local_11))
+      {
+        .local_9 = 1;
+        .local_10 = 0;
+      }
+      else
+      {
+        if ((.local_12 < .local_11))
+        {
+          .local_9 = (- 1);
+          .local_10 = 0;
+        }
+        else
+        {
+          .param_3 = (.local_6 * (.param_3 - .local_11));
+        }
+      }
+    }
+    if ((.local_10 == 0))
+    {
+      .ret_0 = .local_9;
+    }
+    else
+    {
+      .ret_0 = (- (if (.param_3 > 0) then 1 else 0));
+    }
+  }
+}
+
+procedure RIGHT_func14(int .param_1, int[int] .param_2, int .param_3,
+                       int .param_4)
+ returns (int .ret_0)
+{
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  int .local_10;
+  int .local_11;
+  int .local_12;
+  .local_9 = 1;
+  .local_10 = 1;
+  .local_5 = .param_1;
+  .local_5 = (if (.local_5 >= 0) then .local_5 else (- .local_5));
+  .local_6 = (2 * .param_4);
+  .local_7 = (1 / .local_6);
+  .local_8 = 1;
+  while ((.local_8 <= ((- 1) + .local_5)))
+  {
+    .param_3 = (.param_3 * .local_7);
+    .local_8 = (.local_8 + 1);
+  }
+  if ((.param_3 >= .local_6))
+  {
+    .ret_0 = (- 1);
+  } else {
+    .local_8 = .local_5;
+    while (((.local_8 > 0) && (.local_10 != 0)))
+    {
+      .local_8 = (.local_8 - 1);
+      .local_11 = .param_3;
+      .local_12 = .param_2[.local_8];
+      if ((.local_12 > .local_11))
+      {
+        .local_9 = 1;
+        .local_10 = 0;
+      }
+      else
+      {
+        if ((.local_12 < .local_11))
+        {
+          .local_9 = (- 1);
+          .local_10 = 0;
+        }
+        else
+        {
+          .param_3 = (.local_6 * (.param_3 - .local_11));
+        }
+      }
+    }
+    if ((.local_10 == 0))
+    {
+      .ret_0 = .local_9;
+    }
+    else
+    {
+      .ret_0 = (- (if (.param_3 > 0) then 1 else 0));
+    }
+  }
+}
+
+$lentry LEFT_func14;
+$rentry RIGHT_func14;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+requires ($L(.param_3) == $R(.param_3));
+requires ($L(.param_4) == $R(.param_4));
+ensures ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

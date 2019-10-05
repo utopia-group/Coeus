@@ -1,0 +1,83 @@
+
+
+procedure f0(int .param_2) returns (int .ret_1)
+{
+  bool .local_3;
+  int .local_4;
+  int .local_5;
+  .local_3 = true;
+  .local_5 = ((.param_2 + .param_2) + .param_2);
+  .local_4 = 16;
+  if ((10 < .local_4))
+  {
+    for (.local_5 = 0 to 10)
+    {
+      if (((8 % .local_4) == .local_4))
+      {
+        .param_2 = .local_5;
+      }
+      else
+      {
+        .param_2 = (- (.local_4 + .local_4));
+      }
+      .local_4 = 16;
+    }
+    .param_2 = (.param_2 / (.param_2 + .local_4));
+  }
+  else
+  {
+    .local_4 = ((.local_4 - 3) + (.local_4 * 16));
+    .param_2 = (.local_4 / 6);
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_7) returns (int .ret_6)
+{
+  bool .local_8;
+  int .local_9;
+  int .local_10;
+  .local_8 = true;
+  .local_10 = ((.param_7 + .param_7) + .param_7);
+  .local_9 = 16;
+  if ((10 < .local_9))
+  {
+    for (.local_10 = 0 to 10 step 2)
+    {
+      if (((8 % .local_9) == .local_9))
+      {
+        .param_7 = .local_10;
+      }
+      else
+      {
+        .param_7 = (- (.local_9 + .local_9));
+      }
+      .local_9 = 16;
+      if (((1 + .local_10) <= 9))
+      {
+        if (((8 % .local_9) == .local_9))
+        {
+          .param_7 = (1 + .local_10);
+        }
+        else
+        {
+          .param_7 = (- (.local_9 + .local_9));
+        }
+        .local_9 = 16;
+      }
+    }
+    .param_7 = (.param_7 / (.param_7 + .local_9));
+  }
+  else
+  {
+    .local_9 = ((.local_9 - 3) + (.local_9 * 16));
+    .param_7 = (.local_9 / 6);
+  }
+  .ret_6 = .param_7;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

@@ -1,0 +1,77 @@
+declare int bvand(int, int);
+
+procedure f0(int .param_2, bool .param_3, int .param_4) returns (int .ret_1)
+{
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_5 = .param_2;
+  .local_6 = (.param_2 + .param_2);
+  for (.local_7 = 0 to (.param_4 * .param_2))
+  {
+    .local_8 = 1;
+    if (.param_3)
+    {
+      for (.local_9 = 16 to 5)
+      {
+        .local_6 = .local_8;
+        .local_6 = (.local_6 + .local_6);
+      }
+      .param_4 = .local_6;
+    }
+    else
+    {
+      .param_4 = .local_5;
+    }
+  }
+  .local_5 = ((.local_6 + .local_6) + .param_4);
+  .param_2 = (- bvand(.local_5, .param_4));
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_11, bool .param_12, int .param_13) returns
+ (int .ret_10)
+{
+  int .local_14;
+  int .local_15;
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_14 = .param_11;
+  .local_15 = (.param_11 + .param_11);
+  for (.local_16 = 0 to (.param_13 * .param_11))
+  {
+    .local_17 = 1;
+    if (.param_12)
+    {
+      for (.local_18 = 16 to 5 step 2)
+      {
+        .local_15 = .local_17;
+        .local_15 = (.local_15 + .local_15);
+        if (((1 + .local_18) <= 4))
+        {
+          .local_15 = .local_17;
+          .local_15 = (.local_15 + .local_15);
+        }
+      }
+      .param_13 = .local_15;
+    }
+    else
+    {
+      .param_13 = .local_14;
+    }
+  }
+  .local_14 = ((.local_15 + .local_15) + .param_13);
+  .param_11 = (- bvand(.local_14, .param_13));
+  .ret_10 = .param_11;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+requires (.param_4 == .param_13);
+ensures (.ret_1 == .ret_10);
+

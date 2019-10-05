@@ -1,0 +1,76 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func8(int[int] .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_4 = bvand(255, (.param_2 / 1));
+  .local_5 = bvand(255, (.param_2 / 256));
+  .local_6 = 0;
+  while ((.local_6 < 4))
+  {
+    .local_4 = bvxor(.local_4, bvand(255, .param_3));
+    .local_4 = bvxor(.param_1[.local_4], .local_5);
+    .local_5 = bvxor(.param_1[.local_5], .local_4);
+    .param_3 = (.param_3 / 256);
+    .local_6 = (.local_6 + 1);
+  }
+  .ret_0 = bvor(bvand(65280, (.local_4 * 256)), bvand(255, (.local_5 * 1)));
+}
+
+procedure RIGHT_func8(int[int] .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_4 = bvand(255, (.param_2 / 1));
+  .local_5 = bvand(255, (.param_2 / 256));
+  .local_6 = 0;
+  while ((.local_6 <= ((- 1) + 4)))
+  {
+    .local_4 = bvxor(.local_4, bvand(255, .param_3));
+    .local_4 = bvxor(.param_1[.local_4], .local_5);
+    .local_5 = bvxor(.param_1[.local_5], .local_4);
+    .param_3 = (.param_3 / 256);
+    if (((1 + .local_6) <= ((- 1) + 4)))
+    {
+      .local_4 = bvxor(.local_4, bvand(255, .param_3));
+      .local_4 = bvxor(.param_1[.local_4], .local_5);
+      .local_5 = bvxor(.param_1[.local_5], .local_4);
+      .param_3 = (.param_3 / 256);
+    }
+    .local_6 = (.local_6 + 2);
+  }
+  if ((.local_6 <= ((- 1) + 4)))
+  {
+    .local_4 = bvxor(.local_4, bvand(255, .param_3));
+    .local_4 = bvxor(.param_1[.local_4], .local_5);
+    .local_5 = bvxor(.param_1[.local_5], .local_4);
+    .param_3 = (.param_3 / 256);
+    if (((1 + .local_6) <= ((- 1) + 4)))
+    {
+      .local_4 = bvxor(.local_4, bvand(255, .param_3));
+      .local_4 = bvxor(.param_1[.local_4], .local_5);
+      .local_5 = bvxor(.param_1[.local_5], .local_4);
+      .param_3 = (.param_3 / 256);
+    }
+  }
+  .ret_0 = bvor(bvand(65280, (.local_4 * 256)), bvand(255, (.local_5 * 1)));
+}
+
+$lentry LEFT_func8;
+$rentry RIGHT_func8;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+requires ($L(.param_3) == $R(.param_3));
+ensures ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

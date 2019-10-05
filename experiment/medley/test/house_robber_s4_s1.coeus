@@ -1,0 +1,94 @@
+
+
+procedure RIGHT_func15(int[int] .param_11, int .param_12) returns
+ (int .ret_10)
+{
+  int inlined_.param_20.3;
+  int inlined_.param_21.4;
+  int inlined_.ret_19.5;
+  int inlined_.param_20.0;
+  int inlined_.param_21.1;
+  int inlined_.ret_19.2;
+  int .tmpret_17;
+  int .tmpret_18;
+  int .local_13;
+  int .local_14;
+  int .local_15;
+  int .local_16;
+  if ((.param_12 == 0))
+  {
+    .ret_10 = 0;
+  }
+  else
+  {
+    .local_13 = .param_11[0];
+    if ((.param_12 == 1))
+    {
+      .ret_10 = .local_13;
+    }
+    else
+    {
+      inlined_.param_20.0 = .param_11[0];
+      inlined_.param_21.1 = .param_11[1];
+      inlined_.ret_19.2 = (if (inlined_.param_20.0 > inlined_.param_21.1) then inlined_.param_20.0 else inlined_.param_21.1);
+      .tmpret_17 = inlined_.ret_19.2;
+      .local_14 = .tmpret_17;
+      if ((.param_12 == 2))
+      {
+        .ret_10 = .local_14;
+      }
+      else
+      {
+        for (.local_16 = 2 to .param_12)
+        {
+          inlined_.param_20.3 = (.param_11[.local_16] + .local_13);
+          inlined_.param_21.4 = .local_14;
+          inlined_.ret_19.5 = (if (inlined_.param_20.3 > inlined_.param_21.4) then inlined_.param_20.3 else inlined_.param_21.4);
+          .tmpret_18 = inlined_.ret_19.5;
+          .local_15 = .tmpret_18;
+          .local_13 = .local_14;
+          .local_14 = .local_15;
+        }
+        .ret_10 = .local_15;
+      }
+    }
+  }
+}
+
+procedure LEFT_func9(int[int] .param_2, int .param_3) returns (int .ret_1)
+{
+  int inlined_.param_8.0;
+  int inlined_.param_9.1;
+  int inlined_.ret_7.2;
+  int .tmpret_6;
+  int[int] .local_4;
+  int .local_5;
+  if ((.param_3 == 0))
+  {
+    .ret_1 = 0;
+  }
+  else
+  {
+    .local_4[0] = 0;
+    .local_4[1] = .param_2[0];
+    for (.local_5 = 2 to (.param_3 + 1))
+    {
+      inlined_.param_8.0 = .local_4[(.local_5 - 1)];
+      inlined_.param_9.1 = (.local_4[(.local_5 - 2)] + .param_2[(.local_5 - 1)]);
+      inlined_.ret_7.2 = (if (inlined_.param_8.0 > inlined_.param_9.1) then inlined_.param_8.0 else inlined_.param_9.1);
+      .tmpret_6 = inlined_.ret_7.2;
+      .local_4[.local_5] = .tmpret_6;
+    }
+    .ret_1 = .local_4[.param_3];
+  }
+}
+
+$lentry LEFT_func9;
+$rentry RIGHT_func15;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+requires (.param_3 >= 0);
+requires (.param_3 <= 1000);
+ensures (.param_2 == .param_11);
+ensures (.ret_1 == .ret_10);
+

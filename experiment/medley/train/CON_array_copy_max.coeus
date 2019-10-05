@@ -1,0 +1,35 @@
+procedure f0(int n, int[int] a, int[int] b) returns (int max1) {
+    int i;
+    max1 = b[0];
+    i = 0;
+    while(i < n) {
+        a[i] = b[i];
+        if (a[i] > max1)
+            max1 = a[i];
+        i = i + 1;
+    }
+}
+
+procedure f1(int n, int[int] a, int[int] b) returns (int max2) {
+    int i;
+
+    max2 = b[0];
+    i = 0;
+    while(i < n) {
+        a[i] = b[i];
+        i = i + 1;
+    }
+    i = 0;
+    while(i < n) {
+        if (a[i] > max2)
+            max2 = a[i];
+        i = i + 1;
+    }
+}
+
+requires $L(n) == $R(n);
+requires $L(a) == $R(a);
+requires $L(b) == $R(b);
+requires $L(n) >= 1;
+
+ensures $L(max1) == $R(max2);

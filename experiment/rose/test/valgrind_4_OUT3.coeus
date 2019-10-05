@@ -1,0 +1,64 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func7(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  .local_4 = 0;
+  .local_5 = bvand((.param_1 / 72057594037927936), 15);
+  .local_4 = bvor(.local_4, (.local_5 * 1152921504606846976));
+  .local_3 = 1;
+  while ((.local_3 < 8))
+  {
+    .local_5 = bvand(bvshr(.param_1, ((7 - .local_3) * 8)), 15);
+    .local_4 = bvor(.local_4, bvshl(.local_5, ((15 - .local_3) * 4)));
+    .local_5 = bvand(bvshr(.param_2, ((8 - .local_3) * 8)), 15);
+    .local_4 = bvor(.local_4, bvshl(.local_5, ((8 - .local_3) * 4)));
+    .local_3 = (.local_3 + 1);
+  }
+  .ret_0 = .local_4;
+}
+
+procedure RIGHT_func7(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_8 = 0;
+  .local_6 = 15;
+  .local_9 = bvand((.param_1 / 72057594037927936), .local_6);
+  .local_5 = 8;
+  .local_8 = bvor(.local_8, (.local_9 * 1152921504606846976));
+  .local_7 = 1;
+  while ((.local_7 <= ((- 1) + .local_5)))
+  {
+    .local_6 = 15;
+    .local_5 = 8;
+    .local_9 = bvand(bvshr(.param_1, ((7 - .local_7) * .local_5)), .local_6);
+    .local_4 = 4;
+    .local_8 = bvor(.local_8, bvshl(.local_9,
+     ((.local_6 - .local_7) * .local_4)));
+    .local_3 = (.local_5 - .local_7);
+    .local_9 = bvand(bvshr(.param_2, (.local_3 * .local_5)), .local_6);
+    .local_8 = bvor(.local_8, bvshl(.local_9, (.local_3 * .local_4)));
+    .local_7 = (.local_7 + 1);
+  }
+  .ret_0 = .local_8;
+}
+
+$lentry LEFT_func7;
+$rentry RIGHT_func7;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

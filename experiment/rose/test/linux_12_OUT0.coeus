@@ -1,0 +1,77 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func8(int[int] .param_1, int[int] .param_2, int[int] .param_3)
+ returns ()
+{
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_4 = 0;
+  while ((.local_4 < 256))
+  {
+    .local_5 = 0;
+    while ((.local_5 < 256))
+    {
+      .local_6 = .param_1[.local_4];
+      .local_6 = (.local_6 + .param_1[.local_5]);
+      if ((.local_6 > 32767))
+      {
+        .local_6 = 32767;
+      }
+      if ((.local_6 < (- 32768)))
+      {
+        .local_6 = (- 32768);
+      }
+      .param_2[bvor((.local_4 * 256), .local_5)] = .param_3[bvand(.local_6,
+       65535)];
+      .local_5 = (.local_5 + 1);
+    }
+    .local_4 = (.local_4 + 1);
+  }
+}
+
+procedure RIGHT_func8(int[int] .param_1, int[int] .param_2,
+                      int[int] .param_3)
+ returns ()
+{
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  .local_4 = 0;
+  while ((.local_4 < 256))
+  {
+    .local_5 = 0;
+    while ((.local_5 < 256))
+    {
+      .local_6 = .param_1[.local_4];
+      .local_6 = (.local_6 + .param_1[.local_5]);
+      if ((.local_6 > 32767))
+      {
+        .local_6 = 32767;
+      }
+      if ((.local_6 < (- 32768)))
+      {
+        .local_6 = (- 32768);
+      }
+      .param_2[bvor((.local_4 * 256), .local_5)] = .param_3[bvand(.local_6,
+       65535)];
+      .local_5 = (.local_5 + 1);
+    }
+    .local_4 = (.local_4 + 1);
+  }
+}
+
+$lentry LEFT_func8;
+$rentry RIGHT_func8;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+requires ($L(.param_3) == $R(.param_3));
+ensures ($L(.param_1) == $R(.param_1));
+ensures ($L(.param_2) == $R(.param_2));
+ensures ($L(.param_3) == $R(.param_3));
+

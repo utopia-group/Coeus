@@ -1,0 +1,37 @@
+procedure f0(int m, int[int] a, int[int] b) returns (int[int] r) {
+    int i;
+
+    i = 0;
+    while(i < m) {
+        a[i] = b[i];
+        i = i + 1;
+    }
+
+    r = a;
+}
+
+procedure f1(int n, int m, int[int] a, int[int] b) returns (int[int] r) {
+    int i;
+
+    i = 0;
+    while(i < n) {
+        a[i] = b[i];
+        i = i + 1;
+    }
+
+    i = n;
+    while(i < m) {
+        a[i] = b[i];
+        i = i + 1;
+    }
+
+    r = a;
+}
+
+requires $R(n) < $L(m);
+requires $L(m) == $R(m);
+requires $L(a) == $R(a);
+requires $L(b) == $R(b);
+requires $L(n) >= 1;
+
+ensures $L(r) == $R(r);

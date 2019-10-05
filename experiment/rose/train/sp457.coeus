@@ -1,0 +1,108 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2) returns (int .ret_1)
+{
+  bool .local_3;
+  int .local_4;
+  int .local_5;
+  .local_3 = false;
+  .local_5 = (7 + .param_2);
+  if (((! .local_3) || (.param_2 < .param_2)))
+  {
+    .local_4 = bvor(.param_2, -5);
+    for (.local_5 = 0 to 32)
+    {
+      .local_4 = (- .param_2);
+      if (.local_3)
+      {
+        .local_3 = (.local_3 || (2 == (9 - .local_5)));
+        .param_2 = .local_4;
+      }
+    }
+    if (.local_3)
+    {
+      .local_5 = .param_2;
+      if ((.local_3 || .local_3))
+      {
+        .local_4 = .local_5;
+        .param_2 = (- bvand(.local_4, 64));
+      }
+      else
+      {
+        .param_2 = .local_5;
+      }
+    }
+    else
+    {
+      .local_4 = (.param_2 % .local_4);
+      .param_2 = (.local_4 % .param_2);
+    }
+  }
+  else
+  {
+    .param_2 = bvxor((32 * .param_2), 0);
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_7) returns (int .ret_6)
+{
+  bool .local_8;
+  int .local_9;
+  int .local_10;
+  .local_8 = false;
+  .local_10 = (7 + .param_7);
+  if (((! .local_8) || (.param_7 < .param_7)))
+  {
+    .local_9 = bvor(.param_7, -5);
+    for (.local_10 = 0 to 32 step 2)
+    {
+      .local_9 = (- .param_7);
+      if (.local_8)
+      {
+        .local_8 = (.local_8 || (2 == (9 - .local_10)));
+        .param_7 = .local_9;
+      }
+      if (((1 + .local_10) <= 31))
+      {
+        .local_9 = (- .param_7);
+        if (.local_8)
+        {
+          .local_8 = (.local_8 || (2 == (9 - (1 + .local_10))));
+          .param_7 = .local_9;
+        }
+      }
+    }
+    if (.local_8)
+    {
+      .local_10 = .param_7;
+      if ((.local_8 || .local_8))
+      {
+        .local_9 = .local_10;
+        .param_7 = (- bvand(.local_9, 64));
+      }
+      else
+      {
+        .param_7 = .local_10;
+      }
+    }
+    else
+    {
+      .local_9 = (.param_7 % .local_9);
+      .param_7 = (.local_9 % .param_7);
+    }
+  }
+  else
+  {
+    .param_7 = bvxor((32 * .param_7), 0);
+  }
+  .ret_6 = .param_7;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

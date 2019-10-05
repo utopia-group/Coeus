@@ -1,0 +1,106 @@
+declare int bvxor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4, int .param_5,
+             int .param_6)
+ returns (int .ret_1)
+{
+  bool .local_7;
+  int .local_8;
+  .local_7 = false;
+  for (.local_8 = 0 to 64)
+  {
+    .param_5 = ((.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + .param_4)))))))) - 1);
+  }
+  for (.param_3 = 0 to 3)
+  {
+    .local_8 = -12;
+    if (false)
+    {
+      if ((bvand(9,
+       .param_6) >= (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + .local_8)))))))
+      {
+        .param_2 = (.param_3 - .param_5);
+      }
+      else
+      {
+        .param_2 = .param_4;
+      }
+    }
+    else
+    {
+      .param_2 = bvand(bvxor(.param_6, .param_5), bvxor(.param_2, .param_5));
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_10, int .param_11, int .param_12, int .param_13,
+             int .param_14)
+ returns (int .ret_9)
+{
+  bool .local_15;
+  int .local_16;
+  .local_15 = false;
+  for (.local_16 = 0 to 64 step 2)
+  {
+    .param_13 = ((.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + .param_12)))))))) - 1);
+    if (((1 + .local_16) <= 63))
+    {
+      .param_13 = ((.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + .param_12)))))))) - 1);
+    }
+  }
+  for (.param_11 = 0 to 3 step 2)
+  {
+    .local_16 = -12;
+    if (false)
+    {
+      if ((bvand(9,
+       .param_14) >= (.local_16 + (.local_16 + (.local_16 + (.local_16 + (.local_16 + .local_16)))))))
+      {
+        .param_10 = (.param_11 - .param_13);
+      }
+      else
+      {
+        .param_10 = .param_12;
+      }
+    }
+    else
+    {
+      .param_10 = bvand(bvxor(.param_14, .param_13), bvxor(.param_10,
+       .param_13));
+    }
+    if (((1 + .param_11) <= 2))
+    {
+      .local_16 = -12;
+      if (false)
+      {
+        if ((bvand(9,
+         .param_14) >= (.local_16 + (.local_16 + (.local_16 + (.local_16 + (.local_16 + .local_16)))))))
+        {
+          .param_10 = ((1 + .param_11) - .param_13);
+        }
+        else
+        {
+          .param_10 = .param_12;
+        }
+      }
+      else
+      {
+        .param_10 = bvand(bvxor(.param_14, .param_13), bvxor(.param_10,
+         .param_13));
+      }
+    }
+  }
+  .ret_9 = .param_10;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_10);
+requires (.param_3 == .param_11);
+requires (.param_4 == .param_12);
+requires (.param_5 == .param_13);
+requires (.param_6 == .param_14);
+ensures (.ret_1 == .ret_9);
+

@@ -1,0 +1,74 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func9(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  .local_3 = -2147483648;
+  .local_5 = 0;
+  .local_6 = 0;
+  .local_7 = 31;
+  while ((.local_7 >= 0))
+  {
+    .local_4 = (bvshr(bvand(.param_1, .local_3),
+     .local_7) + bvshr(bvand(.param_2, .local_3), .local_7));
+    .local_4 = (.local_4 + .local_6);
+    .local_6 = (.local_4 / 2);
+    .local_4 = bvand(.local_4, 1);
+    .local_5 = bvor(.local_5, bvshl(.local_4, .local_7));
+    .local_3 = (.local_3 / 2);
+    .local_7 = (.local_7 - 1);
+  }
+  .ret_0 = .local_5;
+}
+
+procedure RIGHT_func9(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  .local_3 = -2147483648;
+  .local_5 = 0;
+  .local_6 = 0;
+  .local_7 = 31;
+  while ((.local_7 >= 0))
+  {
+    .local_4 = (bvshr(bvand(.param_1, .local_3),
+     .local_7) + bvshr(bvand(.param_2, .local_3), .local_7));
+    .local_4 = (.local_4 + .local_6);
+    .local_6 = (.local_4 / 2);
+    .local_4 = bvand(.local_4, 1);
+    .local_5 = bvor(.local_5, bvshl(.local_4, .local_7));
+    .local_3 = (.local_3 / 2);
+    if ((((- 1) + .local_7) >= 0))
+    {
+      .local_4 = (bvshr(bvand(.param_1, .local_3),
+       ((- 1) + .local_7)) + bvshr(bvand(.param_2, .local_3),
+       ((- 1) + .local_7)));
+      .local_4 = (.local_4 + .local_6);
+      .local_6 = (.local_4 / 2);
+      .local_4 = bvand(.local_4, 1);
+      .local_5 = bvor(.local_5, bvshl(.local_4, ((- 1) + .local_7)));
+      .local_3 = (.local_3 / 2);
+    }
+    .local_7 = (.local_7 + (- 2));
+  }
+  .ret_0 = .local_5;
+}
+
+$lentry LEFT_func9;
+$rentry RIGHT_func9;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

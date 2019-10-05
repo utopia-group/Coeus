@@ -1,0 +1,20 @@
+procedure f(int t, int c) returns(int x)
+{
+    x = 0;
+    if (0 < t)
+    {
+        while (0 < c)
+        {
+            x++;
+            c = c - 1;
+        }
+    }
+}
+
+$lentry f;
+$rentry f;
+requires $L(t) >= 1;
+requires $R(t) >= 1;
+requires $L(c) == $R(c);
+requires $L(c) >= 1;
+ensures $L(x) == $R(x);

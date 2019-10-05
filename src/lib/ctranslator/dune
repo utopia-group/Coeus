@@ -1,0 +1,4 @@
+(library
+  (name ctranslator)
+  (libraries core threads bignum fmt ast frontend cparser)
+)

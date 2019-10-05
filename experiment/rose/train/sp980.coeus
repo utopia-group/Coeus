@@ -1,0 +1,90 @@
+declare int bvor(int, int);
+
+procedure f0(bool .param_2) returns (int .ret_1)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  .local_3 = 2;
+  .local_5 = 5;
+  if (.param_2)
+  {
+    .local_4 = ((3 + .local_3) / (.local_3 * .local_3));
+    while (.param_2)
+    {
+      if (.param_2)
+      {
+        .param_2 = ((64 < .local_5) && .param_2);
+        .local_3 = (- (1 + .local_5));
+      }
+      else
+      {
+        .local_3 = ((.local_5 - .local_4) + 5);
+      }
+    }
+    for (.local_5 = 0 to 32)
+    {
+      if (.param_2)
+      {
+        .local_3 = .local_5;
+      }
+    }
+  }
+  else
+  {
+    .local_3 = ((.local_3 + (.local_3 + (.local_3 + (.local_3 + (.local_3 + (.local_3 + (.local_3 + (.local_3 + .local_3)))))))) - 64);
+  }
+  .local_3 = (- bvor(.local_3, .local_3));
+  .ret_1 = .local_3;
+}
+
+procedure f1(bool .param_7) returns (int .ret_6)
+{
+  int .local_8;
+  int .local_9;
+  int .local_10;
+  .local_8 = 2;
+  .local_10 = 5;
+  if (.param_7)
+  {
+    .local_9 = ((3 + .local_8) / (.local_8 * .local_8));
+    while (.param_7)
+    {
+      if (.param_7)
+      {
+        .param_7 = ((64 < .local_10) && .param_7);
+        .local_8 = (- (1 + .local_10));
+      }
+      else
+      {
+        .local_8 = ((.local_10 - .local_9) + 5);
+      }
+    }
+    for (.local_10 = 0 to 32 step 2)
+    {
+      if (.param_7)
+      {
+        .local_8 = .local_10;
+      }
+      if (((1 + .local_10) <= 31))
+      {
+        if (.param_7)
+        {
+          .local_8 = (1 + .local_10);
+        }
+      }
+    }
+  }
+  else
+  {
+    .local_8 = ((.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + (.local_8 + .local_8)))))))) - 64);
+  }
+  .local_8 = (- bvor(.local_8, .local_8));
+  .ret_6 = .local_8;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

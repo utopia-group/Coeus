@@ -1,0 +1,17 @@
+procedure f(int i1, int i2) returns(int r)
+{
+    r = 0;
+
+    while (i2 > 0)
+    {
+        r += i1;
+        i2--;
+    }
+}
+
+$lentry f;
+$rentry f;
+requires $L(i1) >= 0;
+requires $L(i1) <= $R(i1);
+requires $L(i2) <= $R(i2);
+ensures $L(r) <= $R(r);

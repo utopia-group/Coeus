@@ -1,0 +1,17 @@
+(ocamllex Lexer)
+(ocamllex Readconfig)
+(ocamllex Responsefile)
+(menhir
+  (flags 
+      "--table"
+      "--no-stdlib"
+   )
+  (modules pre_parser)
+)
+
+(library
+  (name cparser)
+  ; Silence the compiler warning for the extracted Compcert code
+  (flags (:standard -w -9-27-32-39))
+  (libraries str logs menhirLib)
+)

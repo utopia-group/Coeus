@@ -1,0 +1,45 @@
+
+
+procedure RIGHT_func7(int[int] .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .local_4;
+  int .local_5;
+  assume(((((0 <= .param_2) && (.param_2 < .param_3)) && (2 <= ((.param_3 - .param_2) + 1))) && (((.param_3 - .param_2) + 1) <= 1000)));
+  .local_4 = 4;
+  for (.local_5 = .param_2 to (.param_3 + 1))
+  {
+    assume(((1 <= .param_1[.local_5]) && (.param_1[.local_5] <= 3)));
+    if ((.local_4 > .param_1[.local_5]))
+    {
+      .local_4 = .param_1[.local_5];
+    }
+  }
+  .ret_0 = .local_4;
+}
+
+procedure LEFT_func7(int[int] .param_1.0, int .param_2.1, int .param_3.2)
+ returns (int .ret_0.3)
+{
+  int .local_4.4;
+  assume(((((0 <= .param_2.1) && (.param_2.1 < .param_3.2)) && (2 <= ((.param_3.2 - .param_2.1) + 1))) && (((.param_3.2 - .param_2.1) + 1) <= 1000)));
+  .local_4.4 = .param_1.0[.param_2.1];
+  while ((.param_2.1 < .param_3.2))
+  {
+    if ((.local_4.4 > .param_1.0[(.param_2.1 + 1)]))
+    {
+      .local_4.4 = .param_1.0[(.param_2.1 + 1)];
+    }
+    .param_2.1 = (.param_2.1 + 1);
+  }
+  .ret_0.3 = .local_4.4;
+}
+
+$lentry LEFT_func7;
+$rentry RIGHT_func7;
+requires (.param_1.0 == .param_1);
+requires (.param_2.1 == .param_2);
+requires (.param_3.2 == .param_3);
+ensures (.param_1.0 == .param_1);
+ensures (.ret_0.3 == .ret_0);
+

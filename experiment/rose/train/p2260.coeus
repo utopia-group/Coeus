@@ -1,0 +1,99 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0() returns (int .ret_1)
+{
+  bool .local_2;
+  int .local_3;
+  int .local_4;
+  bool .local_5;
+  int .local_6;
+  .local_3 = 3;
+  .local_2 = false;
+  .local_6 = -32;
+  .local_4 = (-2 - .local_3);
+  .local_5 = (.local_3 != bvand(3, .local_3));
+  if (.local_5)
+  {
+    for (.local_6 = 0 to 2)
+    {
+      .local_3 = .local_6;
+    }
+    .local_3 = bvor((.local_3 + .local_3), (.local_3 + 1));
+  }
+  else
+  {
+    .local_4 = 9;
+    while ((.local_4 > 5))
+    {
+      .local_4 = bvand(.local_4, (.local_4 + .local_4));
+      if ((.local_4 >= 9))
+      {
+        .local_3 = 0;
+      }
+      else
+      {
+        .local_4 = (8 + (.local_3 + .local_3));
+        .local_3 = ((- bvxor(.local_3, .local_4)) + bvand(0, bvand(16,
+         .local_4)));
+      }
+      .local_4 = (.local_4 - 1);
+    }
+    .local_3 = bvor(.local_3, (.local_3 * .local_3));
+  }
+  .ret_1 = .local_3;
+}
+
+procedure f1() returns (int .ret_7)
+{
+  bool .local_8;
+  int .local_9;
+  int .local_10;
+  bool .local_11;
+  int .local_12;
+  .local_9 = 3;
+  .local_8 = false;
+  .local_12 = -32;
+  .local_10 = (-2 - .local_9);
+  .local_11 = (.local_9 != bvand(3, .local_9));
+  if (.local_11)
+  {
+    for (.local_12 = 0 to 2 step 2)
+    {
+      .local_9 = .local_12;
+      if (((1 + .local_12) <= 1))
+      {
+        .local_9 = (1 + .local_12);
+      }
+    }
+    .local_9 = bvor((.local_9 + .local_9), (.local_9 + 1));
+  }
+  else
+  {
+    .local_10 = 9;
+    while ((.local_10 >= 6))
+    {
+      .local_10 = bvand(.local_10, (.local_10 + .local_10));
+      if ((.local_10 >= 9))
+      {
+        .local_9 = 0;
+      }
+      else
+      {
+        .local_10 = (8 + (.local_9 + .local_9));
+        .local_9 = ((- bvxor(.local_9, .local_10)) + bvand(0, bvand(16,
+         .local_10)));
+      }
+      .local_10 = (.local_10 - 1);
+    }
+    .local_9 = bvor(.local_9, (.local_9 * .local_9));
+  }
+  .ret_7 = .local_9;
+}
+
+$lentry f0;
+$rentry f1;
+
+ensures (.ret_1 == .ret_7);
+

@@ -1,0 +1,79 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func10(int[int] .param_1, int[int] .param_2, int .param_3,
+                      int .param_4)
+ returns (int .ret_0)
+{
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  if ((.param_4 < 20))
+  {
+    .local_6 = bvshr(.param_3, (20 - .param_4));
+  }
+  else
+  {
+    .local_6 = bvshr(.param_3, (20 - .param_4));
+  }
+  .local_7 = 1;
+  while (((.local_6 > .param_1[.local_7]) && (.local_7 < 8)))
+  {
+    .local_7 = (.local_7 + 1);
+  }
+  .local_8 = (.param_2[(.local_7 - 1)] + (((.local_6 - .param_1[(.local_7 - 1)]) * (.param_2[.local_7] - .param_2[(.local_7 - 1)])) / (.param_1[.local_7] - .param_1[(.local_7 - 1)])));
+  .local_5 = 0;
+  while ((.local_5 < (20 - .param_4)))
+  {
+    .local_8 = (.local_8 * 2);
+    .local_5 = (.local_5 + 1);
+  }
+  .ret_0 = .local_8;
+}
+
+procedure RIGHT_func10(int[int] .param_1, int[int] .param_2, int .param_3,
+                       int .param_4)
+ returns (int .ret_0)
+{
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  if ((.param_4 < 20))
+  {
+    .local_6 = bvshr(.param_3, (20 - .param_4));
+  }
+  else
+  {
+    .local_6 = bvshr(.param_3, (20 - .param_4));
+  }
+  .local_7 = 1;
+  while (((.local_6 > .param_1[.local_7]) && (.local_7 < 8)))
+  {
+    .local_7 = (.local_7 + 1);
+  }
+  .local_8 = (.param_2[(.local_7 - 1)] + (((.local_6 - .param_1[(.local_7 - 1)]) * (.param_2[.local_7] - .param_2[(.local_7 - 1)])) / (.param_1[.local_7] - .param_1[(.local_7 - 1)])));
+  .local_5 = 0;
+  while ((.local_5 <= (19 - .param_4)))
+  {
+    .local_8 = (.local_8 * 2);
+    .local_5 = (.local_5 + 1);
+  }
+  .ret_0 = .local_8;
+}
+
+$lentry LEFT_func10;
+$rentry RIGHT_func10;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+requires ($L(.param_3) == $R(.param_3));
+requires ($L(.param_4) == $R(.param_4));
+ensures ($L(.param_1) == $R(.param_1));
+ensures ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

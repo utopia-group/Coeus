@@ -1,0 +1,46 @@
+
+
+procedure RIGHT_func6(int .param_10) returns (int .ret_9)
+{
+  int .local_11;
+  int .local_12;
+  .local_11 = .param_10;
+  .local_12 = 0;
+  while ((.local_11 != 0))
+  {
+    .local_12 = (.local_12 * 10);
+    .local_12 = (.local_12 + (.local_11 % 10));
+    .local_11 = (.local_11 / 10);
+  }
+  .ret_9 = (if (.local_12 == .param_10) then 1 else 0);
+}
+
+procedure LEFT_func6(int .param_2) returns (int .ret_1)
+{
+  int .tmpret_4;
+  int .local_3;
+  call .tmpret_4 = LEFT_func4(.param_2, 0);
+  .local_3 = .tmpret_4;
+  .ret_1 = (if (.local_3 == .param_2) then 1 else 0);
+}
+
+procedure LEFT_func4(int .param_6, int .param_7) returns (int .ret_5)
+{
+  int .tmpret_8;
+  if ((.param_6 == 0))
+  {
+    .ret_5 = .param_7;
+  }
+  else
+  {
+    .param_7 = ((.param_7 * 10) + (.param_6 % 10));
+    call .tmpret_8 = LEFT_func4((.param_6 / 10), .param_7);
+    .ret_5 = .tmpret_8;
+  }
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func6;
+requires (.param_2 == .param_10);
+ensures (.ret_1 == .ret_9);
+

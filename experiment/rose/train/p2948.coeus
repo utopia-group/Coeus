@@ -1,0 +1,65 @@
+declare int bvor(int, int);
+
+procedure f0(int .param_2) returns (int .ret_1)
+{
+  bool .local_3;
+  int .local_4;
+  int .local_5;
+  .local_3 = true;
+  for (.local_4 = 0 to 64)
+  {
+    .local_5 = .param_2;
+    if (.local_3)
+    {
+      .param_2 = (- (8 - .local_5));
+    }
+    else
+    {
+      .param_2 = (-9 * bvor(.param_2, 3));
+    }
+  }
+  .param_2 = (- .param_2);
+  .param_2 = (bvor(.param_2, .param_2) / (.param_2 + .param_2));
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_7) returns (int .ret_6)
+{
+  bool .local_8;
+  int .local_9;
+  int .local_10;
+  .local_8 = true;
+  for (.local_9 = 0 to 64 step 2)
+  {
+    .local_10 = .param_7;
+    if (.local_8)
+    {
+      .param_7 = (- (8 - .local_10));
+    }
+    else
+    {
+      .param_7 = (-9 * bvor(.param_7, 3));
+    }
+    if (((1 + .local_9) <= 63))
+    {
+      .local_10 = .param_7;
+      if (.local_8)
+      {
+        .param_7 = (- (8 - .local_10));
+      }
+      else
+      {
+        .param_7 = (-9 * bvor(.param_7, 3));
+      }
+    }
+  }
+  .param_7 = (- .param_7);
+  .param_7 = (bvor(.param_7, .param_7) / (.param_7 + .param_7));
+  .ret_6 = .param_7;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

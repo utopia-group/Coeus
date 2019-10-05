@@ -1,0 +1,25 @@
+opam-version: "2.0"
+version: "0.1"
+maintainer: "grievejia@gmail.com"
+authors: ["Jia Chen"]
+license: "Apache-2.0"
+homepage: "https://github.com/utopia-group/Coeus"
+bug-reports: "https://github.com/utopia-group/Coeus"
+dev-repo: "https://github.com/utopia-group/Coeus.git"
+build: [
+  ["dune" "build" "--root" "." "--profile" "release" "@install"]
+]
+depends: [
+  "cmdliner" {>="1.0.0"}
+  "fmt" {="0.8.5"}
+  "logs" {>="0.6.2"}
+  "core" {="v0.11.2"}
+  "re2" {= "v0.11.0"}
+  "ocamlgraph" {>="1.8.8"}
+  "bignum" {="v0.11.0"}
+  "menhir" {>="20170101"}
+  "lambda-term" {="1.12.0"}
+  "yojson" {="1.4.1"}
+  "z3" {="4.7.1"}
+  "ocamlfind" {build}
+]

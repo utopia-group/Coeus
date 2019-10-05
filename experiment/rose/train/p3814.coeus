@@ -1,0 +1,145 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2, int .param_3) returns (int .ret_1)
+{
+  bool .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  .local_4 = false;
+  .local_7 = bvxor((- .param_2), (.param_2 + .param_2));
+  .local_5 = ((.param_2 + 16) % 2);
+  .local_6 = (.param_2 + .param_2);
+  if ((! .local_4))
+  {
+    for (.local_7 = 0 to 12)
+    {
+      if ((! .local_4))
+      {
+        .local_5 = ((.local_7 - .param_2) % (.param_2 - .param_3));
+      }
+      else
+      {
+        .local_5 = .param_3;
+      }
+    }
+  }
+  else
+  {
+    .local_8 = .param_2;
+    for (.local_8 = 0 to .local_6)
+    {
+      if (.local_4)
+      {
+        .local_7 = (- .local_6);
+        .local_5 = (96 + ((.param_3 + .local_7) * (- .local_7)));
+      }
+      else
+      {
+        .local_5 = ((.local_8 / .param_3) / 9);
+      }
+    }
+  }
+  .param_2 = .local_5;
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_10, int .param_11) returns (int .ret_9)
+{
+  bool .local_12;
+  int .local_13;
+  int .local_14;
+  int .local_15;
+  int .local_16;
+  .local_12 = false;
+  .local_15 = bvxor((- .param_10), (.param_10 + .param_10));
+  .local_13 = ((.param_10 + 16) % 2);
+  .local_14 = (.param_10 + .param_10);
+  if ((! .local_12))
+  {
+    for (.local_15 = 0 to 12 step 2)
+    {
+      if ((! .local_12))
+      {
+        .local_13 = ((.local_15 - .param_10) % (.param_10 - .param_11));
+      }
+      else
+      {
+        .local_13 = .param_11;
+      }
+      if (((1 + .local_15) <= 11))
+      {
+        if ((! .local_12))
+        {
+          .local_13 = (((1 + .local_15) - .param_10) % (.param_10 - .param_11));
+        }
+        else
+        {
+          .local_13 = .param_11;
+        }
+      }
+    }
+  }
+  else
+  {
+    .local_16 = .param_10;
+    for (.local_16 = 0 to ((-1 + .local_14) + 1) step 2)
+    {
+      if (.local_12)
+      {
+        .local_15 = (- .local_14);
+        .local_13 = (96 + ((.param_11 + .local_15) * (- .local_15)));
+      }
+      else
+      {
+        .local_13 = ((.local_16 / .param_11) / 9);
+      }
+      if (((1 + .local_16) <= (-1 + .local_14)))
+      {
+        if (.local_12)
+        {
+          .local_15 = (- .local_14);
+          .local_13 = (96 + ((.param_11 + .local_15) * (- .local_15)));
+        }
+        else
+        {
+          .local_13 = (((1 + .local_16) / .param_11) / 9);
+        }
+      }
+    }
+    if ((.local_16 <= (-1 + .local_14)))
+    {
+      if (.local_12)
+      {
+        .local_15 = (- .local_14);
+        .local_13 = (96 + ((.param_11 + .local_15) * (- .local_15)));
+      }
+      else
+      {
+        .local_13 = ((.local_16 / .param_11) / 9);
+      }
+      if (((1 + .local_16) <= (-1 + .local_14)))
+      {
+        if (.local_12)
+        {
+          .local_15 = (- .local_14);
+          .local_13 = (96 + ((.param_11 + .local_15) * (- .local_15)));
+        }
+        else
+        {
+          .local_13 = (((1 + .local_16) / .param_11) / 9);
+        }
+      }
+    }
+  }
+  .param_10 = .local_13;
+  .ret_9 = .param_10;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_10);
+requires (.param_3 == .param_11);
+ensures (.ret_1 == .ret_9);
+

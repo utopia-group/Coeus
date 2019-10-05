@@ -1,0 +1,118 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2, bool .param_3, int .param_4, int .param_5) returns
+ (int .ret_1)
+{
+  int .local_6;
+  bool .local_7;
+  int .local_8;
+  .local_6 = ((.param_2 + .param_2) % (- .param_2));
+  .local_8 = (- bvxor(.param_2, .param_2));
+  for (.param_4 = 1 to 32)
+  {
+    .local_7 = (.local_6 >= .param_2);
+    if (((7 - .param_2) != .param_5))
+    {
+      .param_5 = (- .param_4);
+      .local_8 = .param_2;
+    }
+    else
+    {
+      .local_8 = .local_6;
+      .param_3 = .local_7;
+    }
+  }
+  .param_2 = bvxor(((5 + .param_2) + (.param_5 % 3)), .local_8);
+  for (.param_5 = 0 to .local_8)
+  {
+    .param_4 = 10;
+    while ((.param_4 > 32))
+    {
+      .param_4 = .param_5;
+      while ((! .param_3))
+      {
+        
+      }
+      if (.param_3)
+      {
+        .param_2 = (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + (.param_4 + .param_4))))))));
+      }
+      else
+      {
+        .param_2 = (6 + .param_4);
+      }
+      .param_4 = (.param_4 - 1);
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_10, bool .param_11, int .param_12, int .param_13)
+ returns (int .ret_9)
+{
+  int .local_14;
+  bool .local_15;
+  int .local_16;
+  .local_14 = ((.param_10 + .param_10) % (- .param_10));
+  .local_16 = (- bvxor(.param_10, .param_10));
+  for (.param_12 = 1 to 32 step 2)
+  {
+    .local_15 = (.local_14 >= .param_10);
+    if (((7 - .param_10) != .param_13))
+    {
+      .param_13 = (- .param_12);
+      .local_16 = .param_10;
+    }
+    else
+    {
+      .local_16 = .local_14;
+      .param_11 = .local_15;
+    }
+    if (((1 + .param_12) <= 31))
+    {
+      .local_15 = (.local_14 >= .param_10);
+      if (((7 - .param_10) != .param_13))
+      {
+        .param_13 = (- (1 + .param_12));
+        .local_16 = .param_10;
+      }
+      else
+      {
+        .local_16 = .local_14;
+        .param_11 = .local_15;
+      }
+    }
+  }
+  .param_10 = bvxor(((5 + .param_10) + (.param_13 % 3)), .local_16);
+  for (.param_13 = 0 to .local_16)
+  {
+    .param_12 = 10;
+    while ((.param_12 >= 33))
+    {
+      .param_12 = .param_13;
+      while ((! .param_11))
+      {
+        
+      }
+      if (.param_11)
+      {
+        .param_10 = (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + (.param_12 + .param_12))))))));
+      }
+      else
+      {
+        .param_10 = (6 + .param_12);
+      }
+      .param_12 = (.param_12 - 1);
+    }
+  }
+  .ret_9 = .param_10;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_10);
+requires (.param_3 == .param_11);
+requires (.param_4 == .param_12);
+requires (.param_5 == .param_13);
+ensures (.ret_1 == .ret_9);
+

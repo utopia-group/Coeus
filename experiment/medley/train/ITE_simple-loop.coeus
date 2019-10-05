@@ -1,0 +1,23 @@
+
+procedure f0(int z) returns(int i)
+{
+    i = 0;
+
+    while (i <= 10)
+    {
+        i++;
+    }
+}
+
+procedure f1(int z) returns(int i)
+{
+    i = 1;
+
+    while (i <= 10)
+    {
+        i++;
+    }
+}
+
+requires $L(z) == $R(z);
+ensures $L(i) == $R(i);

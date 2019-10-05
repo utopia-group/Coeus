@@ -1,0 +1,71 @@
+
+
+procedure RIGHT_func9(int .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .tmpret_5;
+  int .local_4;
+  assume(((((((2 <= .param_1) && (.param_1 <= 100000)) && (1 <= .param_2)) && (.param_2 <= .param_1)) && (2 <= .param_3)) && (.param_3 <= .param_1)));
+  .local_4 = (.param_1 / .param_2);
+  call .tmpret_5 = RIGHT_func13(.local_4, .local_4, .param_3);
+  .ret_0 = .tmpret_5;
+}
+
+procedure RIGHT_func13(int .param_1.0, int .param_2.1, int .param_3.2)
+ returns (int .ret_0.3)
+{
+  int .tmpret_4;
+  if ((.param_1.0 < .param_3.2))
+  {
+    .ret_0.3 = .param_2.1;
+  }
+  else
+  {
+    call .tmpret_4 = RIGHT_func13(((.param_1.0 - .param_3.2) + 1),
+     (.param_2.1 + 1), .param_3.2);
+    .ret_0.3 = .tmpret_4;
+  }
+}
+
+procedure LEFT_func9(int .param_1.4, int .param_2.5, int .param_3.6) returns
+ (int .ret_0.7)
+{
+  int .tmpret_6;
+  int .local_4.8;
+  int .local_5;
+  assume(((((((2 <= .param_1.4) && (.param_1.4 <= 100000)) && (1 <= .param_2.5)) && (.param_2.5 <= .param_1.4)) && (2 <= .param_3.6)) && (.param_3.6 <= .param_1.4)));
+  .local_4.8 = (.param_1.4 / .param_2.5);
+  call .tmpret_6 = LEFT_func5(.local_4.8, .param_3.6);
+  .local_5 = (.local_4.8 + .tmpret_6);
+  .ret_0.7 = .local_5;
+}
+
+procedure LEFT_func5(int .param_1.9, int .param_2.10) returns (int .ret_0.11)
+{
+  int .tmpret_3;
+  if ((.param_1.9 == .param_2.10))
+  {
+    .ret_0.11 = 1;
+  }
+  else
+  {
+    if ((.param_1.9 < .param_2.10))
+    {
+      .ret_0.11 = 0;
+    }
+    else
+    {
+      call .tmpret_3 = LEFT_func5(((.param_1.9 - .param_2.10) + 1),
+       .param_2.10);
+      .ret_0.11 = (1 + .tmpret_3);
+    }
+  }
+}
+
+$lentry LEFT_func9;
+$rentry RIGHT_func9;
+requires (.param_1.4 == .param_1);
+requires (.param_2.5 == .param_2);
+requires (.param_3.6 == .param_3);
+ensures (.ret_0.7 == .ret_0);
+

@@ -1,0 +1,59 @@
+
+
+procedure RIGHT_func12(int[int] .param_7, int .param_8) returns (int .ret_6)
+{
+  int inlined_.param_13.0;
+  int inlined_.param_14.1;
+  int inlined_.ret_12.2;
+  int .tmpret_11;
+  int[int] .local_9;
+  int .local_10;
+  if ((.param_8 == 0))
+  {
+    .ret_6 = 0;
+  }
+  else
+  {
+    .local_9[0] = 0;
+    .local_9[1] = .param_7[0];
+    for (.local_10 = 2 to (.param_8 + 1))
+    {
+      inlined_.param_13.0 = .local_9[(.local_10 - 1)];
+      inlined_.param_14.1 = (.local_9[(.local_10 - 2)] + .param_7[(.local_10 - 1)]);
+      inlined_.ret_12.2 = (if (inlined_.param_13.0 > inlined_.param_14.1) then inlined_.param_13.0 else inlined_.param_14.1);
+      .tmpret_11 = inlined_.ret_12.2;
+      .local_9[.local_10] = .tmpret_11;
+    }
+    .ret_6 = .local_9[.param_8];
+  }
+}
+
+procedure LEFT_func6(int[int] .param_2, int .param_3) returns (int .ret_1)
+{
+  int[int] .local_4;
+  int .local_5;
+  .local_4[0] = 0;
+  .local_4[1] = .param_2[0];
+  for (.local_5 = 2 to (.param_3 + 1))
+  {
+    if ((.local_4[(.local_5 - 1)] > (.local_4[(.local_5 - 2)] + .param_2[(.local_5 - 1)])))
+    {
+      .local_4[.local_5] = .local_4[(.local_5 - 1)];
+    }
+    else
+    {
+      .local_4[.local_5] = (.local_4[(.local_5 - 2)] + .param_2[(.local_5 - 1)]);
+    }
+  }
+  .ret_1 = .local_4[.param_3];
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func12;
+requires (.param_2 == .param_7);
+requires (.param_3 == .param_8);
+requires (.param_3 >= 0);
+requires (.param_3 <= 1000);
+ensures (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

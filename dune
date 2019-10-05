@@ -1,0 +1,5 @@
+(env
+ (dev
+  (flags (:standard -w -6-33 -warn-error -21-26-27-32-34)))
+ (release
+  (ocamlopt_flags (:standard -O3))))

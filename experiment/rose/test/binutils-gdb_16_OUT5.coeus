@@ -1,0 +1,112 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func7() returns (int .ret_0)
+{
+  int .local_1;
+  int .local_2;
+  int[int] .local_3;
+  int .local_4;
+  int .local_5;
+  .local_3[0] = 3;
+  .local_3[1] = 1;
+  .local_3[2] = 4;
+  .local_3[3] = 1;
+  .local_3[4] = 5;
+  .local_3[5] = 9;
+  .local_4 = 6;
+  .local_1 = 0;
+  while ((.local_1 < (.local_4 - 1)))
+  {
+    .local_2 = .local_1;
+    while ((.local_2 < .local_4))
+    {
+      if ((.local_3[.local_2] < .local_3[.local_1]))
+      {
+        .local_5 = .local_3[.local_1];
+        .local_3[.local_1] = .local_3[.local_2];
+        .local_3[.local_2] = .local_5;
+      }
+      .local_2 = (.local_2 + 1);
+    }
+    .local_1 = (.local_1 + 1);
+  }
+  .ret_0 = .local_3[0];
+  .ret_0 = 0;
+}
+
+procedure RIGHT_func7() returns (int .ret_0)
+{
+  int .local_1;
+  int .local_2;
+  int[int] .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_3[0] = 3;
+  .local_3[1] = 1;
+  .local_3[2] = 4;
+  .local_3[3] = 1;
+  .local_3[4] = 5;
+  .local_3[5] = 9;
+  .local_4 = 6;
+  .local_5 = .local_3[.local_1];
+  .local_1 = 0;
+  while ((.local_1 <= (.local_4 + (- 2))))
+  {
+    .local_2 = .local_1;
+    while ((.local_2 <= ((- 1) + .local_4)))
+    {
+      if ((.local_3[.local_2] < .local_3[.local_1]))
+      {
+        .local_6 = .local_3[.local_1];
+        .local_3[.local_1] = .local_3[.local_2];
+        .local_3[.local_2] = .local_6;
+      }
+      if (((1 + .local_2) <= ((- 1) + .local_4)))
+      {
+        if ((.local_3[(1 + .local_2)] < .local_3[.local_1]))
+        {
+          .local_7 = .local_3[.local_1];
+          .local_3[.local_1] = .local_3[(1 + .local_2)];
+          .local_3[(1 + .local_2)] = .local_7;
+        }
+      }
+      .local_2 = (.local_2 + 2);
+    }
+    if ((.local_2 <= ((- 1) + .local_4)))
+    {
+      if ((.local_3[.local_2] < .local_3[.local_1]))
+      {
+        .local_8 = .local_3[.local_1];
+        .local_3[.local_1] = .local_3[.local_2];
+        .local_3[.local_2] = .local_8;
+      }
+      if (((1 + .local_2) <= ((- 1) + .local_4)))
+      {
+        if ((.local_3[(1 + .local_2)] < .local_3[.local_1]))
+        {
+          .local_9 = .local_3[.local_1];
+          .local_3[.local_1] = .local_3[(1 + .local_2)];
+          .local_3[(1 + .local_2)] = .local_9;
+        }
+      }
+    }
+    .local_1 = (.local_1 + 1);
+  }
+  .ret_0 = .local_3[0];
+  .ret_0 = 0;
+}
+
+$lentry LEFT_func7;
+$rentry RIGHT_func7;
+
+ensures ($L(.ret_0) == $R(.ret_0));
+

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grammar</title>
+    <style>
+      .specification td, th{
+          vertical-align: baseline;
+          padding: 0;
+          margin: 0;
+          font-weight: normal;
+      }
+      .specification td {
+          text-align: left;
+      }
+      .specification th {
+          text-align: right;
+          white-space: nowrap;
+      }
+      .specification th::after {
+          content: "\a0::=\a0";
+      }
+      .specification th.bar {
+          text-align: right;
+      }
+      .specification th.bar::after {
+          content: "|\a0";
+      }
+      .rule th, td {
+          padding-top: .5em;
+      }
+      .nonterminal::before {
+          content: "<";
+      }
+      .nonterminal::after {
+          content: ">";
+      }
+      .list::after {
+          content: "*";
+          vertical-align: super;
+          font-size: smaller;
+      }
+      .ne_list::after {
+          content: "+";
+          vertical-align: super;
+          font-size: smaller;
+      }
+      .option::before {
+          content: "[";
+      }
+      .option::after {
+          content: "]";
+      }
+    </style>
+  </head>
+  
+  <body>
+    
+    <table class="specification">
+      
+      <tr class="rule">
+        <th><span class="nonterminal">main</span></th>
+        <td><span class="list"><span class="nonterminal">fun_decl</span></span>
+        <span class="list"><span class="nonterminal">proc_decl</span></span>
+        <span class="nonterminal">entry_spec</span>
+        <span class="nonterminal">specs</span>
+        T_EOF</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">fun_decl</span></th>
+        <td>T_DECLARE
+        <span class="nonterminal">type_name</span>
+        T_IDENT
+        T_LP
+        <span class="nonterminal">type_name</span><sup>*</sup><sub>T_COMMA</sub>
+        T_RP
+        T_SEMI</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">proc_decl</span></th>
+        <td>T_PROCEDURE
+        T_IDENT
+        T_LP
+        <span class="nonterminal">param_list</span>
+        T_RP
+        <span class="nonterminal">proc_rets</span>
+        <span class="nonterminal">proc_body</span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">proc_rets</span></th>
+        <td><span class="option">T_RETURNS
+        T_LP
+        <span class="nonterminal">param_list</span>
+        T_RP</span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">param_list</span></th>
+        <td><span class="nonterminal">param_decl</span><sup>*</sup><sub>T_COMMA</sub></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">nonempty_param_list</span></th>
+        <td><span class="nonterminal">param_decl</span><sup>+</sup><sub>T_COMMA</sub></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">param_decl</span></th>
+        <td><span class="nonterminal">type_name</span>
+        T_IDENT</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">typed_idents</span></th>
+        <td><span class="nonterminal">type_name</span>
+        T_IDENT<sup>+</sup><sub>T_COMMA</sub></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">type_name</span></th>
+        <td>T_BOOL</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_INT</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">type_name</span>
+        T_LB
+        <span class="nonterminal">type_name</span><sup>+</sup><sub>T_COMMA</sub>
+        T_RB</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">proc_body</span></th>
+        <td>T_LC
+        <span class="nonterminal">proc_body_content</span>
+        T_RC</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">proc_body_content</span></th>
+        <td><span class="nonterminal">local_vars</span>
+        <span class="list"><span class="nonterminal">stmt</span></span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">local_vars</span></th>
+        <td><span class="list"><span class="nonterminal">local_var</span></span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">local_var</span></th>
+        <td><span class="nonterminal">typed_idents</span>
+        T_SEMI</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">stmt</span></th>
+        <td>T_ASSUME
+        T_LP
+        <span class="nonterminal">expr</span>
+        T_RP
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_ASSIGN
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_PLUSEQ
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_MINUSEQ
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_TIMESEQ
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_DIVEQ
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_MODEQ
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_PLUSPLUS
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_PLUSPLUS
+        <span class="nonterminal">lval</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">lval</span>
+        T_MINUSMINUS
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_MINUSMINUS
+        <span class="nonterminal">lval</span>
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IF
+        T_LP
+        <span class="nonterminal">expr</span>
+        T_RP
+        <span class="nonterminal">block</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_CALL
+        <span class="nonterminal">lval</span><sup>*</sup><sub>T_COMMA</sub>
+        T_ASSIGN
+        T_IDENT
+        T_LP
+        <span class="nonterminal">expr</span><sup>*</sup><sub>T_COMMA</sub>
+        T_RP
+        T_SEMI</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IF
+        T_LP
+        <span class="nonterminal">expr</span>
+        T_RP
+        <span class="nonterminal">block</span>
+        T_ELSE
+        <span class="nonterminal">block</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_WHILE
+        T_LP
+        <span class="nonterminal">expr</span>
+        T_RP
+        <span class="nonterminal">block</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_FOR
+        T_LP
+        T_IDENT
+        T_ASSIGN
+        <span class="nonterminal">expr</span>
+        <span class="nonterminal">for_direction</span>
+        <span class="nonterminal">expr</span>
+        <span class="nonterminal">for_step</span>
+        T_RP
+        <span class="nonterminal">block</span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">for_direction</span></th>
+        <td>T_TO</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_DOWNTO</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">for_step</span></th>
+        <td><span class="option">T_STEP
+        <span class="nonterminal">expr</span></span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">block</span></th>
+        <td><span class="nonterminal">stmt</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_LC
+        <span class="list"><span class="nonterminal">stmt</span></span>
+        T_RC</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">lval</span></th>
+        <td>T_IDENT</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IDENT
+        T_LB
+        <span class="nonterminal">expr</span><sup>*</sup><sub>T_COMMA</sub>
+        T_RB</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">expr</span></th>
+        <td><span class="nonterminal">literal</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IDENT</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_NOT
+        <span class="nonterminal">expr</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_MINUS
+        <span class="nonterminal">expr</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">expr</span>
+        <span class="nonterminal">binary_op</span>
+        <span class="nonterminal">expr</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">expr_annot</span>
+        T_LP
+        <span class="nonterminal">expr</span>
+        T_RP</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IF
+        <span class="nonterminal">expr</span>
+        T_THEN
+        <span class="nonterminal">expr</span>
+        T_ELSE
+        <span class="nonterminal">expr</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">expr</span>
+        T_LB
+        <span class="nonterminal">expr</span><sup>+</sup><sub>T_COMMA</sub>
+        T_RB</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">expr</span>
+        T_LB
+        <span class="nonterminal">expr</span><sup>+</sup><sub>T_COMMA</sub>
+        T_ASSIGN
+        <span class="nonterminal">expr</span>
+        T_RB</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IDENT
+        T_LP
+        <span class="nonterminal">expr</span><sup>*</sup><sub>T_COMMA</sub>
+        T_RP</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td><span class="nonterminal">quantifier</span>
+        <span class="nonterminal">nonempty_param_list</span>
+        T_DCOLON
+        <span class="nonterminal">expr</span></td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_LP
+        <span class="nonterminal">expr</span>
+        T_RP</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">expr_annot</span></th>
+        <td>T_LEFT_ANNOT</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_RIGHT_ANNOT</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">literal</span></th>
+        <td>T_TRUE</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_FALSE</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_NUMBER</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">binary_op</span></th>
+        <td>T_PLUS</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_MINUS</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_TIMES</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_DIV</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_MOD</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_AND</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_OR</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_IMPLIES</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_LT</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_LE</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_GT</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_GE</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_EQ</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_NE</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">quantifier</span></th>
+        <td>T_FORALL</td>
+      </tr>
+      <tr>
+        <th class="bar"></th>
+        <td>T_EXISTS</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">entry_spec</span></th>
+        <td><span class="option"><span class="nonterminal">lentry_spec</span></span>
+        <span class="option"><span class="nonterminal">rentry_spec</span></span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">lentry_spec</span></th>
+        <td>T_LEFT_ENTRY
+        T_IDENT
+        T_SEMI</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">rentry_spec</span></th>
+        <td>T_RIGHT_ENTRY
+        T_IDENT
+        T_SEMI</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">specs</span></th>
+        <td><span class="list"><span class="nonterminal">require_spec</span></span>
+        <span class="list"><span class="nonterminal">ensure_spec</span></span></td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">require_spec</span></th>
+        <td>T_REQUIRES
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      
+      <tr class="rule">
+        <th><span class="nonterminal">ensure_spec</span></th>
+        <td>T_ENSURES
+        <span class="nonterminal">expr</span>
+        T_SEMI</td>
+      </tr>
+      
+      
+    </table>
+    
+  </body>
+  
+</html>

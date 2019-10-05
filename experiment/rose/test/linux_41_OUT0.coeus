@@ -1,0 +1,107 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func10(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  .local_3 = bvand(.param_1, 2147483647);
+  .local_4 = bvand(.param_2, 2147483647);
+  if (((.local_4 < 8388608) || (.local_3 == 0)))
+  {
+    .ret_0 = bvand(bvxor(.param_1, .param_2), -2147483648);
+  }
+  .local_7 = (bvand(.local_4, 2139095040) / 8388608);
+  .local_3 = bvand(.local_3, 8388607);
+  .local_4 = bvor(bvand(.local_4, 8388607), 8388608);
+  .local_5 = (.local_3 * .local_4);
+  .local_6 = .local_5;
+  .local_8 = (- 1);
+  while ((.local_6 != 0))
+  {
+    .local_6 = (.local_6 / 2);
+    .local_8 = (.local_8 + 1);
+  }
+  .local_7 = (.local_7 + ((.local_8 - 126) - 46));
+  if ((.local_7 > 0))
+  {
+    .local_3 = bvor(bvand(bvshr(.local_5, (.local_8 - 23)), 8388607),
+     (.local_7 * 8388608));
+  }
+  else
+  {
+    if (((.local_7 + 22) >= 0))
+    {
+      .local_3 = bvand(bvshr(.local_5, ((.local_8 - 22) - .local_7)),
+       8388607);
+    }
+    else
+    {
+      .local_3 = 0;
+    }
+  }
+  .local_3 = bvor(.local_3, bvand(bvxor(.param_1, .param_2), -2147483648));
+  .ret_0 = .local_3;
+}
+
+procedure RIGHT_func10(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  .local_3 = bvand(.param_1, 2147483647);
+  .local_4 = bvand(.param_2, 2147483647);
+  if (((.local_4 < 8388608) || (.local_3 == 0)))
+  {
+    .ret_0 = bvand(bvxor(.param_1, .param_2), -2147483648);
+  }
+  .local_7 = (bvand(.local_4, 2139095040) / 8388608);
+  .local_3 = bvand(.local_3, 8388607);
+  .local_4 = bvor(bvand(.local_4, 8388607), 8388608);
+  .local_5 = (.local_3 * .local_4);
+  .local_6 = .local_5;
+  .local_8 = (- 1);
+  while ((.local_6 != 0))
+  {
+    .local_6 = (.local_6 / 2);
+    .local_8 = (.local_8 + 1);
+  }
+  .local_7 = (.local_7 + ((.local_8 - 126) - 46));
+  if ((.local_7 > 0))
+  {
+    .local_3 = bvor(bvand(bvshr(.local_5, (.local_8 - 23)), 8388607),
+     (.local_7 * 8388608));
+  }
+  else
+  {
+    if (((.local_7 + 22) >= 0))
+    {
+      .local_3 = bvand(bvshr(.local_5, ((.local_8 - 22) - .local_7)),
+       8388607);
+    }
+    else
+    {
+      .local_3 = 0;
+    }
+  }
+  .local_3 = bvor(.local_3, bvand(bvxor(.param_1, .param_2), -2147483648));
+  .ret_0 = .local_3;
+}
+
+$lentry LEFT_func10;
+$rentry RIGHT_func10;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

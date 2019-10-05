@@ -1,0 +1,55 @@
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2) returns (int .ret_1)
+{
+  bool .local_3;
+  int .local_4;
+  .local_3 = false;
+  .local_4 = bvor(bvand(.param_2, 6), 1);
+  .param_2 = (- .local_4);
+  .local_4 = .param_2;
+  .param_2 = (- (1 + .local_4));
+  for (.local_4 = 6 to 64)
+  {
+    .param_2 = ((.local_4 - 8) * bvor(.local_4, .param_2));
+    .param_2 = (- .param_2);
+  }
+  while (.local_3)
+  {
+    .local_3 = (! .local_3);
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_6) returns (int .ret_5)
+{
+  bool .local_7;
+  int .local_8;
+  .local_7 = false;
+  .local_8 = bvor(bvand(.param_6, 6), 1);
+  .param_6 = (- .local_8);
+  .local_8 = .param_6;
+  .param_6 = (- (1 + .local_8));
+  for (.local_8 = 6 to 64 step 2)
+  {
+    .param_6 = ((.local_8 - 8) * bvor(.local_8, .param_6));
+    .param_6 = (- .param_6);
+    if (((1 + .local_8) <= 63))
+    {
+      .param_6 = (((1 + .local_8) - 8) * bvor((1 + .local_8), .param_6));
+      .param_6 = (- .param_6);
+    }
+  }
+  while (.local_7)
+  {
+    .local_7 = (! .local_7);
+  }
+  .ret_5 = .param_6;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_6);
+ensures (.ret_1 == .ret_5);
+

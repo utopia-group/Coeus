@@ -1,0 +1,6 @@
+(executables
+  (names rdiff)
+  (public_names rdiff)
+  (libraries core cmdliner logs fmt fmt.cli fmt.tty logs.fmt logs.cli searcher)
+  (preprocess (pps ppx_sexp_conv ppx_compare ppx_hash))
+)

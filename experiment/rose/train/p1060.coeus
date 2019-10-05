@@ -1,0 +1,54 @@
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4) returns (int .ret_1)
+{
+  bool .local_5;
+  int .local_6;
+  .local_5 = false;
+  for (.param_3 = 5 downto (.param_4 / 10))
+  {
+    .local_6 = 0;
+    for (.local_6 = 0 to 0)
+    {
+      .param_4 = (4 - bvor((.param_3 + .local_6), (.param_4 - .local_6)));
+      .param_2 = (.param_2 * ((5 / .param_3) - (.param_4 / .local_6)));
+    }
+  }
+  .param_4 = (bvand(.param_4, 2) - .param_2);
+  .param_2 = ((.param_4 * .param_2) - 32);
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_8, int .param_9, int .param_10) returns (int .ret_7)
+{
+  bool .local_11;
+  int .local_12;
+  .local_11 = false;
+  for (.param_9 = 5 downto (.param_10 / 10))
+  {
+    .local_12 = 0;
+    for (.local_12 = 0 to 0 step 2)
+    {
+      .param_10 = (4 - bvor((.param_9 + .local_12), (.param_10 - .local_12)));
+      .param_8 = (.param_8 * ((5 / .param_9) - (.param_10 / .local_12)));
+      if (((1 + .local_12) <= -1))
+      {
+        .param_10 = (4 - bvor((.param_9 + (1 + .local_12)),
+         (.param_10 - (1 + .local_12))));
+        .param_8 = (.param_8 * ((5 / .param_9) - (.param_10 / (1 + .local_12))));
+      }
+    }
+  }
+  .param_10 = (bvand(.param_10, 2) - .param_8);
+  .param_8 = ((.param_10 * .param_8) - 32);
+  .ret_7 = .param_8;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_8);
+requires (.param_3 == .param_9);
+requires (.param_4 == .param_10);
+ensures (.ret_1 == .ret_7);
+

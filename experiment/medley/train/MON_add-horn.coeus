@@ -1,0 +1,40 @@
+procedure f0rec(int i, int j) returns(int r)
+{
+    r = 0;
+
+    if (i == 0)
+    {
+        r = j;
+    }
+    else
+    {
+        call r = f0rec(i - 1, j + 1);
+    }
+}
+
+procedure f0(int i, int j) returns (int r) {
+  call r = f0rec(i, j);
+}
+
+procedure f1rec(int i, int j) returns(int r)
+{
+    r = 0;
+
+    if (i == 0)
+    {
+        r = j;
+    }
+    else
+    {
+        call r = f1rec(i - 1, j + 1);
+    }
+}
+
+procedure f1(int i, int j) returns (int r) {
+  call r = f1rec(i, j);
+}
+
+requires $L(i) >= 0;
+requires $R(i) >= $L(i);
+requires $L(j) <= $R(j);
+requires $L(r) <= $R(r);

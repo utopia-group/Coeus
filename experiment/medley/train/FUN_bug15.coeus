@@ -1,0 +1,19 @@
+procedure f(int z) returns(int r)
+{
+    int x;
+    int y;
+
+    x = 1;
+    y = 0;
+    while (x <= 9)
+    {
+        y = x + 2;
+        x = 2 * y;
+    }
+
+    r = 2 * x;
+}
+
+$lentry f;
+$rentry f;
+ensures $L(r) == $R(r);

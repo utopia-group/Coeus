@@ -1,0 +1,19 @@
+procedure f(int n, int c) returns(int x) {
+  int i;
+  int j;
+  x = 0;
+  j = 0;
+  i = 0;
+  while (i < n) {
+    j = 5 * i + c;
+    x = x + j;
+    i++;
+  }
+}
+
+$lentry f;
+$rentry f;
+requires $L(c) >= 0;
+requires $L(n) <= $R(n);
+requires $L(c) <= $R(c);
+ensures $L(x) <= $R(x);

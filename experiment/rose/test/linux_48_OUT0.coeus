@@ -1,0 +1,58 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func5(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  .local_2 = 0;
+  .local_3 = 0;
+  while ((.param_1 > 8191))
+  {
+    .local_3 = (.param_1 % 4);
+    .param_1 = (.param_1 / 8);
+    .local_2 = (.local_2 + 1);
+  }
+  if (((.local_3 != 0) && (.param_1 > 8191)))
+  {
+    .param_1 = (.param_1 + 1);
+    .param_1 = (.param_1 / 8);
+    .local_2 = (.local_2 + 1);
+  }
+  .local_2 = (.local_2 * 8192);
+  .local_2 = (.local_2 + .param_1);
+  .ret_0 = .local_2;
+}
+
+procedure RIGHT_func5(int .param_1) returns (int .ret_0)
+{
+  int .local_2;
+  int .local_3;
+  .local_2 = 0;
+  .local_3 = 0;
+  while ((.param_1 > 8191))
+  {
+    .local_3 = (.param_1 % 4);
+    .param_1 = (.param_1 / 8);
+    .local_2 = (.local_2 + 1);
+  }
+  if (((.local_3 != 0) && (.param_1 > 8191)))
+  {
+    .param_1 = (.param_1 + 1);
+    .param_1 = (.param_1 / 8);
+    .local_2 = (.local_2 + 1);
+  }
+  .local_2 = (.local_2 * 8192);
+  .local_2 = (.local_2 + .param_1);
+  .ret_0 = .local_2;
+}
+
+$lentry LEFT_func5;
+$rentry RIGHT_func5;
+requires ($L(.param_1) == $R(.param_1));
+ensures ($L(.ret_0) == $R(.ret_0));
+

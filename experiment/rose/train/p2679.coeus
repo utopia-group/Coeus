@@ -1,0 +1,114 @@
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, bool .param_3) returns (int .ret_1)
+{
+  int .local_4;
+  bool .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_9 = (32 / bvand(.param_2, .param_2));
+  .local_6 = .param_2;
+  .local_4 = ((- bvor(64, .local_6)) * (.local_6 * .param_2));
+  for (.local_6 = 0 to 9)
+  {
+    .local_7 = 4;
+    .local_8 = 3;
+    .local_5 = .param_3;
+    for (.local_9 = 0 to 4)
+    {
+      if ((.local_7 > .local_9))
+      {
+        .param_3 = ((.param_3 == (.param_3 && .local_5)) || (! .param_3));
+      }
+      else
+      {
+        .local_4 = -32;
+      }
+    }
+    if ((.local_4 <= .local_8))
+    {
+      if (.param_3)
+      {
+        .param_2 = .local_6;
+      }
+      else
+      {
+        .param_2 = ((- .local_8) - (64 + .local_8));
+      }
+    }
+    else
+    {
+      .local_8 = 32;
+      .param_2 = ((- .local_6) - (.local_8 / 6));
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_11, bool .param_12) returns (int .ret_10)
+{
+  int .local_13;
+  bool .local_14;
+  int .local_15;
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_18 = (32 / bvand(.param_11, .param_11));
+  .local_15 = .param_11;
+  .local_13 = ((- bvor(64, .local_15)) * (.local_15 * .param_11));
+  for (.local_15 = 0 to 9)
+  {
+    .local_16 = 4;
+    .local_17 = 3;
+    .local_14 = .param_12;
+    for (.local_18 = 0 to 4 step 2)
+    {
+      if ((.local_16 > .local_18))
+      {
+        .param_12 = ((.param_12 == (.param_12 && .local_14)) || (! .param_12));
+      }
+      else
+      {
+        .local_13 = -32;
+      }
+      if (((1 + .local_18) <= 3))
+      {
+        if ((.local_16 > (1 + .local_18)))
+        {
+          .param_12 = ((.param_12 == (.param_12 && .local_14)) || (! .param_12));
+        }
+        else
+        {
+          .local_13 = -32;
+        }
+      }
+    }
+    if ((.local_13 <= .local_17))
+    {
+      if (.param_12)
+      {
+        .param_11 = .local_15;
+      }
+      else
+      {
+        .param_11 = ((- .local_17) - (64 + .local_17));
+      }
+    }
+    else
+    {
+      .local_17 = 32;
+      .param_11 = ((- .local_15) - (.local_17 / 6));
+    }
+  }
+  .ret_10 = .param_11;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+ensures (.ret_1 == .ret_10);
+

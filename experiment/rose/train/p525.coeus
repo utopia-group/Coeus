@@ -1,0 +1,109 @@
+declare int bvor(int, int);
+
+procedure f0(int .param_2, bool .param_3) returns (int .ret_1)
+{
+  bool .local_4;
+  int .local_5;
+  int .local_6;
+  int .local_7;
+  .local_5 = 1;
+  .local_4 = true;
+  .local_7 = .local_5;
+  for (.local_6 = 0 to 0)
+  {
+    if (.local_4)
+    {
+      .param_2 = 0;
+    }
+    else
+    {
+      .local_7 = -1;
+    }
+    while ((.param_2 != 16))
+    {
+      .local_7 = 9;
+      .local_5 = .local_7;
+    }
+    .param_3 = (.param_3 == (6 > .local_5));
+  }
+  for (.param_2 = 0 to .local_5)
+  {
+    .local_6 = .param_2;
+    .local_5 = 7;
+    for (.local_7 = 0 to 11)
+    {
+      if (.param_3)
+      {
+        .local_5 = bvor(.local_7, 0);
+      }
+      else
+      {
+        .local_5 = ((2 / .param_2) * (.local_5 - .local_6));
+      }
+    }
+  }
+  .ret_1 = .local_5;
+}
+
+procedure f1(int .param_9, bool .param_10) returns (int .ret_8)
+{
+  bool .local_11;
+  int .local_12;
+  int .local_13;
+  int .local_14;
+  .local_12 = 1;
+  .local_11 = true;
+  .local_14 = .local_12;
+  for (.local_13 = 0 to 0)
+  {
+    if (.local_11)
+    {
+      .param_9 = 0;
+    }
+    else
+    {
+      .local_14 = -1;
+    }
+    while ((.param_9 != 16))
+    {
+      .local_14 = 9;
+      .local_12 = .local_14;
+    }
+    .param_10 = (.param_10 == (6 > .local_12));
+  }
+  for (.param_9 = 0 to .local_12)
+  {
+    .local_13 = .param_9;
+    .local_12 = 7;
+    for (.local_14 = 0 to 11 step 2)
+    {
+      if (.param_10)
+      {
+        .local_12 = bvor(.local_14, 0);
+      }
+      else
+      {
+        .local_12 = ((2 / .param_9) * (.local_12 - .local_13));
+      }
+      if (((1 + .local_14) <= 10))
+      {
+        if (.param_10)
+        {
+          .local_12 = bvor((1 + .local_14), 0);
+        }
+        else
+        {
+          .local_12 = ((2 / .param_9) * (.local_12 - .local_13));
+        }
+      }
+    }
+  }
+  .ret_8 = .local_12;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_9);
+requires (.param_3 == .param_10);
+ensures (.ret_1 == .ret_8);
+

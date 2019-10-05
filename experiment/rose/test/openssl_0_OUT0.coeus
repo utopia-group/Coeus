@@ -1,0 +1,110 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func7(int .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .local_4;
+  int .local_5;
+  .local_4 = 1;
+  if ((.param_2 < 0))
+  {
+    .ret_0 = (- 1);
+  }
+  else
+  {
+    if ((.param_3 >= 31))
+    {
+      while ((.param_3 > 0))
+      {
+        .param_3 = (.param_3 / 128);
+        .local_4 = (.local_4 + 1);
+      }
+    }
+    if ((.param_1 == 2))
+    {
+      .local_4 = (.local_4 + 3);
+    }
+    else
+    {
+      .local_4 = (.local_4 + 1);
+      if ((.param_2 > 127))
+      {
+        .local_5 = .param_2;
+        while ((.local_5 > 0))
+        {
+          .local_5 = (.local_5 / 256);
+          .local_4 = (.local_4 + 1);
+        }
+      }
+    }
+    if ((.local_4 >= (2147483647 - .param_2)))
+    {
+      .ret_0 = (- 1);
+    }
+    else
+    {
+      .ret_0 = (.local_4 + .param_2);
+    }
+  }
+}
+
+procedure RIGHT_func7(int .param_1, int .param_2, int .param_3) returns
+ (int .ret_0)
+{
+  int .local_4;
+  int .local_5;
+  .local_4 = 1;
+  if ((.param_2 < 0))
+  {
+    .ret_0 = (- 1);
+  }
+  else
+  {
+    if ((.param_3 >= 31))
+    {
+      while ((.param_3 > 0))
+      {
+        .param_3 = (.param_3 / 128);
+        .local_4 = (.local_4 + 1);
+      }
+    }
+    if ((.param_1 == 2))
+    {
+      .local_4 = (.local_4 + 3);
+    }
+    else
+    {
+      .local_4 = (.local_4 + 1);
+      if ((.param_2 > 127))
+      {
+        .local_5 = .param_2;
+        while ((.local_5 > 0))
+        {
+          .local_5 = (.local_5 / 256);
+          .local_4 = (.local_4 + 1);
+        }
+      }
+    }
+    if ((.local_4 >= (2147483647 - .param_2)))
+    {
+      .ret_0 = (- 1);
+    }
+    else
+    {
+      .ret_0 = (.local_4 + .param_2);
+    }
+  }
+}
+
+$lentry LEFT_func7;
+$rentry RIGHT_func7;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+requires ($L(.param_3) == $R(.param_3));
+ensures ($L(.ret_0) == $R(.ret_0));
+

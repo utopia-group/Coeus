@@ -1,0 +1,30 @@
+procedure f0(int n, int[int] a, int[int] b) returns (int s1) {
+    int i;
+    s1 = 0;
+    i = 0;
+    while(i < n) {
+        s1 = s1 + a[i] + b[i];
+        i = i + 1;
+    }
+}
+
+procedure f1(int n, int[int] a, int[int] b) returns (int s2) {
+    int i;
+    s2 = 0;
+    i = 0;
+    while(i < n) {
+        s2 = s2 + a[i];
+        i = i + 1;
+    }
+    i = 0;
+    while(i < n) {
+        s2 = s2 + b[i];
+        i = i + 1;
+    }
+}
+
+requires $R(n) >= 1;
+requires $L(n) == $R(n);
+requires $L(a) == $R(a);
+requires $L(b) == $R(b);
+ensures $L(s1) == $R(s2);

@@ -1,0 +1,84 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+
+procedure f0(int .param_2, bool .param_3) returns (int .ret_1)
+{
+  int .local_4;
+  int .local_5;
+  .local_5 = -1;
+  if ((! .param_3))
+  {
+    .local_4 = .param_2;
+    while (((- .local_4) >= bvor(.param_2, .param_2)))
+    {
+      .param_2 = (.local_4 - 9);
+    }
+  }
+  else
+  {
+    .local_4 = 0;
+    .local_5 = .local_5;
+    for (.local_5 = 2 to 32)
+    {
+      if ((! (.local_4 != .local_4)))
+      {
+        .param_2 = bvor(bvxor(.local_5, 64), 0);
+      }
+      else
+      {
+        .param_2 = .local_4;
+      }
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_7, bool .param_8) returns (int .ret_6)
+{
+  int .local_9;
+  int .local_10;
+  .local_10 = -1;
+  if ((! .param_8))
+  {
+    .local_9 = .param_7;
+    while (((- .local_9) >= bvor(.param_7, .param_7)))
+    {
+      .param_7 = (.local_9 - 9);
+    }
+  }
+  else
+  {
+    .local_9 = 0;
+    .local_10 = .local_10;
+    for (.local_10 = 2 to 32 step 2)
+    {
+      if ((! (.local_9 != .local_9)))
+      {
+        .param_7 = bvor(bvxor(.local_10, 64), 0);
+      }
+      else
+      {
+        .param_7 = .local_9;
+      }
+      if (((1 + .local_10) <= 31))
+      {
+        if ((! (.local_9 != .local_9)))
+        {
+          .param_7 = bvor(bvxor((1 + .local_10), 64), 0);
+        }
+        else
+        {
+          .param_7 = .local_9;
+        }
+      }
+    }
+  }
+  .ret_6 = .param_7;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_7);
+requires (.param_3 == .param_8);
+ensures (.ret_1 == .ret_6);
+

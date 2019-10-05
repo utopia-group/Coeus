@@ -1,0 +1,99 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+declare int bvand(int, int);
+
+procedure f0(int .param_2, bool .param_3, int .param_4, int .param_5,
+             int .param_6)
+ returns (int .ret_1)
+{
+  int .local_7;
+  bool .local_8;
+  int .local_9;
+  int .local_10;
+  while ((.param_3 || .param_3))
+  {
+    .local_9 = (0 + 0);
+    .local_8 = (bvxor(.param_4, .param_6) != 32);
+    while (((.param_4 * .param_2) != (.param_2 * .local_9)))
+    {
+      
+    }
+    .param_3 = .local_8;
+  }
+  .param_2 = (- .param_5);
+  for (.param_4 = 0 to bvor(.param_6, 1))
+  {
+    .local_9 = (.param_2 * -7);
+    if (.param_3)
+    {
+      .param_2 = -2;
+      for (.local_10 = 0 to -9)
+      {
+        .param_5 = bvxor((.param_2 - .local_9), .param_4);
+      }
+      .local_7 = bvor((- .param_4), .param_2);
+    }
+    else
+    {
+      .local_7 = 32;
+    }
+    .param_6 = (3 - bvand(16, .local_7));
+  }
+  .param_2 = bvand(.param_6, (- .param_5));
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_12, bool .param_13, int .param_14, int .param_15,
+             int .param_16)
+ returns (int .ret_11)
+{
+  int .local_17;
+  bool .local_18;
+  int .local_19;
+  int .local_20;
+  while ((.param_13 || .param_13))
+  {
+    .local_19 = (0 + 0);
+    .local_18 = (bvxor(.param_14, .param_16) != 32);
+    while (((.param_14 * .param_12) != (.param_12 * .local_19)))
+    {
+      
+    }
+    .param_13 = .local_18;
+  }
+  .param_12 = (- .param_15);
+  for (.param_14 = 0 to bvor(.param_16, 1))
+  {
+    .local_19 = (.param_12 * -7);
+    if (.param_13)
+    {
+      .param_12 = -2;
+      for (.local_20 = 0 to -9 step 2)
+      {
+        .param_15 = bvxor((.param_12 - .local_19), .param_14);
+        if (((1 + .local_20) <= -10))
+        {
+          .param_15 = bvxor((.param_12 - .local_19), .param_14);
+        }
+      }
+      .local_17 = bvor((- .param_14), .param_12);
+    }
+    else
+    {
+      .local_17 = 32;
+    }
+    .param_16 = (3 - bvand(16, .local_17));
+  }
+  .param_12 = bvand(.param_16, (- .param_15));
+  .ret_11 = .param_12;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_12);
+requires (.param_3 == .param_13);
+requires (.param_4 == .param_14);
+requires (.param_5 == .param_15);
+requires (.param_6 == .param_16);
+ensures (.ret_1 == .ret_11);
+

@@ -1,0 +1,90 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4, int .param_5,
+             int .param_6)
+ returns (int .ret_1)
+{
+  bool .local_7;
+  .local_7 = true;
+  for (.param_4 = 0 to (.param_6 * .param_2))
+  {
+    if (.local_7)
+    {
+      .param_5 = (- .param_4);
+    }
+    else
+    {
+      for (.param_3 = 0 to bvxor(.param_5, .param_6))
+      {
+        .param_5 = 1;
+        .param_5 = ((.param_3 % .param_6) % (2 + .param_5));
+      }
+    }
+    .param_6 = bvxor(.param_5, .param_2);
+    .param_2 = .param_6;
+  }
+  for (.param_5 = 0 to 32)
+  {
+    .param_2 = ((.param_6 + 6) - (.param_2 - 9));
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_9, int .param_10, int .param_11, int .param_12,
+             int .param_13)
+ returns (int .ret_8)
+{
+  bool .local_14;
+  .local_14 = true;
+  for (.param_11 = 0 to (.param_13 * .param_9))
+  {
+    if (.local_14)
+    {
+      .param_12 = (- .param_11);
+    }
+    else
+    {
+      for (.param_10 = 0 to ((-1 + bvxor(.param_12, .param_13)) + 1) step 2)
+      {
+        .param_12 = 1;
+        .param_12 = ((.param_10 % .param_13) % (2 + .param_12));
+        if (((1 + .param_10) <= (-1 + bvxor(.param_12, .param_13))))
+        {
+          .param_12 = 1;
+          .param_12 = (((1 + .param_10) % .param_13) % (2 + .param_12));
+        }
+      }
+      if ((.param_10 <= (-1 + bvxor(.param_12, .param_13))))
+      {
+        .param_12 = 1;
+        .param_12 = ((.param_10 % .param_13) % (2 + .param_12));
+        if (((1 + .param_10) <= (-1 + bvxor(.param_12, .param_13))))
+        {
+          .param_12 = 1;
+          .param_12 = (((1 + .param_10) % .param_13) % (2 + .param_12));
+        }
+      }
+    }
+    .param_13 = bvxor(.param_12, .param_9);
+    .param_9 = .param_13;
+  }
+  for (.param_12 = 0 to 32 step 2)
+  {
+    .param_9 = ((.param_13 + 6) - (.param_9 - 9));
+    if (((1 + .param_12) <= 31))
+    {
+      .param_9 = ((.param_13 + 6) - (.param_9 - 9));
+    }
+  }
+  .ret_8 = .param_9;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_9);
+requires (.param_3 == .param_10);
+requires (.param_4 == .param_11);
+requires (.param_5 == .param_12);
+requires (.param_6 == .param_13);
+ensures (.ret_1 == .ret_8);
+

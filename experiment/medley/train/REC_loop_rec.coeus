@@ -1,0 +1,45 @@
+procedure f0(int m) returns(int result) {
+
+  if (m > 0) {
+    call result = tr1(m - 1);
+    result = result + m;
+  } else {
+    result = 0;
+  }
+}
+
+procedure tr1(int n) returns(int result) {
+  int i;
+
+  result = 0;
+  i = 0;
+  while (i < n) {
+    result = result + i;
+  }
+}
+
+procedure f1(int m) returns(int result) {
+
+  if (m > 0) {
+    call result = tr(m - 1);
+    if (result >= 0) {
+      result = result + m;
+    }
+  } else {
+    result = 0;
+  }
+}
+
+procedure tr(int n) returns(int result) {
+
+  int i;
+
+  result = 0;
+  i = 0;
+  while (i < n) {
+    result = result + i;
+  }
+}
+
+requires $L(m) == $R(m);
+ensures $L(result) == $R(result);

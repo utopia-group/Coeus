@@ -1,0 +1,54 @@
+
+
+procedure RIGHT_func9(int[int] .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  int .local_5;
+  int .local_6;
+  assume((.param_2 >= 0));
+  .local_3 = 0;
+  .local_4 = 0;
+  for (.local_5 = 0 to .param_2)
+  {
+    .local_6 = .param_1[.local_5];
+    if ((.local_6 == 0))
+    {
+      .local_3 = (if (.local_3 > .local_4) then .local_3 else .local_4);
+      .local_4 = 0;
+    }
+    else
+    {
+      .local_4 = (.local_4 + 1);
+    }
+  }
+  .local_3 = (if (.local_3 > .local_4) then .local_3 else .local_4);
+  .ret_0 = .local_3;
+}
+
+procedure LEFT_func9(int[int] .param_1.0, int .param_2.1) returns
+ (int .ret_0.2)
+{
+  int .local_3.3;
+  int .local_4.4;
+  int .local_5.5;
+  int .local_6.6;
+  assume((.param_2.1 >= 0));
+  .local_3.3 = 0;
+  .local_4.4 = 0;
+  for (.local_5.5 = 0 to .param_2.1)
+  {
+    .local_6.6 = .param_1.0[.local_5.5];
+    .local_4.4 = (if (.local_6.6 == 0) then 0 else (.local_4.4 + 1));
+    .local_3.3 = (if (.local_3.3 > .local_4.4) then .local_3.3 else .local_4.4);
+  }
+  .ret_0.2 = .local_3.3;
+}
+
+$lentry LEFT_func9;
+$rentry RIGHT_func9;
+requires (.param_1.0 == .param_1);
+requires (.param_2.1 == .param_2);
+ensures (.param_1.0 == .param_1);
+ensures (.ret_0.2 == .ret_0);
+

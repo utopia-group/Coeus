@@ -1,0 +1,64 @@
+
+
+procedure RIGHT_func18(int[int] .param_1, int .param_2) returns (int .ret_0)
+{
+  int .tmpret_3;
+  assume(((1 <= .param_2) && (.param_2 <= 10000)));
+  call .tmpret_3 = RIGHT_func16(.param_1, 0, (.param_2 - 1));
+  .ret_0 = .tmpret_3;
+}
+
+procedure RIGHT_func16(int[int] .param_1.0, int .param_2.1, int .param_3)
+ returns (int .ret_0.2)
+{
+  int inlined_.param_1.0;
+  int inlined_.ret_0.1;
+  int .tmpret_5;
+  int .tmpret_6;
+  int .local_4;
+  if ((.param_2.1 < .param_3))
+  {
+    inlined_.param_1.0 = (.param_1.0[.param_2.1] - .param_1.0[.param_3]);
+    inlined_.ret_0.1 = (if (inlined_.param_1.0 >= 0) then inlined_.param_1.0 else (- inlined_.param_1.0));
+    .tmpret_5 = inlined_.ret_0.1;
+    call .tmpret_6 = RIGHT_func16(.param_1.0, (.param_2.1 + 1),
+     (.param_3 - 1));
+    .local_4 = (.tmpret_5 + .tmpret_6);
+    .ret_0.2 = .local_4;
+  }
+  else
+  {
+    .ret_0.2 = 0;
+  }
+}
+
+procedure LEFT_func9(int[int] .param_1.3, int .param_2.4) returns
+ (int .ret_0.5)
+{
+  int .local_3;
+  int .local_4.6;
+  int .local_5;
+  int .local_6;
+  assume(((1 <= .param_2.4) && (.param_2.4 <= 10000)));
+  .local_5 = 0;
+  .local_3 = (.param_2.4 - 1);
+  for (.local_4.6 = 0 to .local_3)
+  {
+    .local_6 = (.param_1.3[.local_3] - .param_1.3[.local_4.6]);
+    if ((.local_6 < 0))
+    {
+      .local_6 = (- .local_6);
+    }
+    .local_5 = (.local_5 + .local_6);
+    .local_3 = (.local_3 - 1);
+  }
+  .ret_0.5 = .local_5;
+}
+
+$lentry LEFT_func9;
+$rentry RIGHT_func18;
+requires (.param_1.3 == .param_1);
+requires (.param_2.4 == .param_2);
+ensures (.param_1.3 == .param_1);
+ensures (.ret_0.5 == .ret_0);
+

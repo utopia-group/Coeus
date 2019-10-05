@@ -1,0 +1,107 @@
+declare int bvxor(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4) returns (int .ret_1)
+{
+  bool .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  int .local_9;
+  .local_5 = false;
+  .local_8 = .param_2;
+  .local_6 = -64;
+  .local_7 = (- (.param_2 - 6));
+  while (((.param_2 * .local_7) != -6))
+  {
+    .local_6 = .local_7;
+    .local_8 = 0;
+    while ((.local_8 < (1 + .param_2)))
+    {
+      while (.local_5)
+      {
+        .param_4 = bvxor((.param_3 % 32), 1);
+      }
+      .param_3 = 0;
+      while ((.param_3 < (64 / .param_2)))
+      {
+        .param_2 = .local_6;
+        .local_7 = 2;
+        .param_3 = (.param_3 + 1);
+      }
+      .local_8 = (.local_8 + 1);
+    }
+  }
+  while (.local_5)
+  {
+    for (.local_9 = 0 to (.local_8 + 10))
+    {
+      .param_2 = .param_4;
+    }
+    for (.local_8 = 0 to .local_7)
+    {
+      .local_9 = ((- .local_6) + .local_6);
+      .param_2 = (((.local_7 + .local_7) * .local_6) - (.local_8 + .local_9));
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_11, int .param_12, int .param_13) returns
+ (int .ret_10)
+{
+  bool .local_14;
+  int .local_15;
+  int .local_16;
+  int .local_17;
+  int .local_18;
+  .local_14 = false;
+  .local_17 = .param_11;
+  .local_15 = -64;
+  .local_16 = (- (.param_11 - 6));
+  while (((.param_11 * .local_16) != -6))
+  {
+    .local_15 = .local_16;
+    .local_17 = 0;
+    while ((.local_17 <= .param_11))
+    {
+      while (.local_14)
+      {
+        .param_13 = bvxor((.param_12 % 32), 1);
+      }
+      .param_12 = 0;
+      while ((.param_12 <= (-1 + (64 / .param_11))))
+      {
+        .param_11 = .local_15;
+        .param_12 = (.param_12 + 1);
+      }
+      .param_12 = 0;
+      while ((.param_12 <= (-1 + (64 / .param_11))))
+      {
+        .local_16 = 2;
+        .param_12 = (.param_12 + 1);
+      }
+      .local_17 = (.local_17 + 1);
+    }
+  }
+  while (.local_14)
+  {
+    for (.local_18 = 0 to (.local_17 + 10))
+    {
+      .param_11 = .param_13;
+    }
+    for (.local_17 = 0 to ((-1 + .local_16) + 1))
+    {
+      .local_18 = ((- .local_15) + .local_15);
+      .param_11 = (((.local_16 + .local_16) * .local_15) - (.local_17 + .local_18));
+    }
+  }
+  .ret_10 = .param_11;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_11);
+requires (.param_3 == .param_12);
+requires (.param_4 == .param_13);
+ensures (.ret_1 == .ret_10);
+

@@ -1,0 +1,14 @@
+procedure f(int z) returns(int i)
+{
+    i = 0;
+
+    while (i <= 10)
+    {
+        i++;
+    }
+}
+
+$lentry f;
+$rentry f;
+requires $L(z) <= $R(z);
+ensures $L(i) <= $R(i);

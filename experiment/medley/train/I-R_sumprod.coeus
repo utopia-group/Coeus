@@ -1,0 +1,33 @@
+procedure f0rec(int n) returns(int r)
+{
+    r = 0;
+
+    if (n <= 0)
+    {
+        r = 0;
+    }
+    else
+    {
+        r = f0rec(n - 1) + n;
+    }
+}
+
+procedure f0(int n) returns (int r) {
+    call r = f0(n);
+}
+
+procedure f1(int n, int m) returns(int r)
+{
+    r = 0;
+
+    while (n > 0)
+    {
+        r += m;
+        n--;
+    }
+}
+
+requires $L(n) >= 0;
+requires $L(n) == $R(n);
+requires $R(m) >= $R(n);
+ensures $L(r) == $R(r);

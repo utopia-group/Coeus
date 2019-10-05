@@ -1,0 +1,85 @@
+
+
+procedure RIGHT_func15(int[int] .param_7, int .param_8) returns (int .ret_6)
+{
+  int inlined_.param_16.3;
+  int inlined_.param_17.4;
+  int inlined_.ret_15.5;
+  int inlined_.param_16.0;
+  int inlined_.param_17.1;
+  int inlined_.ret_15.2;
+  int .tmpret_13;
+  int .tmpret_14;
+  int .local_9;
+  int .local_10;
+  int .local_11;
+  int .local_12;
+  if ((.param_8 == 0))
+  {
+    .ret_6 = 0;
+  }
+  else
+  {
+    .local_9 = .param_7[0];
+    if ((.param_8 == 1))
+    {
+      .ret_6 = .local_9;
+    }
+    else
+    {
+      inlined_.param_16.0 = .param_7[0];
+      inlined_.param_17.1 = .param_7[1];
+      inlined_.ret_15.2 = (if (inlined_.param_16.0 > inlined_.param_17.1) then inlined_.param_16.0 else inlined_.param_17.1);
+      .tmpret_13 = inlined_.ret_15.2;
+      .local_10 = .tmpret_13;
+      if ((.param_8 == 2))
+      {
+        .ret_6 = .local_10;
+      }
+      else
+      {
+        for (.local_12 = 2 to .param_8)
+        {
+          inlined_.param_16.3 = (.param_7[.local_12] + .local_9);
+          inlined_.param_17.4 = .local_10;
+          inlined_.ret_15.5 = (if (inlined_.param_16.3 > inlined_.param_17.4) then inlined_.param_16.3 else inlined_.param_17.4);
+          .tmpret_14 = inlined_.ret_15.5;
+          .local_11 = .tmpret_14;
+          .local_9 = .local_10;
+          .local_10 = .local_11;
+        }
+        .ret_6 = .local_11;
+      }
+    }
+  }
+}
+
+procedure LEFT_func6(int[int] .param_2, int .param_3) returns (int .ret_1)
+{
+  int[int] .local_4;
+  int .local_5;
+  .local_4[0] = 0;
+  .local_4[1] = .param_2[0];
+  for (.local_5 = 2 to (.param_3 + 1))
+  {
+    if ((.local_4[(.local_5 - 1)] > (.local_4[(.local_5 - 2)] + .param_2[(.local_5 - 1)])))
+    {
+      .local_4[.local_5] = .local_4[(.local_5 - 1)];
+    }
+    else
+    {
+      .local_4[.local_5] = (.local_4[(.local_5 - 2)] + .param_2[(.local_5 - 1)]);
+    }
+  }
+  .ret_1 = .local_4[.param_3];
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func15;
+requires (.param_2 == .param_7);
+requires (.param_3 == .param_8);
+requires (.param_3 >= 0);
+requires (.param_3 <= 1000);
+ensures (.param_2 == .param_7);
+ensures (.ret_1 == .ret_6);
+

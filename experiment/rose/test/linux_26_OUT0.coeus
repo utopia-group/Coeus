@@ -1,0 +1,223 @@
+declare int bvand(int, int);
+declare int bvor(int, int);
+declare int bvxor(int, int);
+declare int bvnot(int);
+declare int bvshl(int, int);
+declare int bvshr(int, int);
+
+procedure LEFT_func6(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  .local_3 = ((128 * .param_1) / 1000);
+  .local_4 = 1;
+  while ((.param_1 > 48000))
+  {
+    .local_4 = (.local_4 * 2);
+    .param_1 = (.param_1 / 2);
+  }
+  if ((.param_1 == 32000))
+  {
+    if ((.param_2 == 25175000))
+    {
+      .local_3 = 4576;
+    }
+    else
+    {
+      if ((.param_2 == 27027000))
+      {
+        .local_3 = 4096;
+      }
+      else
+      {
+        if (((.param_2 == 74176000) || (.param_2 == 148352000)))
+        {
+          .local_3 = 11648;
+        }
+        else
+        {
+          .local_3 = 4096;
+        }
+      }
+    }
+    .local_3 = (.local_3 * .local_4);
+  }
+  else
+  {
+    if ((.param_1 == 44100))
+    {
+      if ((.param_2 == 25175000))
+      {
+        .local_3 = 7007;
+      }
+      else
+      {
+        if ((.param_2 == 74176000))
+        {
+          .local_3 = 17836;
+        }
+        else
+        {
+          if ((.param_2 == 148352000))
+          {
+            .local_3 = 8918;
+          }
+          else
+          {
+            .local_3 = 6272;
+          }
+        }
+      }
+      .local_3 = (.local_3 * .local_4);
+    }
+    else
+    {
+      if ((.param_1 == 48000))
+      {
+        if ((.param_2 == 25175000))
+        {
+          .local_3 = 6864;
+        }
+        else
+        {
+          if ((.param_2 == 27027000))
+          {
+            .local_3 = 6144;
+          }
+          else
+          {
+            if ((.param_2 == 74176000))
+            {
+              .local_3 = 11648;
+            }
+            else
+            {
+              if ((.param_2 == 148352000))
+              {
+                .local_3 = 5824;
+              }
+              else
+              {
+                .local_3 = 6144;
+              }
+            }
+          }
+        }
+        .local_3 = (.local_3 * .local_4);
+      }
+    }
+  }
+  .ret_0 = .local_3;
+}
+
+procedure RIGHT_func6(int .param_1, int .param_2) returns (int .ret_0)
+{
+  int .local_3;
+  int .local_4;
+  .local_3 = ((128 * .param_1) / 1000);
+  .local_4 = 1;
+  while ((.param_1 > 48000))
+  {
+    .local_4 = (.local_4 * 2);
+    .param_1 = (.param_1 / 2);
+  }
+  if ((.param_1 == 32000))
+  {
+    if ((.param_2 == 25175000))
+    {
+      .local_3 = 4576;
+    }
+    else
+    {
+      if ((.param_2 == 27027000))
+      {
+        .local_3 = 4096;
+      }
+      else
+      {
+        if (((.param_2 == 74176000) || (.param_2 == 148352000)))
+        {
+          .local_3 = 11648;
+        }
+        else
+        {
+          .local_3 = 4096;
+        }
+      }
+    }
+    .local_3 = (.local_3 * .local_4);
+  }
+  else
+  {
+    if ((.param_1 == 44100))
+    {
+      if ((.param_2 == 25175000))
+      {
+        .local_3 = 7007;
+      }
+      else
+      {
+        if ((.param_2 == 74176000))
+        {
+          .local_3 = 17836;
+        }
+        else
+        {
+          if ((.param_2 == 148352000))
+          {
+            .local_3 = 8918;
+          }
+          else
+          {
+            .local_3 = 6272;
+          }
+        }
+      }
+      .local_3 = (.local_3 * .local_4);
+    }
+    else
+    {
+      if ((.param_1 == 48000))
+      {
+        if ((.param_2 == 25175000))
+        {
+          .local_3 = 6864;
+        }
+        else
+        {
+          if ((.param_2 == 27027000))
+          {
+            .local_3 = 6144;
+          }
+          else
+          {
+            if ((.param_2 == 74176000))
+            {
+              .local_3 = 11648;
+            }
+            else
+            {
+              if ((.param_2 == 148352000))
+              {
+                .local_3 = 5824;
+              }
+              else
+              {
+                .local_3 = 6144;
+              }
+            }
+          }
+        }
+        .local_3 = (.local_3 * .local_4);
+      }
+    }
+  }
+  .ret_0 = .local_3;
+}
+
+$lentry LEFT_func6;
+$rentry RIGHT_func6;
+requires ($L(.param_1) == $R(.param_1));
+requires ($L(.param_2) == $R(.param_2));
+ensures ($L(.ret_0) == $R(.ret_0));
+

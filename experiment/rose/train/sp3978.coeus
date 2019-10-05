@@ -1,0 +1,105 @@
+declare int bvxor(int, int);
+declare int bvor(int, int);
+
+procedure f0(int .param_2, int .param_3, int .param_4) returns (int .ret_1)
+{
+  bool .local_5;
+  int .local_6;
+  int .local_7;
+  int .local_8;
+  .local_5 = false;
+  .local_7 = (.param_2 * 32);
+  .local_6 = 7;
+  for (.local_7 = 0 to 81)
+  {
+    .local_6 = .local_7;
+  }
+  if (((- .param_2) == (.local_6 + .param_3)))
+  {
+    .local_7 = ((.param_3 * .param_4) * .local_6);
+    .param_2 = (bvor(0, .param_2) + (10 + .local_7));
+  }
+  else
+  {
+    .param_2 = (2 - .param_2);
+    if ((.param_4 >= .param_3))
+    {
+      .param_3 = bvxor(8, .param_2);
+      .param_2 = .param_3;
+    }
+    else
+    {
+      .local_7 = (- .param_4);
+      if (.local_5)
+      {
+        .local_8 = .local_7;
+      }
+      else
+      {
+        .param_4 = .param_3;
+        .local_8 = ((3 + .param_4) / (.param_4 + 4));
+      }
+      .param_4 = .local_8;
+      .param_2 = (.param_4 % 5);
+    }
+  }
+  .ret_1 = .param_2;
+}
+
+procedure f1(int .param_10, int .param_11, int .param_12) returns
+ (int .ret_9)
+{
+  bool .local_13;
+  int .local_14;
+  int .local_15;
+  int .local_16;
+  .local_13 = false;
+  .local_15 = (.param_10 * 32);
+  .local_14 = 7;
+  for (.local_15 = 0 to 81 step 2)
+  {
+    .local_14 = .local_15;
+    if (((1 + .local_15) <= 80))
+    {
+      .local_14 = (1 + .local_15);
+    }
+  }
+  if (((- .param_10) == (.local_14 + .param_11)))
+  {
+    .local_15 = ((.param_11 * .param_12) * .local_14);
+    .param_10 = (bvor(0, .param_10) + (10 + .local_15));
+  }
+  else
+  {
+    .param_10 = (2 - .param_10);
+    if ((.param_12 >= .param_11))
+    {
+      .param_11 = bvxor(8, .param_10);
+      .param_10 = .param_11;
+    }
+    else
+    {
+      .local_15 = (- .param_12);
+      if (.local_13)
+      {
+        .local_16 = .local_15;
+      }
+      else
+      {
+        .param_12 = .param_11;
+        .local_16 = ((3 + .param_12) / (.param_12 + 4));
+      }
+      .param_12 = .local_16;
+      .param_10 = (.param_12 % 5);
+    }
+  }
+  .ret_9 = .param_10;
+}
+
+$lentry f0;
+$rentry f1;
+requires (.param_2 == .param_10);
+requires (.param_3 == .param_11);
+requires (.param_4 == .param_12);
+ensures (.ret_1 == .ret_9);
+
