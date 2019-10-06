@@ -1,6 +1,6 @@
 # Coeus Relational Verifier
 
-This repo contains the verifier source code for our paper *Relational Verification using Reinforcement Learning* published at OOPSLA'19. Source code for the reinforcement learning part is released as a separate repo.
+This repository contains the verifier source code for our paper *Relational Verification using Reinforcement Learning* published at OOPSLA'19. Source code for the reinforcement learning part is released as [a separate repository](https://github.com/utopia-group/ReCoeus).
 
 ## Building from source
 
