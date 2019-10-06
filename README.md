@@ -63,6 +63,8 @@ export COEUS_AST_SIZE_LIMIT=500000
 
 `coeus server` takes two positional command line arguments: the first one is a directory that contains training benchmarks, and the second one is a directory that contains testing benchmarks. This command listens on a server socket (whose hostname and port can be set via `-a` and `-p`) and wait for a client to connect to it. Once the connection is established, the client can send server instructions to pick a benchmark and perform proof rollouts on it. Not surprisingly, this is how we implemented the training phase of our learning algorithm.
 
+NOTE: Conflict analysis in the server is also supported: just set a nonzero value to the `--max-conflict` parameter.
+
 ## Coeus specification format
 
 Coeus implements its own AST, which consists of several function definitions, a precondition, and a postcondition. Here's an simple example of a Coeus file:
