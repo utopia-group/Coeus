@@ -1,0 +1,1 @@
+synccall ; autoseq ; seq_l ; seq_r ; contra ; seq_r ; autoseq ; contra ; syncif ; synccall ; seq_r ; contra ; synccall ; synccall

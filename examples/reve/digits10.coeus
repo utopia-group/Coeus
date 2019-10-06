@@ -1,0 +1,52 @@
+procedure f0(int m) returns (int result) {
+  int n;
+
+  result = 1;
+  n = m;
+  n = n / 10;
+
+  while (n > 0) {
+    result = result + 1;
+    n = n / 10;
+    if (n > 0) {
+      result = result + 1;
+      n = n / 10;
+      if (n > 0) {
+        result = result + 1;
+        n = n / 10;
+        if (n > 0) {
+          result = result + 1;
+          n = n / 10;
+        }
+      }
+    }
+  }
+}
+
+procedure f1(int m) returns (int retval) {
+  int b, result, n;
+
+  n = m;
+  result = 1; b = 1; retval = -1;
+  while (!(b == 0)) {
+    if (n < 10) {
+      retval = result;
+      b = 0;
+    } else if (n < 100) {
+      retval = result + 1;
+      b = 0;
+    } else if (n < 1000) {
+      retval = result + 2;
+      b = 0;
+    } else if (n < 10000) {
+      retval = result + 3;
+      b = 0;
+    } else {
+      n = n / 10000;
+      result = result + 4;
+    }
+  }
+}
+
+requires $L(m) == $R(m);
+ensures $L(result) == $R(retval);

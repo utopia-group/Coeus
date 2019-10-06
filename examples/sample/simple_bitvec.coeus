@@ -1,0 +1,18 @@
+declare int bvxor(int, int);
+declare int bvand(int, int);
+
+procedure f(int n, int k) returns (int r) {
+  int i;
+  i = 0;
+  r = 0;
+  while (i < n) {
+    r = bvxor(r, bvand(k, i));
+    i = i + 1;
+  }
+}
+
+$lentry f;
+$rentry f;
+requires $L(n) == $R(n);
+requires $L(k) == $R(k);
+ensures $L(r) == $R(r);

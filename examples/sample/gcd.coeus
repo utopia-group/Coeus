@@ -1,0 +1,30 @@
+procedure f0(int x, int y) returns (int r) {
+  while (x!=y) { 
+    if (x>y) {
+      x=x-y;
+    } else {
+      y=y-x;
+    }
+  }
+  r = x;
+}
+
+procedure f1(int x, int y) returns (int r) {
+  call r = f1rec(x, y);
+}
+
+procedure f1rec(int m, int n) returns (int r) {
+  if (m==n)
+    r = m;
+  else if (m>n) {
+    call r = f1rec(m-n,n);
+  } else {
+    call r = f1rec(m,n-m);
+  }
+}
+
+requires $L(x) == $R(x);
+requires $L(y) == $R(y);
+requires $L(x) >= 1;
+requires $L(y) >= 1;
+ensures $L(r) == $R(r);

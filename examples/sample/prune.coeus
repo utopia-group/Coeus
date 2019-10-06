@@ -1,0 +1,12 @@
+
+procedure f(int n, int k) returns (int r) {
+  if (n > 0)
+    r = k;
+  else
+    r = k + 1;
+}
+
+$lentry f;
+$rentry f;
+requires $L(n) == $R(n) && $L(k) == $R(k);
+ensures $L(r) == $R(r);

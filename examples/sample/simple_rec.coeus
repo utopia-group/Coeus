@@ -1,0 +1,28 @@
+procedure f0(int x, int y) returns (int r) {
+  call r = f0rec(x, y);
+}
+
+procedure f0rec(int m, int n) returns (int r) {
+  if (n <= 0)
+    r = m;
+  else {
+    call r = f0rec(m, n - 1);
+    r = r + 1;
+  }
+}
+
+procedure f1(int x, int y) returns (int r) {
+  call r = f1rec(x, y);
+}
+
+procedure f1rec(int m, int n) returns (int r) {
+  if (n <= 0)
+    r = m;
+  else
+    call r = f1rec(m + 1, n - 1);
+}
+
+requires $L(x) == $R(x);
+requires $L(y) >= 0;
+requires $L(y) == $R(y);
+ensures $L(r) == $R(r);

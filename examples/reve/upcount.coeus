@@ -1,0 +1,24 @@
+
+procedure f0(int n) returns (int r) {
+  int m;
+  m = 0;
+  while (n >= 0) {
+    m = m + 1;
+    n = n - 1;
+  }
+  r = m;
+}
+
+procedure f1(int n) returns (int r) {
+  int m;
+  m = 0;
+  while (n > 0) {
+    m = m + 1;
+    n = n - 1;
+  }
+  r = m + 1;
+}
+
+requires $L(n) == $R(n);
+requires $L(n) >= 0;
+ensures $L(r) == $R(r);

@@ -1,0 +1,30 @@
+procedure f0(int t, int c) returns (int x) {
+  x = 0;
+  if (0 < t) {
+    while (0 < c) {
+      x = x + 1;
+      c = c - 1;
+    }
+  } else {
+    while (0 < c) {
+      x = x - 1;
+      c = c - 1;
+    }
+  }
+}
+
+procedure f1(int t, int c) returns (int x) {
+  x = 0;
+  while (0 < c) {
+    if (0 < t) {
+      x = x + 1;
+    } else {
+      x = x - 1;
+    }
+    c = c - 1;
+  }
+}
+
+requires $L(t) == $R(t);
+requires $L(c) == $R(c);
+ensures $L(x) == $R(x);

@@ -1,0 +1,1 @@
+autoseq ; seq_l ; sync ; seq_r ; autoseq ; autoseq ; sync ; autoseq ; seq_r ; seq_r ; autoseq ; seq_r ; sync ; autoseq

@@ -1,0 +1,21 @@
+procedure f0(int[int] a, int n) returns (int r) {
+  int i;
+
+  r = 0;
+  for (i = 0 to n) {
+    r = r + a[i];
+  }
+}
+
+procedure f1(int[int] a, int n) returns (int r) {
+  int i;
+
+  r = 0;
+  for (i = n downto 0) {
+    r = r + a[i - 1];
+  }
+}
+
+requires $L(a) == $R(a);
+requires $L(n) == $R(n);
+ensures $L(r) == $R(r);

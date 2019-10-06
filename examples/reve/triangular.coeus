@@ -1,0 +1,31 @@
+procedure f0(int n) returns (int r) {
+  call r = g0(n);
+}
+
+procedure f1(int n) returns (int r) {
+  call r = g1(n, 0);
+}
+
+procedure g0(int n) returns (int r) {
+  r = 0;
+
+  if (n <= 0) {
+    r = 0;
+  } else {
+    call r = g0(n - 1);
+    r = n + r;
+  }
+}
+
+procedure g1(int n, int s) returns (int r) {
+  r = 0;
+
+  if (n <= 0) {
+    r = s;
+  } else {
+    call r = g1(n - 1, n + s);
+  }
+}
+
+requires $L(n) == $R(n);
+ensures $L(r) == $R(r);

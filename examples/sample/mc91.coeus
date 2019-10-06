@@ -1,0 +1,25 @@
+
+procedure f0(int n) returns (int r) {
+  call r = f0rec(n);
+}
+
+procedure f1(int n) returns (int r) {
+  if (n > 100) {
+    r = n - 10;
+  } else {
+    r = 91;
+  }
+}
+
+procedure f0rec(int a) returns (int r) {
+  r = 0;
+  if (a > 100) {
+    r = a - 10;
+  } else {
+    call r = f0rec(a + 11);
+    call r = f0rec(r);
+  }
+}
+
+requires $L(n) == $R(n);
+ensures $L(r) == $R(r);

@@ -1,0 +1,14 @@
+procedure f(int[int] a, int n) returns (int r) {
+  int i;
+  i = 0; r = 0;
+  while (i < n) {
+    r = r + a[i];
+    i = i + 1;
+  }
+}
+
+$lentry f;
+$rentry f;
+requires $L(a) == $R(a);
+requires $L(n) == $R(n);
+ensures $L(r) == $R(r);

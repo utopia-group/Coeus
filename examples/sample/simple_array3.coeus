@@ -1,0 +1,24 @@
+procedure f0(int[int] a, int[int] b) returns (int[int] e) {
+  int i;
+
+  i = 0;
+  while (i < 10) {
+    e[i] = a[i] + b[i];
+    i = i + 1;
+  }
+}
+
+procedure f1(int[int] a, int[int] b) returns (int[int] e) {
+  int i;
+
+  i = 0;
+  while (i < 10) {
+    e[i] = a[i] + b[i];
+    i = i + 1;
+  }
+}
+
+requires $L(a) == $R(a);
+requires $L(b) == $R(b);
+requires $L(e) == $R(e);
+ensures $L(e) == $R(e);

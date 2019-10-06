@@ -1,0 +1,25 @@
+// Note that Z3 duality is unsound for this example: it returns "unsat" for a satisfiable problem
+
+procedure f0(int n) returns (int r) {
+  int i;
+  i = 0;
+  r = 0;
+  while (i < n) {
+    r = r + 1;
+    i = i + 1;
+  }
+}
+
+procedure f1(int n) returns (int r) {
+  int i;
+  i = n;
+  r = 0;
+  while (i > 0) {
+    r = r + 1;
+    i = i - 1;
+  }
+}
+
+requires $L(n) == $R(n);
+requires $L(n) >= 0;
+ensures $L(r) == $R(r);

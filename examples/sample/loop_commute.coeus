@@ -1,0 +1,36 @@
+
+procedure f0(int n, int m, int k) returns (int r0, int r1) {
+  int i, j;
+
+  r0 = 0; r1 = 0; i = 0;
+  while (i < n) {
+    r0 = r0 + k;
+    i = i + 1;
+  }
+  j = 0;
+  while (j < m) {
+    r1 = r1 + k;
+    j = j + 1;
+  }
+}
+
+procedure f1(int n, int m, int k) returns (int r0, int r1) {
+  int i, j;
+
+  r0 = 0; r1 = 0; i = 0;
+  while (i < m) {
+    r1 = r1 + k;
+    i = i + 1;
+  }
+  j = 0;
+  while (j < n) {
+    r0 = r0 + k;
+    j = j + 1;
+  }
+}
+
+requires $L(n) == $R(n);
+requires $L(m) == $R(m);
+requires $L(k) == $R(k);
+ensures $L(r0) == $R(r0);
+ensures $L(r1) == $R(r1);

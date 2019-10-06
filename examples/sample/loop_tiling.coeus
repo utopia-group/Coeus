@@ -1,0 +1,29 @@
+
+procedure f0(int n, int k) returns (int r) {
+  int i;
+
+  r = 0; 
+  for (i = 0 to n) {
+    r = r + k;
+  }
+}
+
+procedure f1(int n, int k) returns (int r) {
+  int i, j, m;
+
+  r = 0; i = 0;
+  while (i < n) {
+    if (n < i + 2)
+      m = i + 2 - n;
+    else
+      m = 2;
+    for (j = 0 to m) {
+      r = r + k;
+    }
+    i = i + 2;
+  }
+}
+
+requires $L(n) == $R(n);
+requires $L(k) == $R(k);
+ensures $L(r) == $R(r);

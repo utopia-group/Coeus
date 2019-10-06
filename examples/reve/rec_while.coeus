@@ -1,0 +1,25 @@
+
+procedure f0(int n, int z) returns (int r) {
+  call r = frec(n, z);
+}
+
+procedure f1(int n, int z) returns (int r) {
+  call r = frec(n, z);
+}
+
+procedure frec(int n, int z) returns (int r) {
+  int i;
+  if (n <= 0) {
+    r = n;
+  } else {
+    i = 0;
+    while (i < n - 1) {
+      i = i + 1;
+    }
+    call r = frec(i, 0);
+  }
+}
+
+requires $L(n) == $R(n);
+requires $L(z) == $R(z);
+ensures $L(r) == $R(r);
