@@ -1,6 +1,8 @@
 open Core
 open Ast.Ecoeus
 
+(* This rule is z3-specific: we've found that replacing constant loop bounds with a variable loop bound can sometime speed up solving significantly *)
+
 let extend_bound () =
   let bound_var = FreshNameGenerator.get_fresh_var () in
   let bound_binding = VarBinding.{name= bound_var; ty= Type.IntType} in

@@ -1,5 +1,12 @@
 open Core
 
+(* Ideally the rule parser should just be a hashmap from names to rules. Having
+a dedicated rule lexer and rule parser is mostly due to historical reason: In
+earlier prototype, rules can take parameters of various types, which would
+justfiy a more complicated parsing logic. Unfortunately, parameterized actions
+do not play well with reinforcement learning, which is why we have removed them
+in the current revision. *)
+
 let parse_rule s =
   let lexbuf = Lexing.from_string s in
   try Some (RuleParser.main RuleLexer.lex lexbuf) with

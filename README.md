@@ -65,6 +65,8 @@ export COEUS_AST_SIZE_LIMIT=500000
 
 NOTE: Conflict analysis in the server is also supported: just set a nonzero value to the `--max-conflict` parameter.
 
+For more information on how to set up a `coeus server` for training, please see instructions [here](https://github.com/utopia-group/ReCoeus).
+
 ## Coeus specification format
 
 Coeus implements its own AST, which consists of several function definitions, a precondition, and a postcondition. Here's an simple example of a Coeus file:

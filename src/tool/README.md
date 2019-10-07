@@ -1,0 +1,9 @@
+# Coeus Command Line Tools
+
+- `benchsplit` is a simple script that reads a directory of Coeus source files and split them into two different directories according to the size of the input programs. We use this script to perform benchmark split in our experiments (small benchmarks are used for training, and large ones for testing).
+- `ctrans` reads C source files and translate them into Coeus specifications where the property we want to prove is equivalence. To parse and simplify C sources, we rely on a C parser that was extracted from CompCert. The reason why I did not choose CIL is that the CompCert parser nicely preserves all for loops for us while CIL would lower them into while loops. The formal guarantees provided by CompCert parser is also nice to have, but it's not the main reason why I used it.
+- `driver` is the main `coeus` driver. The basic logic of `coeus run` and `coeus server` can be found here.
+- `rdiff` is a simple script that tries to compare Coeus result. The input files must be in a specific JSON format (obtained by pass `-j` flag to `coeus run`).
+- `reccheck` is a simple script that checks for recursive Coeus programs.
+- `repl` is a simple REPL for Coeus verifier. It allows the user to load Coeus files and apply proof rules interactively, inspecting the intermediate proof goals and verification conditions along the way. REPL commands are not very well-documented, though -- you'll need to read the source code to figure them out. Personally I found the REPL really useful for debugging and for manual proofs.
+- `vtrans` reads a Coeus specification file and translate it into a format that VeriMapRel can understand. 

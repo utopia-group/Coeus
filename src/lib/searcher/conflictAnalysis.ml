@@ -85,18 +85,6 @@ let extract_prefix_impl step_table blame_index =
   in
   impl [] blame_index
 
-(* let extract_prefix ExhaustiveSearchState.({rev_history; _}) =
- *   match rev_history with
- *   | [] -> []
- *   | ExhaustiveSearchState.ProofStep.({rule; prev_depth}) :: _ ->
- *     match prev_depth with
- *     | None -> [rule]
- *     | Some d ->
- *         let steps = List.rev rev_history in
- *         let step_table = Array.of_list steps in
- *         let prefix = extract_prefix_impl step_table d in
- *         List.append prefix [rule] *)
-
 let extract_prefixes ExhaustiveSearchState.({rev_history; _}) =
   let history_len = List.length rev_history in
   let not_visited = Int.Hash_set.of_list (List.init history_len Fn.id) in

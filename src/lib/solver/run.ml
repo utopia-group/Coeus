@@ -94,7 +94,7 @@ let do_verify_houdini (env : Z3Env.t) vstate =
         run_houdini env horn_ast )
   with
   | Result.Error msg ->
-      let msg = Fmt.strf "Spacer error: %s" msg in
+      let msg = Fmt.strf "Houdini error: %s" msg in
       Result.Error msg
   | Result.Ok Subprocess.Status.Timeout -> Result.Ok Status.Timeout
   | Result.Ok (Subprocess.Status.Finished "verified") ->
